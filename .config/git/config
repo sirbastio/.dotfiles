@@ -1,0 +1,6 @@
+[user]
+    name = Phillipe Sebastiao
+    email = phillipe.sebastiao@gmail.com
+
+[init]
+    defaultBranch = main

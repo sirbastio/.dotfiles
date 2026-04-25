@@ -4,3 +4,4 @@ lazy-lock.json
 .p10k.zsh
 .zsh_history
 .zcompdump
+.zsh_sessions
