@@ -1,4 +1,4 @@
-<h1 align="center">Dotfiles 👨‍💻</h1>
+<h1 align="center">Dotfiles</h1>
 
 ## What's Included
 
@@ -24,7 +24,7 @@
 
 ## Other Tools I Use
 
-- **Terminal**: Ghostty/Warp (I keep switching between these two).
+- **Terminal**: Ghostty/Warp (I keep switching between these two)
 - **Package Manager**: Brew (MacOS), Pacman (WSL w/Arch)
 - **CLI Tools**: lazygit, fd, gh, bat
 - **IDE**: VS Code, Cursor, Codex, ~~Neovim~~
@@ -32,7 +32,7 @@
 
 ## Setup
 
-## Requirements
+### Requirements
 
 - git
 - fzf
@@ -40,7 +40,7 @@
 - zoxide
 - tmux
 
-## Steps
+### Steps
 
 1. Clone the repo to the home directory `~/<user>` (recommend using ssh)
 2. `mkdir .config` & `mkdir .local` in the home directory `~/.config` & `~/.local`
