@@ -40,7 +40,7 @@
 ### Steps
 
 1. Clone the repo to the home directory `~/<user>` (recommend using ssh)
-2. `mkdir .config` & `mkdir .local` in the home directory `~/.config` & `~/.local`.
+2. `mkdir .config` in the home directory `~/.config`.
    This ensures stow will not symlink the entire directory, but instead the contents
 3. `cd .dotfiles` move into the repo
 4. Read through the config files to understand

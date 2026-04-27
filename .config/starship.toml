@@ -1,0 +1,3 @@
+[python]
+# Check the local .venv first, then fallback to standard python
+python_binary = ["./.venv/bin/python", "python", "python3"]
