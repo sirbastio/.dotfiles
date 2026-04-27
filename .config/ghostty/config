@@ -3,7 +3,8 @@ font-size = 16
 font-family = JetBrains Mono Nerd Font
 
 # Theme
-theme = tokyonight #snazzysoft
+theme = tokyonight 
+#theme = snazzysoft
 
 
 # Window
@@ -21,3 +22,4 @@ confirm-close-surface = false
 
 # Keybinds
 #keybind = global:opt+space=toggle_quick_terminal
+window-save-state = always
