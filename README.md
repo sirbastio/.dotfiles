@@ -9,6 +9,7 @@
 - **`ls` Replacement**: eza
 - **`cat` Replacement**: bat
 - **History Replacement**: Atuin
+
 #### Plugins
 
 - **Theme**: Starship
@@ -49,3 +50,4 @@
 7. `stow .` this will create symlinks into the home directory e.g. `~/.dotfiles/.config/zsh`
 will now be symlinked into `~/.config`. Also, because of step 2, any extra items added to
 the symlinked directories will NOT be added into `~/.dotfiles`, ensuring no changes in git will be made.
+8. `atuin config set logs.dir "~/.local/share/atuin/logs"` and `rm -rf ~/.atuin`
