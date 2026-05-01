@@ -8,7 +8,7 @@
 - **`cd` Replacement**: Zoxide
 - **`ls` Replacement**: eza
 - **`cat` Replacement**: bat
-
+- **History Replacement**: Atuin
 #### Plugins
 
 - **Theme**: Starship
@@ -18,9 +18,9 @@
 
 ## Other Tools
 
-- **Terminal**: Ghostty/Warp (I keep switching between these two)
-- **Package Manager**: Brew (MacOS), Pacman (WSL w/Arch)
-- **CLI Tools**: curl, fd, gh, ripgrep, lazygit, uv, fnm
+- **Terminal**: Ghostty
+- **Package Manager**: Brew (MacOS), APT (WSL2 w/Ubuntu)
+- **CLI Tools**: curl, ripgrep, fd, gh, ripgrep, lazygit, uv, fnm
 - **IDE**: VS Code, Cursor, Codex, ~~Neovim~~
 - **Apps**: Chrome, Notion, Obsidian, Raycast, TickTick, Outlook, Excel
 
@@ -34,6 +34,7 @@
 - zoxide
 - bat
 - eza
+- atuin
 - starship
 
 ### Steps

@@ -42,7 +42,7 @@ bindkey '^n' history-search-forward
 # === Aliases ===
 alias ls='eza --icons --group-directories-first'
 alias ll='eza -lh --icons --grid'
-alias tree='eza --tree -L 3'
+alias tree='eza --group-directories-first --tree -L 3 '
 alias ..='cd ..'
 alias c='clear'
 alias cat='bat'
