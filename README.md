@@ -18,7 +18,7 @@
 ## Other Tools
 
 - **Terminal**: Ghostty
-- **Package Manager**: Brew (MacOS), APT (WSL2 w/Ubuntu)
+- **Package Manager**: Homebrew
 - **CLI Tools**: atuin, bat, curl, eza, fnm, fzf, gh, git, lazygit, ripgrep, starship, stow, uv, zoxide
 - **IDE**: VS Code, Cursor, Codex, ~~Neovim~~
 - **Apps**: Chrome, Notion, Obsidian, Raycast, TickTick, Outlook, Excel
