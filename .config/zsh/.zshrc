@@ -1,31 +1,34 @@
 # This file is only read for INTERACTIVE shells
     
 # === Plugin Manager (Zinit) ===
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
+ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
 
 # --- Plugins ---
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light Aloxaf/fzf-tab
+if [[ -r "$ZINIT_HOME/zinit.zsh" ]]; then
+    source "$ZINIT_HOME/zinit.zsh"
 
-# --- Snippets ---
-zinit snippet OMZP::git
+    zinit light zsh-users/zsh-completions
+    zinit light zsh-users/zsh-autosuggestions
+    zinit light Aloxaf/fzf-tab
+    zinit snippet OMZP::git
+    zinit light zsh-users/zsh-syntax-highlighting
+fi
 
-# --- fzf-tab config ---
-autoload -U compinit; compinit
+# === Completion ===
+autoload -Uz compinit
+compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
+
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+# --- fzf-tab config ---
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --color=always --group-directories-first $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --color=always --group-directories-first $realpath'
 
 # === History ====
 HISTSIZE=5000                           # commands stored in memory
-HISTFILE=~/.config/zsh/.zsh_history     # history file
+HISTFILE="$XDG_STATE_HOME/zsh/history"  # history file
 SAVEHIST=$HISTSIZE                      # commands saved to history file
 setopt appendhistory                    # appends commands to history file instead of overwriting
 setopt sharehistory                     # shares commands across active terminal sessions
@@ -40,16 +43,38 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
 # === Aliases ===
-alias ls='eza --icons --group-directories-first'
-alias ll='eza -lh --icons --grid'
-alias tree='eza --group-directories-first --tree -L 3 '
+if command -v eza &>/dev/null; then
+    alias ls='eza --icons --group-directories-first'
+    alias ll='eza -lh --icons --grid'
+    alias tree='eza --group-directories-first --tree -L 3 '
+else
+    alias ls='ls --color'
+fi
+
 alias ..='cd ..'
 alias c='clear'
-alias cat='bat'
+
+if command -v bat &>/dev/null; then
+    alias cat='bat'
+fi
 
 # === Other ===
-source <(fzf --zsh)
-eval "$(starship init zsh)"
-eval "$(atuin init zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-eval "$(fnm env --use-on-cd --shell zsh)"
+if command -v fzf &>/dev/null; then
+    source <(fzf --zsh)
+fi
+
+if command -v starship &>/dev/null; then
+    eval "$(starship init zsh)"
+fi
+
+if command -v atuin &>/dev/null; then
+    eval "$(atuin init zsh)"
+fi
+
+if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init --cmd cd zsh)"
+fi
+
+if command -v fnm &>/dev/null; then
+    eval "$(fnm env --use-on-cd --shell zsh)"
+fi

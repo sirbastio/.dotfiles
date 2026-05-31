@@ -18,23 +18,33 @@
 ## Other Tools
 
 - **Terminal**: Ghostty
-- **Package Manager**: Homebrew
+- **Package Manager**: Homebrew/Linuxbrew
 - **CLI Tools**: atuin, bat, curl, eza, fnm, fzf, gh, git, lazygit, ripgrep, starship, stow, uv, zoxide
 - **IDE**: VS Code, Cursor, Codex, ~~Neovim~~
 - **Apps**: Chrome, Notion, Obsidian, Raycast, TickTick, Outlook, Excel
 
 ## Setup
 
-### Requirements
+Run the bootstrap script from the repo root:
 
-- git
-- fzf
-- stow
-- zoxide
-- bat
-- eza
-- atuin
-- starship
+```
+./scripts/bootstrap.sh
+```
+
+The script supports macOS and WSL Ubuntu. Both paths use Homebrew: `/opt/homebrew` on macOS, and `/home/linuxbrew/.linuxbrew` on WSL/Linux.
+
+Linux often defaults to Bash, so the script installs `zsh` and prints the `chsh` command to run when your login shell is not zsh.
+
+It also installs Zinit into `~/.local/share/zinit/zinit.git`, so interactive shells only need to load it.
+
+For unattended setup:
+
+```
+./scripts/bootstrap.sh --yes
+```
+
+Use `./scripts/bootstrap.sh --help` to see optional skips for Homebrew and stow.
+
 
 ### Steps
 
