@@ -25,17 +25,19 @@
 
 ## Setup
 
-Run the bootstrap script from the repo root:
+Clone the repo and run the bootstrap script:
 
 ```
+git clone git@github.com:phillipe-s/.dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 ./scripts/bootstrap.sh
 ```
 
-The script supports macOS and WSL Ubuntu. Both paths use Homebrew: `/opt/homebrew` on macOS, and `/home/linuxbrew/.linuxbrew` on WSL/Linux.
+The script supports macOS and WSL Ubuntu. Both environments use Homebrew: `/opt/homebrew` on macOS and `/home/linuxbrew/.linuxbrew` on WSL/Linux.
 
-Linux often defaults to Bash, so the script installs `zsh` with `apt` on Ubuntu and prints the `chsh` command to run when your login shell is not zsh.
+On Ubuntu/WSL, the script uses `apt` for OS-level prerequisites like `zsh` and the build tools Linuxbrew needs. It does not install zsh through Homebrew.
 
-It also installs Zinit into `~/.local/share/zinit/zinit.git`, so interactive shells only need to load it.
+The script also creates the XDG directories, installs Homebrew/Linuxbrew if needed, runs `brew bundle`, installs Zinit into `~/.local/share/zinit/zinit.git`, links the dotfiles with `stow`, and configures Atuin's log directory.
 
 For unattended setup:
 
@@ -43,40 +45,6 @@ For unattended setup:
 ./scripts/bootstrap.sh --yes
 ```
 
-Use `./scripts/bootstrap.sh --help` to see optional skips for Homebrew and stow.
+Use `./scripts/bootstrap.sh --help` to see optional skips for Homebrew, apt packages, Zinit, and stow.
 
-
-### Steps
-
-1. Clone the repo to the home directory `~/<user>` (recommend using ssh)
-
-```
-git clone git@github.com:phillipe-s/.dotfiles.git
-```
-
-2. Create the `.config` home directory. This ensures stow will not symlink the entire directory, but instead the contents
-
-```
-mkdir .config
-```
-3. Move into the repo
-
-```
-cd .dotfiles
-```
-
-4. Read through the config files to understand
-5. Change the git config file in `~/.dotfiles/.config/git/config` to your own
-6. `cd ~/.dotfiles` move back to repo's home directory
-7. Create symlinks into the home directory with **stow**, e.g. `~/.dotfiles/.config/zsh` will now be symlinked into `~/.config`. Also, because of step 2, any extra items added to the symlinked directories will NOT be added into `~/.dotfiles`, ensuring no changes in git will be made.
-
-```
-stow .
-```
-
-8. Move the atuin logs directory and remove the old one if it exists.
-
-```
-atuin config set logs.dir "~/.local/share/atuin/logs" 
-rm -rf ~/.atuin
-```
+The bootstrap script does not change your login shell automatically. If your shell is not zsh, it prints the `chsh` command to run after you have reviewed the detected zsh path.
