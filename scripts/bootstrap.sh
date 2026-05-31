@@ -12,7 +12,7 @@ Bootstrap this dotfiles repo on a new machine.
 
 Options:
   --skip-brew       Do not install Homebrew or run brew bundle.
-  --skip-apt        Do not install Ubuntu prerequisites before Linuxbrew.
+  --skip-apt        Do not install Ubuntu packages with apt.
   --skip-zinit      Do not install the Zinit plugin manager.
   --skip-stow       Do not create symlinks with stow.
   --yes             Answer yes to bootstrap prompts.
@@ -118,28 +118,43 @@ ensure_xdg_dirs() {
     "$HOME/.local/state/zsh"
 }
 
-install_ubuntu_prereqs() {
+install_ubuntu_packages() {
+  local packages=()
+
   if [[ "$(detect_platform)" != "linux" ]]; then
     return 0
   fi
 
-  if command_exists brew || [[ "$SKIP_APT" == "1" ]]; then
+  if ! command_exists brew; then
+    packages+=(build-essential procps curl file git)
+  fi
+
+  if ! command_exists zsh; then
+    packages+=(zsh)
+  fi
+
+  if [[ "${#packages[@]}" == "0" ]]; then
+    return 0
+  fi
+
+  if [[ "$SKIP_APT" == "1" ]]; then
+    warn "Skipping Ubuntu packages: ${packages[*]}"
     return 0
   fi
 
   if ! command_exists apt-get; then
-    warn "Linuxbrew needs build prerequisites. Install your distro's equivalents of: build-essential procps curl file git"
+    warn "Install your distro's equivalents of: ${packages[*]}"
     return 0
   fi
 
-  if ! confirm "Install Ubuntu prerequisites for Linuxbrew with apt-get?"; then
-    warn "Skipping Ubuntu prerequisites. Linuxbrew installation may fail if they are missing."
+  if ! confirm "Install Ubuntu packages with apt-get: ${packages[*]}?"; then
+    warn "Skipping Ubuntu packages: ${packages[*]}"
     return 0
   fi
 
-  log "Installing Ubuntu prerequisites for Linuxbrew"
+  log "Installing Ubuntu packages"
   sudo apt-get update
-  sudo apt-get install -y build-essential procps curl file git
+  sudo apt-get install -y "${packages[@]}"
 }
 
 install_brew_bundle() {
@@ -255,9 +270,9 @@ log "Bootstrapping dotfiles from $DOTFILES_DIR"
 log "Detected environment: $(detect_environment)"
 ensure_xdg_dirs
 load_homebrew
+install_ubuntu_packages
 
 if [[ "$SKIP_BREW" == "0" ]]; then
-  install_ubuntu_prereqs
   install_brew_bundle
 else
   warn "Skipping Homebrew setup."

@@ -33,7 +33,7 @@ Run the bootstrap script from the repo root:
 
 The script supports macOS and WSL Ubuntu. Both paths use Homebrew: `/opt/homebrew` on macOS, and `/home/linuxbrew/.linuxbrew` on WSL/Linux.
 
-Linux often defaults to Bash, so the script installs `zsh` and prints the `chsh` command to run when your login shell is not zsh.
+Linux often defaults to Bash, so the script installs `zsh` with `apt` on Ubuntu and prints the `chsh` command to run when your login shell is not zsh.
 
 It also installs Zinit into `~/.local/share/zinit/zinit.git`, so interactive shells only need to load it.
 
