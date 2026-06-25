@@ -1,9 +1,20 @@
 return {
-    { "lewis6991/gitsigns.nvim", event = { "BufReadPre", "BufNewFile" }, opts = {} },
-    { "nvim-mini/mini.icons", version = false, opts = {} },
-    { "nvim-mini/mini.statusline", version = false, opts = {} },
-    { "folke/which-key.nvim", event = "VeryLazy", opts = {} },
-    { "nvim-mini/mini.indentscope", event = { "BufReadPre", "BufNewFile" }, version = false, opts = { symbol = "┃", } },
+    { "lewis6991/gitsigns.nvim",   event = { "BufReadPre", "BufNewFile" }, opts = {} },
+    { "nvim-mini/mini.icons",      version = false,                        opts = {} },
+    { "nvim-mini/mini.statusline", version = false,                        opts = {} },
+    { "folke/which-key.nvim",      event = "VeryLazy",                     opts = {} },
+    {
+        "nvim-mini/mini.indentscope",
+        event = { "BufReadPre", "BufNewFile" },
+        version = false,
+        config = function()
+            require("mini.indentscope").setup({
+                symbol = "┃",
+            })
+
+            vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#3b4261" })
+        end,
+    },
     {
         "nvim-mini/mini.notify",
         version = "*",
