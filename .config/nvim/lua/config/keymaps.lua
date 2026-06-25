@@ -2,7 +2,6 @@ local set = vim.keymap.set
 
 -- LEADER KEY --
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 -- KEEP CURSOR CENTERED --
 set("n", "J", "mzJ`z", { desc = "Join lines (keep cursor position)" })

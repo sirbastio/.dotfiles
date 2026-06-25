@@ -7,6 +7,7 @@ return {
     opts = {
         ensure_installed = {
             "lua_ls",
+            "stylua",
         },
         automatic_enable = {
             exclude = { "stylua" },
@@ -23,6 +24,7 @@ return {
                 },
             },
             severity_sort = true,
+            virtual_text = true,
             float = {
                 border = "rounded",
                 source = true,
