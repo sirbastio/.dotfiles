@@ -28,8 +28,7 @@ o.signcolumn = "yes"                        -- always show a sign column
 o.showmatch = true                          -- highlights matching brackets
 o.cmdheight = 1                             -- single line command line
 o.completeopt = "menuone,noinsert,noselect" -- completion options
-o.showmode = false
-s                                           -- do not show to mode, instead have it in statusline
+o.showmode = false                          -- do not show to mode, instead have it in statusline
 o.fillchars = { eob = " " }                 -- hide "~" on empty lines
 
 -- HISTORY --
