@@ -8,7 +8,9 @@ return {
         ensure_installed = {
             "lua_ls",
         },
-        automatic_enable = true,
+        automatic_enable = {
+            exclude = { "stylua" },
+        },
     },
     init = function()
         vim.diagnostic.config({
