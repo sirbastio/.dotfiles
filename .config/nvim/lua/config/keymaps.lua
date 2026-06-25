@@ -23,3 +23,26 @@ set("x", "<S-Tab>", "<gv", { desc = "Outdent selected lines" })
 
 -- OTHER --
 set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
+
+-- LSP --
+local group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true })
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = group,
+    callback = function(event)
+        local map = function(keys, func, desc, mode)
+            mode = mode or "n"
+            set(mode, keys, func, { buffer = event.buf, desc = desc })
+        end
+
+        map("gd", vim.lsp.buf.definition, "Go to definition")
+        map("gD", vim.lsp.buf.declaration, "Go to declaration")
+        map("gr", vim.lsp.buf.references, "Go to references")
+        map("gi", vim.lsp.buf.implementation, "Go to implementation")
+
+        map("K", vim.lsp.buf.hover, "Hover documentation")
+        map("<leader>rn", vim.lsp.buf.rename, "Rename symbol")
+
+        map("<leader>d", vim.diagnostic.open_float, "Open diagnostics float")
+        map("<leader>ca", vim.lsp.buf.code_action, "Code action")
+    end
+})
