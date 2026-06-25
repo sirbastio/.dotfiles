@@ -39,7 +39,7 @@ o.undofile = true     -- do create an undo file
 o.autowrite = false   -- do not auto-save
 
 -- OTHER --
-o.updatetime = 50           -- faster completion
+o.updatetime = 200          -- faster completion
 o.mouse = "a"               -- enable mouse support
 o.clipboard = "unnamedplus" -- use system clipboard
 o.termguicolors = true      -- enable 24-bit RGB colors
