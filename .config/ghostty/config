@@ -1,9 +1,11 @@
 # Font
-font-size = 16
+font-size = 15
 font-family = JetBrains Mono Nerd Font
+adjust-cell-height = 15%
 
 # Theme
-theme = tokyonight
+theme = GitHub Dark Default 
+# theme = tokyonight
 
 # Window
 macos-titlebar-style = hidden
@@ -15,6 +17,7 @@ background-opacity = 0.8
 background-blur = 16
 
 # Other
+adjust-cursor-thickness = 3
 mouse-hide-while-typing = true
 
 # Keybinds
