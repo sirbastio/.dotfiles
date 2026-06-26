@@ -1,11 +1,3 @@
-local function set_snacks_colors()
-    vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#21262d" })
-    vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#40464B" })
-    vim.api.nvim_set_hl(0, "SnacksLazygitBorder", { fg = "#8b949e" })
-    vim.api.nvim_set_hl(0, "SnacksLazygitActiveBorder", { fg = "#58a6ff", bold = true })
-    vim.api.nvim_set_hl(0, "SnacksLazygitTitle", { fg = "#79c0ff", bold = true })
-end
-
 return
 {
     "folke/snacks.nvim",
@@ -51,8 +43,4 @@ return
             },
         },
     },
-    config = function(_, opts)
-        require("snacks").setup(opts)
-        set_snacks_colors()
-    end,
 }

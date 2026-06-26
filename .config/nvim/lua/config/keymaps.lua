@@ -1,39 +1,50 @@
-local set = vim.keymap.set
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 
--- LEADER KEY --
+-- === LEADER KEY ===  --
 vim.g.mapleader = " "
 
--- KEEP CURSOR CENTERED --
+-- === KEEP CURSOR CENTERED === --
 set("n", "J", "mzJ`z", { desc = "[J]oin lines (keep cursor position)" })
 set("n", "<C-d>", "<C-d>zz", { desc = "Scroll [d]own (centered)" })
 set("n", "<C-u>", "<C-u>zz", { desc = "Scroll [u]p (centered)" })
 set("n", "n", "nzzzv", { desc = "[n]ext search result (centered)" })
 set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 
--- COPY & PASTE --
-set("x", "<leader>p", '"_dP', { desc = "[p]aste without yanking" })
-set({ "n", "v" }, "<leader>d", '"_d', { desc = "[d]elete without yanking" })
-
--- MOVE LINES --
+-- === MOVE LINES === --
 set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
 set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
 set("x", "<Tab>", ">gv", { desc = "Indent selected lines" })
 set("x", "<S-Tab>", "<gv", { desc = "Outdent selected lines" })
 
--- OTHER --
+-- === OTHER === --
 set("n", "<leader>c", ":nohlsearch<CR>", { desc = "[c]lear search highlights" })
 
--- FILE EXPLORER --
+-- === FILE EXPLORER === --
 set("n", "<leader>e", function() require("mini.files").open() end, { desc = "[e]xplorer" })
 
--- CODE FORMATTER --
+-- === CODE FORMATTER === --
 set({ "n", "v" }, "<leader>f", function()
     require("conform").format({ async = true })
 end, { desc = "[f]ormat" })
 
--- LSP --
-local group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true })
-vim.api.nvim_create_autocmd("LspAttach", {
+-- === COPY & PASTE === --
+set("x", "<leader>p", '"_dP', { desc = "[p]aste without yanking" })
+set({ "n", "v" }, "<leader>d", '"_d', { desc = "[d]elete without yanking" })
+
+local yank_group = augroup("HighlightYank", { clear = true })
+
+autocmd("TextYankPost", {
+    group = yank_group,
+    desc = "Highlight yanked text",
+    callback = function()
+        vim.highlight.on_yank({ higroup = "IncSearch", timeout = 50 })
+    end,
+})
+
+-- === LSP === --
+local group = augroup("LspKeymaps", { clear = true })
+autocmd("LspAttach", {
     group = group,
     callback = function(event)
         local map = function(keys, func, desc, mode)
@@ -54,7 +65,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 })
 
--- GIT --
+-- === GIT === --
 set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit" })
 set("n", "<leader>gl", function() Snacks.lazygit.log() end, { desc = "Lazygit Logs" })
 
@@ -63,7 +74,7 @@ local function in_git_worktree()
     return vim.v.shell_error == 0
 end
 
--- PICKER --
+-- === PICKER === --
 local function set_default_project_picker_keymaps()
     set("n", "<D-p>", function() Snacks.picker.smart() end, { desc = "pick [p]roject files" })
     set("n", "<leader>pw", function() Snacks.picker.grep() end, { desc = "[p]ick [w]ords" })
@@ -78,6 +89,7 @@ set("n", "<leader>pS", function() Snacks.picker.lsp_workspace_symbols() end, { d
 set("n", "<leader>pb", function() Snacks.picker.buffers() end, { desc = "[p]ick [b]uffers" })
 set("n", "<leader>pd", function() Snacks.picker.diagnostics() end, { desc = "[p]ick [d]iagnostics (project)" })
 set("n", "<leader>ph", function() Snacks.picker.help() end, { desc = "[p]ick [h]elp" })
+-- TODO: Add git diff picker
 
 local function set_git_project_picker_keymaps()
     set("n",
@@ -110,8 +122,8 @@ local function set_git_project_picker_keymaps()
         { desc = "[p]ick [W]ord" })
 end
 
-vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
-    group = vim.api.nvim_create_augroup("ProjectPickerKeymaps", { clear = true }),
+autocmd({ "VimEnter", "DirChanged" }, {
+    group = augroup("ProjectPickerKeymaps", { clear = true }),
     callback = function()
         if in_git_worktree() then
             set_git_project_picker_keymaps()
