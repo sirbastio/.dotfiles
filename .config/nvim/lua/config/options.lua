@@ -3,6 +3,7 @@ local o = vim.opt
 -- LINES --
 o.number = true -- line numbers
 o.relativenumber = true -- relative line numbers
+o.statuscolumn = "%s%=%l   " -- add space between line numbers and text
 o.cursorline = true -- highlight current line
 o.guicursor =
     "n-v-c:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver25-blinkwait700-blinkoff400-blinkon250,r-cr-o:hor20-blinkwait700-blinkoff400-blinkon250"

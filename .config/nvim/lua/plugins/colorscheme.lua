@@ -11,8 +11,11 @@ return {
             groups = {
                 all = {
                     CursorLine = { bg = "#161b22" },
+
                     -- cursor word highlight color
+                    LspReferenceText = { bg = "#21262d" },
                     LspReferenceRead = { bg = "#21262d" },
+                    LspReferenceWrite = { bg = "#21262d" },
                 },
             },
         })

@@ -1,5 +1,6 @@
 return {
     "stevearc/conform.nvim",
+    lazy = true,
     opts = {
         -- default_format_opts = {
         --     lsp_format = "fallback",
@@ -15,16 +16,6 @@ return {
             stylua = {
                 prepend_args = { "--indent-type", "Spaces" },
             },
-        },
-    },
-    keys = {
-        {
-            "<leader>f",
-            function()
-                require("conform").format({ async = true })
-            end,
-            mode = { "n", "v" },
-            desc = "Format",
         },
     },
     init = function()

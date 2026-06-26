@@ -4,15 +4,15 @@ local set = vim.keymap.set
 vim.g.mapleader = " "
 
 -- KEEP CURSOR CENTERED --
-set("n", "J", "mzJ`z", { desc = "Join lines (keep cursor position)" })
-set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down (centered)" })
-set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up (centered)" })
-set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+set("n", "J", "mzJ`z", { desc = "[J]oin lines (keep cursor position)" })
+set("n", "<C-d>", "<C-d>zz", { desc = "Scroll [d]own (centered)" })
+set("n", "<C-u>", "<C-u>zz", { desc = "Scroll [u]p (centered)" })
+set("n", "n", "nzzzv", { desc = "[n]ext search result (centered)" })
 set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 
 -- COPY & PASTE --
-set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
-set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
+set("x", "<leader>p", '"_dP', { desc = "[p]aste without yanking" })
+set({ "n", "v" }, "<leader>d", '"_d', { desc = "[d]elete without yanking" })
 
 -- MOVE LINES --
 set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
@@ -21,7 +21,15 @@ set("x", "<Tab>", ">gv", { desc = "Indent selected lines" })
 set("x", "<S-Tab>", "<gv", { desc = "Outdent selected lines" })
 
 -- OTHER --
-set("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlights" })
+set("n", "<leader>c", ":nohlsearch<CR>", { desc = "[c]lear search highlights" })
+
+-- FILE EXPLORER --
+set("n", "<leader>e", function() require("mini.files").open() end, { desc = "[e]xplorer" })
+
+-- CODE FORMATTER --
+set({ "n", "v" }, "<leader>f", function()
+    require("conform").format({ async = true })
+end, { desc = "[f]ormat" })
 
 -- LSP --
 local group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true })
@@ -44,4 +52,71 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("<leader>x", vim.diagnostic.open_float, "Open diagnostics float")
         map("<leader>ca", vim.lsp.buf.code_action, "Code action")
     end
+})
+
+-- GIT --
+set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit" })
+set("n", "<leader>gl", function() Snacks.lazygit.log() end, { desc = "Lazygit Logs" })
+
+local function in_git_worktree()
+    vim.fn.system({ "git", "rev-parse", "--is-inside-work-tree" })
+    return vim.v.shell_error == 0
+end
+
+-- PICKER --
+local function set_default_project_picker_keymaps()
+    set("n", "<D-p>", function() Snacks.picker.smart() end, { desc = "pick [p]roject files" })
+    set("n", "<leader>pw", function() Snacks.picker.grep() end, { desc = "[p]ick [w]ords" })
+    set({ "n", "x" }, "<leader>pW", function() Snacks.picker.grep_word() end, { desc = "[p]ick [W]ord" })
+end
+
+set("n", "<leader>pf", function() Snacks.picker.files() end, { desc = "[p]ick [f]iles (all)" })
+set("n", "<leader>pr", function() Snacks.picker.recent() end, { desc = "[p]ick [r]ecent" })
+set("n", "<D-P>", function() Snacks.picker.commands() end, { desc = "[cmd] [P]ick" })
+set("n", "<leader>ps", function() Snacks.picker.lsp_symbols() end, { desc = "[p]ick [s]ymbols (document)" })
+set("n", "<leader>pS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "[p]ick [S]ymbols (workspace)" })
+set("n", "<leader>pb", function() Snacks.picker.buffers() end, { desc = "[p]ick [b]uffers" })
+set("n", "<leader>pd", function() Snacks.picker.diagnostics() end, { desc = "[p]ick [d]iagnostics (project)" })
+set("n", "<leader>ph", function() Snacks.picker.help() end, { desc = "[p]ick [h]elp" })
+
+local function set_git_project_picker_keymaps()
+    set("n",
+        "<D-p>",
+        function()
+            Snacks.picker.smart({
+                multi = { "buffers", "recent", { source = "git_files", untracked = true } },
+            })
+        end,
+        { desc = "pick [p]roject files" })
+
+    set("n",
+        "<leader>pw",
+        function()
+            Snacks.picker.git_grep({ untracked = true })
+        end,
+        { desc = "[p]ick [w]ords" })
+
+
+    set({ "n", "x" },
+        "<leader>pW",
+        function()
+            Snacks.picker.git_grep({
+                untracked = true,
+                cmd_args = { "--fixed-strings", "--word-regexp" },
+                search = function(picker) return picker:word() end,
+                live = false,
+            })
+        end,
+        { desc = "[p]ick [W]ord" })
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
+    group = vim.api.nvim_create_augroup("ProjectPickerKeymaps", { clear = true }),
+    callback = function()
+        if in_git_worktree() then
+            set_git_project_picker_keymaps()
+        else
+            set_default_project_picker_keymaps()
+        end
+    end,
 })
