@@ -15,9 +15,9 @@
 ~~[lualine](https://github.com/nvim-lualine/lualine.nvim)~~
 - **Notifications**: [mini.notify](https://github.com/nvim-mini/mini.notify)
 - **Git Diffs:** [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
-- **Indent Guides:** [mini.indentscope](https://github.com/nvim-mini/mini.indentscope) ~~[snacks.indent](https://github.com/folke/snacks.nvim/blob/main/docs/indent.md)~~
+- **Indent Guides:** [snacks.indent](https://github.com/folke/snacks.nvim/blob/main/docs/indent.md) ~~[mini.indentscope](https://github.com/nvim-mini/mini.indentscope)~~ 
 - **Icons:** [mini.icons](https://github.com/nvim-mini/mini.icons)
-- **Cursor Word Highlighting:** [mini.cursorword](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-cursorword.md) ~~[snacks.words](https://github.com/folke/snacks.nvim/blob/main/docs/words.md)~~
+- **Cursor Word Highlighting:** [snacks.words](https://github.com/folke/snacks.nvim/blob/main/docs/words.md) ~~[mini.cursorword](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-cursorword.md)~~
 
 ## Language Sever Protocol
 

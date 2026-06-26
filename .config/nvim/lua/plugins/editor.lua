@@ -3,18 +3,18 @@ return {
     { "nvim-mini/mini.icons",      version = false,                        opts = {} },
     { "nvim-mini/mini.statusline", version = false,                        opts = {} },
     { "folke/which-key.nvim",      event = "VeryLazy",                     opts = {} },
-    { 'nvim-mini/mini.cursorword', version = false,                        opts = { delay = 0 } },
     {
-        "nvim-mini/mini.indentscope",
-        event = { "BufReadPre", "BufNewFile" },
-        version = false,
-        config = function()
-            require("mini.indentscope").setup({
-                symbol = "┃",
-            })
-
-            vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "LineNr" })
-        end,
+        "sphamba/smear-cursor.nvim",
+        event = "VeryLazy",
+        opts = {
+            cursor_color = "#2f81f7",
+            time_interval = 8,
+            stiffness = 0.64,
+            trailing_stiffness = 0.64,
+            stiffness_insert_mode = 0.64,
+            trailing_stiffness_insert_mode = 0.64,
+            matrix_pixel_threshold = 0.5,
+        },
     },
     {
         "nvim-mini/mini.notify",
@@ -27,9 +27,8 @@ return {
                         return notif.msg
                     end,
                 },
-                -- make transparent and move to bottom right corner
+                -- Move to bottom right corner
                 window = {
-                    winblend = 0,
                     config = function()
                         return {
                             title = "",
@@ -41,8 +40,6 @@ return {
                     end,
                 },
             })
-            -- remove background
-            vim.api.nvim_set_hl(0, "MiniNotifyNormal", { bg = "NONE" })
         end,
     },
 }
