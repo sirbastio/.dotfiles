@@ -31,6 +31,8 @@ if command -v bat &>/dev/null; then
     alias cat='bat'
 fi
 
+alias n='nvim'
+
 # === Other ===
 if command -v fzf &>/dev/null; then
     source <(fzf --zsh)
