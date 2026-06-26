@@ -20,3 +20,4 @@ mouse-hide-while-typing = true
 # Keybinds
 #keybind = global:opt+space=toggle_quick_terminal
 window-save-state = always
+keybind = cmd+shift+p=unbind
