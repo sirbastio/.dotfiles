@@ -1,15 +1,5 @@
 return {
     "stevearc/conform.nvim",
-    keys = {
-        {
-            "<leader>f",
-            function()
-                require("conform").format({ async = true })
-            end,
-            mode = { "n", "v" },
-            desc = "Format",
-        },
-    },
     opts = {
         -- default_format_opts = {
         --     lsp_format = "fallback",
@@ -26,6 +16,16 @@ return {
                 prepend_args = { "--indent-type", "Spaces" },
             },
         }
+    },
+    keys = {
+        {
+            "<leader>f",
+            function()
+                require("conform").format({ async = true })
+            end,
+            mode = { "n", "v" },
+            desc = "Format",
+        },
     },
     init = function()
         -- use conform for formatting instead of vim's built-in formatter

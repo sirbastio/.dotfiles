@@ -3,6 +3,7 @@ return {
     { "nvim-mini/mini.icons",      version = false,                        opts = {} },
     { "nvim-mini/mini.statusline", version = false,                        opts = {} },
     { "folke/which-key.nvim",      event = "VeryLazy",                     opts = {} },
+    { 'nvim-mini/mini.cursorword', version = false,                        opts = { delay = 0 } },
     {
         "nvim-mini/mini.indentscope",
         event = { "BufReadPre", "BufNewFile" },
