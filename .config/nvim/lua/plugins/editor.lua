@@ -12,7 +12,7 @@ return {
                 symbol = "┃",
             })
 
-            vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#3b4261" })
+            vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "LineNr" })
         end,
     },
     {
