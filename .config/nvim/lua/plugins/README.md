@@ -4,17 +4,20 @@
 
 ## Coding
 
-- **Code Formatter:** [Confrom](https://github.com/stevearc/conform.nvim)
+- **Code Formatter:** [Conform](https://github.com/stevearc/conform.nvim)
 
 ## Editor
 
 - **Theme:** [Tokyonight](https://github.com/folke/tokyonight.nvim)
 - **File Explorer:** [mini.files](https://github.com/nvim-mini/mini.files)
-- **Statusline:** [mini.statusline](https://github.com/nvim-mini/mini.statusline)
-- **Git Diffs:** [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
-- **Indent Guides:** [mini.indentscope](https://github.com/nvim-mini/mini.indentscope)
-- **Icons:** [mini.icons](https://github.com/nvim-mini/mini.icons)
+- **Picker:** [snacks.picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#-sources) ~~[mini.pick](https://github.com/nvim-mini/mini.pick)~~ ~~[fff](https://github.com/dmtrKovalenko/fff)~~
+- **Status Line:** [mini.statusline](https://github.com/nvim-mini/mini.statusline) 
+~~[lualine](https://github.com/nvim-lualine/lualine.nvim)~~
 - **Notifications**: [mini.notify](https://github.com/nvim-mini/mini.notify)
+- **Git Diffs:** [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+- **Indent Guides:** [mini.indentscope](https://github.com/nvim-mini/mini.indentscope) ~~[snacks.indent](https://github.com/folke/snacks.nvim/blob/main/docs/indent.md)~~
+- **Icons:** [mini.icons](https://github.com/nvim-mini/mini.icons)
+- **Cursor Word Highlighting:** [mini.cursorword](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-cursorword.md) ~~[snacks.words](https://github.com/folke/snacks.nvim/blob/main/docs/words.md)~~
 
 ## Language Sever Protocol
 
@@ -26,6 +29,8 @@
 
 ## Other
 
-
-- **[which-key](https://github.com/folke/which-key.nvim):** key sequence helper/guide
+- **[snacks.lazygit](https://github.com/folke/snacks.nvim/blob/main/docs/lazygit.md)**: [lazygit](https://github.com/jesseduffield/lazygit) integration
+- **[snacks.quickfile](https://github.com/folke/snacks.nvim/blob/main/docs/quickfile.md)**
+- **[snacks.input](https://github.com/folke/snacks.nvim/blob/main/docs/input.md):** better `vim.ui.input`
+- **[which-key](https://github.com/folke/which-key.nvim)**
 - ~~**[Noice](https://github.com/folke/noice.nvim):** floating cmdline~~
