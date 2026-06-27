@@ -15,24 +15,6 @@ setopt hist_reduce_blanks               # cleans up accidental extra spaces
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
-# === Aliases ===
-if command -v eza &>/dev/null; then
-    alias ls='eza --icons --group-directories-first'
-    alias ll='eza -lh --icons --grid'
-    alias tree='eza --group-directories-first --tree -L 3 '
-else
-    alias ls='ls --color'
-fi
-
-alias ..='cd ..'
-alias c='clear'
-
-if command -v bat &>/dev/null; then
-    alias cat='bat'
-fi
-
-alias n='nvim'
-
 # === Other ===
 if command -v fzf &>/dev/null; then
     source <(fzf --zsh)
@@ -79,3 +61,21 @@ if [[ -r "$ZINIT_HOME/zinit.zsh" ]]; then
     zinit light zsh-users/zsh-syntax-highlighting
 fi
 
+# === Aliases ===
+if command -v eza &>/dev/null; then
+    alias ls='eza --icons --group-directories-first'
+    alias ll='eza -lh --icons --grid'
+    alias tree='eza --group-directories-first --tree -L 3 '
+else
+    alias ls='ls --color'
+fi
+
+alias ..='cd ..'
+alias c='clear'
+
+if command -v bat &>/dev/null; then
+    alias cat='bat'
+fi
+
+alias n='nvim'
+alias gg='lazygit'
