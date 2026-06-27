@@ -56,7 +56,7 @@ autocmd("LspAttach", {
         map("gi", vim.lsp.buf.implementation, "Go to implementation")
 
         map("K", vim.lsp.buf.hover, "Hover documentation")
-        map("<leader>rn", vim.lsp.buf.rename, "Rename symbol")
+        map("<leader>r", vim.lsp.buf.rename, "Rename symbol")
 
         map("<leader>x", vim.diagnostic.open_float, "Open diagnostics float")
         map("<leader>ca", vim.lsp.buf.code_action, "Code action")
@@ -65,7 +65,9 @@ autocmd("LspAttach", {
 
 -- === GIT === --
 set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit" })
-set("n", "<leader>gl", function() Snacks.lazygit.log() end, { desc = "Lazygit Logs" })
+set("n", "<leader>gl", function() Snacks.lazygit.log() end, { desc = "Lazygit test" })
+set("n", "<leader>gh", ":Gitsigns preview_hunk<CR>", { desc = "[g]it hunk preview" })
+set("n", "<leader>gd", ":Gitsigns diffthis<CR>", { desc = "[g]it [d]iff" })
 
 local function in_git_worktree()
     vim.fn.system({ "git", "rev-parse", "--is-inside-work-tree" })
@@ -80,7 +82,6 @@ local function set_default_project_picker_keymaps()
 end
 
 set("n", "<leader>pf", function() Snacks.picker.files() end, { desc = "[p]ick [f]iles (all)" })
-set("n", "<leader>pr", function() Snacks.picker.recent() end, { desc = "[p]ick [r]ecent" })
 set("n", "<D-P>", function() Snacks.picker.resume() end, { desc = "[P]icker resume" })
 set("n", "<leader>ps", function() Snacks.picker.lsp_symbols() end, { desc = "[p]ick [s]ymbols (document)" })
 set("n", "<leader>pS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "[p]ick [S]ymbols (workspace)" })
