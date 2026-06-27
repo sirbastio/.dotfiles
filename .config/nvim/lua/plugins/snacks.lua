@@ -8,39 +8,9 @@ return
         image = { enabled = true },
         quickfile = { enabled = true },
         input = { enabled = true },
+        lazygit = { enabled = true },
         words = { enabled = true, debounce = 0 },
         indent = { enabled = true, animate = { enabled = false } },
         picker = { enabled = true, formatters = { file = { filename_first = true } } },
-        scroll = {
-            enabled = true,
-            animate = { duration = { step = 8, total = 160 }, easing = "outQuad" },
-            animate_repeat = { elay = 80, duration = { step = 5, total = 80 }, easing = "outQuad" },
-        },
-        lazygit = {
-            enabled = true,
-            theme = {
-                activeBorderColor = { fg = "SnacksLazygitActiveBorder", bold = true },
-                inactiveBorderColor = { fg = "SnacksLazygitBorder" },
-                searchingActiveBorderColor = { fg = "SnacksLazygitActiveBorder", bold = true },
-            },
-            win = {
-                border = "rounded",
-                title = " Lazygit ",
-                title_pos = "center",
-                wo = {
-                    winhighlight = {
-                        Normal = "SnacksNormal",
-                        NormalNC = "SnacksNormalNC",
-                        NormalFloat = "SnacksNormal",
-                        FloatBorder = "SnacksLazygitBorder",
-                        FloatTitle = "SnacksLazygitTitle",
-                        FloatFooter = "SnacksFooter",
-                        WinBar = "SnacksWinBar",
-                        WinBarNC = "SnacksWinBarNC",
-                        WinSeparator = "SnacksWinSeparator",
-                    },
-                },
-            },
-        },
     },
 }

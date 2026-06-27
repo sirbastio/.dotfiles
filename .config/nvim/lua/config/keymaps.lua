@@ -33,10 +33,8 @@ end, { desc = "[f]ormat" })
 set("x", "<leader>p", '"_dP', { desc = "[p]aste without yanking" })
 set({ "n", "v" }, "<leader>d", '"_d', { desc = "[d]elete without yanking" })
 
-local yank_group = augroup("HighlightYank", { clear = true })
-
 autocmd("TextYankPost", {
-    group = yank_group,
+    group = augroup("HighlightYank", { clear = true }),
     desc = "Highlight yanked text",
     callback = function()
         vim.highlight.on_yank({ higroup = "IncSearch", timeout = 50 })
@@ -44,9 +42,8 @@ autocmd("TextYankPost", {
 })
 
 -- === LSP === --
-local group = augroup("LspKeymaps", { clear = true })
 autocmd("LspAttach", {
-    group = group,
+    group = augroup("LspKeymaps", { clear = true }),
     callback = function(event)
         local map = function(keys, func, desc, mode)
             mode = mode or "n"
@@ -84,13 +81,13 @@ end
 
 set("n", "<leader>pf", function() Snacks.picker.files() end, { desc = "[p]ick [f]iles (all)" })
 set("n", "<leader>pr", function() Snacks.picker.recent() end, { desc = "[p]ick [r]ecent" })
-set("n", "<D-P>", function() Snacks.picker.commands() end, { desc = "[cmd] [P]ick" })
+set("n", "<D-P>", function() Snacks.picker.resume() end, { desc = "[P]icker resume" })
 set("n", "<leader>ps", function() Snacks.picker.lsp_symbols() end, { desc = "[p]ick [s]ymbols (document)" })
 set("n", "<leader>pS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "[p]ick [S]ymbols (workspace)" })
 set("n", "<leader>pb", function() Snacks.picker.buffers() end, { desc = "[p]ick [b]uffers" })
 set("n", "<leader>pd", function() Snacks.picker.diagnostics() end, { desc = "[p]ick [d]iagnostics (project)" })
 set("n", "<leader>ph", function() Snacks.picker.help() end, { desc = "[p]ick [h]elp" })
--- TODO: Add git diff picker
+set("n", "<leader>pp", function() Snacks.picker() end, { desc = "[p]ick [p]icker" })
 
 local function set_git_project_picker_keymaps()
     set("n",

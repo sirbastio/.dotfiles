@@ -30,6 +30,7 @@ o.signcolumn = "yes"        -- always show a sign column
 -- o.colorcolumn = "100"                       -- show a column at position in chars
 o.showmatch = true          -- highlights matching brackets
 o.showmode = false          -- do not show to mode, instead have it in statusline
+o.cmdheight = 0             -- hide the native command line
 o.fillchars = { eob = " " } -- hide "~" on empty lines
 
 -- HISTORY --

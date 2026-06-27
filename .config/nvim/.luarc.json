@@ -6,7 +6,8 @@
     "lua/?/init.lua"
   ],
   "diagnostics.globals": [
-    "vim"
+    "vim",
+        "Snacks"
   ],
   "workspace.checkThirdParty": false,
   "workspace.library": [
