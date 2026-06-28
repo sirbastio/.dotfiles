@@ -1,8 +1,5 @@
 return {
-    -- git diffs in gutter
-    -- TODO: setup hunk actions preview, reset
-    { "lewis6991/gitsigns.nvim", event = { "BufReadPre", "BufNewFile" }, opts = {} },
-    { "nvim-mini/mini.icons", version = false, opts = {} },
+    { "nvim-tree/nvim-web-devicons", opts = {} },
     { "nvim-mini/mini.statusline", version = false, opts = {} },
     { "folke/which-key.nvim", event = "VeryLazy", opts = {} },
     {

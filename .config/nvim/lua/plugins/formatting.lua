@@ -18,6 +18,14 @@ return {
             },
         },
     },
+    keys = {
+        {
+            "<leader>f",
+            function() require("conform").format({ async = true }) end,
+            mode = { "n", "v" },
+            desc = "[f]ormat",
+        },
+    },
     init = function()
         -- use conform for formatting instead of vim's built-in formatter
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
