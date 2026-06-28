@@ -33,14 +33,6 @@ end, { desc = "[f]ormat" })
 set("x", "<leader>p", '"_dP', { desc = "[p]aste without yanking" })
 set({ "n", "v" }, "<leader>d", '"_d', { desc = "[d]elete without yanking" })
 
-autocmd("TextYankPost", {
-    group = augroup("HighlightYank", { clear = true }),
-    desc = "Highlight yanked text",
-    callback = function()
-        vim.highlight.on_yank({ higroup = "IncSearch", timeout = 50 })
-    end,
-})
-
 -- === LSP === --
 autocmd("LspAttach", {
     group = augroup("LspKeymaps", { clear = true }),
