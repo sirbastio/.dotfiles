@@ -23,7 +23,9 @@ local function setup_auto_close_unchanged_buffers()
         callback = function(event)
             local buf = event.buf
             vim.schedule(function()
-                if not is_normal_file_buffer(buf) or vim.bo[buf].modified or vim.b[buf].keep_open_after_save then
+                if not is_normal_file_buffer(buf)
+                    or vim.bo[buf].modified
+                    or vim.b[buf].keep_open_after_save then
                     return
                 end
 
@@ -42,7 +44,16 @@ return {
             "lewis6991/gitsigns.nvim",
             "nvim-tree/nvim-web-devicons",
         },
-        opts = { animation = false },
+        opts = {
+            animation = false,
+            icons = {
+                gitsigns = {
+                    added = { enabled = true },
+                    changed = { enabled = true },
+                    deleted = { enabled = true },
+                },
+            },
+        },
         init = function()
             vim.g.barbar_auto_setup = false
             setup_auto_close_unchanged_buffers()

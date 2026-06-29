@@ -2,7 +2,7 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         event = { "BufReadPre", "BufNewFile" },
-        opts = {},
+        opts = { attach_to_untracked = true },
         keys = {
             { "<leader>gh", ":Gitsigns preview_hunk<CR>", desc = "[g]it hunk preview" },
             { "<leader>gd", ":Gitsigns diffthis<CR>",     desc = "[g]it [d]iff" },
