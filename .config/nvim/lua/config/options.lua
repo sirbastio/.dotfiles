@@ -31,6 +31,7 @@ o.signcolumn = "yes"        -- always show a sign column
 o.showmatch = true          -- highlights matching brackets
 o.showmode = false          -- do not show to mode, instead have it in statusline
 o.cmdheight = 0             -- hide the native command line
+o.winbar = " "              -- add transparent space between the tabline and text
 o.fillchars = { eob = " " } -- hide "~" on empty lines
 
 -- HISTORY --
