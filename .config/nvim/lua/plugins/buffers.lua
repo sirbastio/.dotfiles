@@ -1,7 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
-local preview_buffer_marker = " ◌"
-local preview_buffer = nil
-local is_barbar_preview_marker_setup = false
+local preview_buf = nil
+local preview_buf_marker = "◌"
 
 local function is_normal_file_buffer(buf)
     return vim.api.nvim_buf_is_valid(buf)
@@ -9,114 +8,65 @@ local function is_normal_file_buffer(buf)
         and vim.api.nvim_buf_get_name(buf) ~= ""
 end
 
-local function should_auto_close_buffer(buf)
-    return is_normal_file_buffer(buf)
-        and not vim.bo[buf].modified
-        and not vim.b[buf].keep_open_after_save
-end
-
-local function add_preview_buffer_marker()
-    local has_barbar_state, barbar_state = pcall(require, "barbar.state")
-    if not has_barbar_state or preview_buffer == nil or not vim.api.nvim_buf_is_valid(preview_buffer) then
-        return
-    end
-
-    local buffer_data = barbar_state.get_buffer_data(preview_buffer)
-    local name = buffer_data.name
-
-    if name ~= nil and not vim.endswith(name, preview_buffer_marker) then
-        buffer_data.name = name .. preview_buffer_marker
+local function on_normal_file_buffer(callback)
+    return function(event)
+        if is_normal_file_buffer(event.buf) then
+            callback(event)
+        end
     end
 end
 
-local function setup_barbar_preview_marker()
-    if is_barbar_preview_marker_setup then
-        return
+local function add_preview_buf_marker()
+    if preview_buf ~= nil then
+        local preview_buf_data = require("barbar.state").get_buffer_data(preview_buf)
+        preview_buf_data.name = preview_buf_data.name .. " " .. preview_buf_marker
     end
+end
 
-    local has_barbar_state, barbar_state = pcall(require, "barbar.state")
-    if not has_barbar_state then
-        return
-    end
-
+-- Hook to appened the preview buffer marker to the file name after barbar updates tab names
+local function setup_preview_buf_marker()
+    local barbar_state = require("barbar.state")
     local update_names = barbar_state.update_names
     barbar_state.update_names = function(...)
-        local result = update_names(...)
-        add_preview_buffer_marker()
-        return result
+        update_names(...)
+        add_preview_buf_marker()
     end
-
-    is_barbar_preview_marker_setup = true
-end
-
-local function update_preview_buffer_marker()
-    setup_barbar_preview_marker()
-
-    local has_barbar_render, barbar_render = pcall(require, "barbar.ui.render")
-    if has_barbar_render then
-        barbar_render.update(true, false)
-    end
-end
-
-local function close_preview_buffer(buf)
-    if not should_auto_close_buffer(buf) then
-        return
-    end
-
-    pcall(vim.api.nvim_buf_delete, buf, {})
-end
-
-local function use_preview_buffer(buf)
-    if not should_auto_close_buffer(buf) then
-        return
-    end
-
-    local previous_preview_buffer = preview_buffer
-    preview_buffer = buf
-    update_preview_buffer_marker()
-
-    if previous_preview_buffer == nil or previous_preview_buffer == buf then
-        return
-    end
-
-    vim.schedule(function()
-        close_preview_buffer(previous_preview_buffer)
-    end)
 end
 
 local function setup_preview_buffers()
-    local file_change_group = vim.api.nvim_create_augroup("PreviewFileBuffer", { clear = true })
+    local preview_buf_group = vim.api.nvim_create_augroup("PreviewBuffers", { clear = true })
+
+    autocmd("BufReadPre", {
+        group = preview_buf_group,
+        desc = "When a new file is being opened, set it as the preview buffer, and close the old",
+        callback = on_normal_file_buffer(function(event)
+            vim.schedule(function()
+                pcall(vim.api.nvim_buf_delete, preview_buf, {})
+                preview_buf = event.buf
+            end)
+        end)
+
+    })
+
+    autocmd("BufModifiedSet", {
+        group = preview_buf_group,
+        desc = "When a preview buffers file is modified, remove it as a preview buffer, and rerender the tabs",
+        callback = on_normal_file_buffer(function(event)
+            if event.buf == preview_buf then
+                preview_buf = nil
+                require("barbar.ui.render").update(true, false)
+            end
+        end)
+    })
 
     autocmd("BufWritePost", {
-        group = file_change_group,
-        desc = "Toggle to keep the file open if it is saved",
-        callback = function(event)
-            vim.b[event.buf].keep_open_after_save = true
-
-            if preview_buffer == event.buf then
-                preview_buffer = nil
-                update_preview_buffer_marker()
+        group = preview_buf_group,
+        desc = "When a file is saved remove it as a preview buffer",
+        callback = on_normal_file_buffer(function(event)
+            if event.buf == preview_buf then
+                preview_buf = nil
             end
-        end,
-    })
-
-    autocmd({ "BufReadPost", "BufNewFile" }, {
-        group = file_change_group,
-        desc = "Use newly opened files as the single preview buffer",
-        callback = function(event)
-            use_preview_buffer(event.buf)
-        end,
-    })
-
-    autocmd("BufDelete", {
-        group = file_change_group,
-        desc = "Clear the preview buffer after deleting it",
-        callback = function(event)
-            if preview_buffer == event.buf then
-                preview_buffer = nil
-                update_preview_buffer_marker()
-            end
-        end,
+        end),
     })
 end
 
@@ -143,6 +93,7 @@ return {
         },
         init = function()
             vim.g.barbar_auto_setup = false
+            setup_preview_buf_marker()
             setup_preview_buffers()
         end,
         keys = {
