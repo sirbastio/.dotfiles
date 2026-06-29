@@ -84,6 +84,7 @@ return {
             icons = {
                 button = false,
                 separator_at_end = false,
+                pinned = { button = "", filename = true },
                 gitsigns = {
                     added = { enabled = true },
                     changed = { enabled = true },
@@ -97,13 +98,22 @@ return {
             setup_preview_buffers()
         end,
         keys = {
-            { "<D-1>",      "<Cmd>BufferGoto 1<CR>", desc = "Go to buffer 1" },
-            { "<D-2>",      "<Cmd>BufferGoto 2<CR>", desc = "Go to buffer 2" },
-            { "<D-3>",      "<Cmd>BufferGoto 3<CR>", desc = "Go to buffer 3" },
-            { "<D-4>",      "<Cmd>BufferGoto 4<CR>", desc = "Go to buffer 4" },
-            { "<D-5>",      "<Cmd>BufferGoto 5<CR>", desc = "Go to buffer 5" },
-            { "<leader>bp", "<Cmd>BufferPin<CR>",    desc = "[b]uffer [p]in" },
-            { "<leader>bd", "<Cmd>BufferClose<CR>",  desc = "[b]uffer [d]elete" },
+            { "<D-1>", "<Cmd>BufferGoto 1<CR>", desc = "Go to buffer 1" },
+            { "<D-2>", "<Cmd>BufferGoto 2<CR>", desc = "Go to buffer 2" },
+            { "<D-3>", "<Cmd>BufferGoto 3<CR>", desc = "Go to buffer 3" },
+            { "<D-4>", "<Cmd>BufferGoto 4<CR>", desc = "Go to buffer 4" },
+            { "<D-5>", "<Cmd>BufferGoto 5<CR>", desc = "Go to buffer 5" },
+            {
+                "<leader>bp",
+                function()
+                    vim.cmd.BufferPin()
+                    if vim.api.nvim_get_current_buf() == preview_buf then
+                        preview_buf = nil
+                    end
+                end,
+                desc = "[b]uffer [p]in"
+            },
+            { "<leader>bd", "<Cmd>BufferClose<CR>", desc = "[b]uffer [d]elete" },
         },
     },
 }
