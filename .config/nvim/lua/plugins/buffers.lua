@@ -19,7 +19,7 @@ end
 local function add_preview_buf_marker()
     if preview_buf ~= nil then
         local preview_buf_data = require("barbar.state").get_buffer_data(preview_buf)
-        preview_buf_data.name = preview_buf_data.name .. " " .. preview_buf_marker
+        preview_buf_data.name = (preview_buf_data.name or "[no name]") .. " " .. preview_buf_marker
     end
 end
 
@@ -83,7 +83,9 @@ return {
             animation = false,
             icons = {
                 button = false,
+                separator = { left = "", right = "█" },
                 separator_at_end = false,
+                inactive = { separator = { left = "", right = "█" } },
                 pinned = { button = "", filename = true },
                 gitsigns = {
                     added = { enabled = true },
