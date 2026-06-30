@@ -3,6 +3,23 @@ return {
     { "nvim-mini/mini.statusline", version = false, opts = {} },
     { "folke/which-key.nvim", event = "VeryLazy", opts = {} },
     {
+        "HiPhish/rainbow-delimiters.nvim",
+        event = { "BufReadPost", "BufNewFile" },
+        init = function()
+            vim.g.rainbow_delimiters = {
+                highlight = {
+                    "RainbowDelimiterRed",
+                    "RainbowDelimiterYellow",
+                    "RainbowDelimiterBlue",
+                    "RainbowDelimiterOrange",
+                    "RainbowDelimiterGreen",
+                    "RainbowDelimiterViolet",
+                    "RainbowDelimiterCyan",
+                },
+            }
+        end,
+    },
+    {
         -- floating cmdline
         "folke/noice.nvim",
         event = "VimEnter",

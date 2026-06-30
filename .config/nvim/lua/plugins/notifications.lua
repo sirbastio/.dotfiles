@@ -18,7 +18,7 @@ return {
                         anchor = "SE",
                         row = vim.o.lines - 3,
                         col = vim.o.columns - 2,
-                        border = "none",
+                        -- border = "none",
                     }
                 end,
             },

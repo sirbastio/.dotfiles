@@ -5,6 +5,7 @@ return
     lazy = false,
     ---@type snacks.Config
     opts = {
+        dashboard = { enabled = true },
         image = { enabled = true },
         quickfile = { enabled = true },
         input = { enabled = true },

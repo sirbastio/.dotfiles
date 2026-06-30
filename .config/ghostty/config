@@ -2,20 +2,23 @@
 font-size = 15
 font-family = JetBrainsMono Nerd Font
 font-thicken = true
+font-thicken-strength = 128
 adjust-cell-height = 15%
 
 # Theme
-# theme = GitHub Dark Default 
-theme = tokyonight
+theme = GitHub Dark Default 
+# theme = tokyonight
 
 # Window
 macos-titlebar-style = hidden
 #window-decoration = none
-#window-padding-balance = true
+window-padding-balance = true
 window-padding-x = 12
-window-padding-y = 12, 1
-background-opacity = 0.9
-background-blur = 16
+# window-padding-y = 12, 1
+window-padding-color = extend-always
+background-opacity = 0.8
+background-blur = 12
+background-opacity-cells = true
 
 # Other
 adjust-cursor-thickness = 1

@@ -7,7 +7,35 @@ end
 
 return {
     "folke/snacks.nvim",
-    opts = { picker = { enabled = true, formatters = { file = { filename_first = true } } } },
+    opts = {
+        picker = {
+            enabled = true,
+            formatters = { file = { filename_first = true } },
+            layout = {
+                preset = function()
+                    return vim.o.columns >= 120 and "wide_preview" or "vertical"
+                end,
+            },
+            layouts = {
+                wide_preview = {
+                    layout = {
+                        box = "horizontal",
+                        width = 0.8,
+                        min_width = 120,
+                        height = 0.8,
+                        {
+                            box = "vertical",
+                            border = true,
+                            title = "{title} {live} {flags}",
+                            { win = "input", height = 1, border = "bottom" },
+                            { win = "list", border = "none" },
+                        },
+                        { win = "preview", title = "{preview}", border = true, width = 0.7 },
+                    },
+                },
+            },
+        },
+    },
     init = function()
         local function set_default_project_picker_keymaps()
             set("n", "<D-p>", function() Snacks.picker.smart() end, { desc = "pick [p]roject files" })

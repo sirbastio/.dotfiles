@@ -13,6 +13,7 @@ return {
         opts = {
             lazygit = {
                 enabled = true,
+                theme = { inactiveBorderColor = { fg = "SnacksLazygitInactiveBorder" }},
                 win = {
                     style = "lazygit",
                     width = 0,
