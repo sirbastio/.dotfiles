@@ -36,13 +36,14 @@ end
 local function setup_preview_buffers()
     local preview_buf_group = vim.api.nvim_create_augroup("PreviewBuffers", { clear = true })
 
-    autocmd("BufReadPre", {
+    autocmd("BufReadPost", {
         group = preview_buf_group,
         desc = "When a new file is being opened, set it as the preview buffer, and close the old",
         callback = on_normal_file_buffer(function(event)
             vim.schedule(function()
                 pcall(vim.api.nvim_buf_delete, preview_buf, {})
                 preview_buf = event.buf
+                require("barbar.ui.render").update(true, false)
             end)
         end)
 

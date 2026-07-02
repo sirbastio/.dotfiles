@@ -26,7 +26,7 @@
 
 ## Navigation
 - **Picker:** [Snacks.picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#-sources) ~~[fff](https://github.com/dmtrKovalenko/fff)~~ ~~[mini.pick](https://github.com/nvim-mini/mini.pick)~~ ~~[Telescope](https://github.com/nvim-telescope/telescope.nvim)~~
-- **Explorer:** [mini.files](https://github.com/nvim-mini/mini.files) ~~[Neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)~~
+- **Explorer:** [mini.files](https://github.com/nvim-mini/mini.files), [oil.nvim](https://github.com/stevearc/oil.nvim) ~~[Neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)~~
 
 ## Git
 - **Diffs:** [gitsigns](https://github.com/lewis6991/gitsigns.nvim) ~~[mini.diff](https://github.com/nvim-mini/mini.diff)~~
