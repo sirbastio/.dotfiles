@@ -13,7 +13,7 @@ return {
             formatters = { file = { filename_first = true } },
             layout = {
                 preset = function()
-                    return vim.o.columns >= 120 and "wide_preview" or "vertical"
+                    return vim.o.columns >= 120 and "wide_preview" or "vertical_preview"
                 end,
             },
             layouts = {
@@ -56,7 +56,7 @@ return {
         local function set_default_project_picker_keymaps()
             set("n", "<D-p>", function() Snacks.picker.smart() end, { desc = "pick [p]roject files" })
             set("n", "<leader>pw", function() Snacks.picker.grep() end, { desc = "[p]ick [w]ords" })
-            set({ "n", "x" }, "<leader>pW", function() Snacks.picker.grep_word() end, { desc = "[p]ick [W]ord" })
+            set("n", "<leader>pW", function() Snacks.picker.grep_word() end, { desc = "[p]ick [W]ord" })
         end
 
         set("n", "<leader>pf", function() Snacks.picker.files() end, { desc = "[p]ick [f]iles (all)" })
@@ -86,7 +86,7 @@ return {
                 function() Snacks.picker.git_grep({ untracked = true }) end,
                 { desc = "[p]ick [w]ords" })
 
-            set({ "n", "x" },
+            set("n",
                 "<leader>pW",
                 function()
                     Snacks.picker.git_grep({

@@ -4,7 +4,8 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         opts = { attach_to_untracked = true },
         keys = {
-            { "<leader>gh", ":Gitsigns preview_hunk<CR>", desc = "[g]it hunk preview" },
+            { "<leader>gh", ":Gitsigns preview_hunk<CR>", desc = "[g]it [h]unk preview" },
+            { "<leader>gH", ":Gitsigns preview_hunk_inline<CR>", desc = "[G]it [H]unk preview inline" },
             { "<leader>gd", ":Gitsigns diffthis<CR>",     desc = "[g]it [d]iff" },
         },
     },
