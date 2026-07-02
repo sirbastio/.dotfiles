@@ -5,27 +5,17 @@ return {
             "L3MON4D3/LuaSnip",
             version = "v2.*",
             build = "make install_jsregexp",
+            dependencies = { "rafamadriz/friendly-snippets" },
         },
-        "rafamadriz/friendly-snippets",
     },
     version = "1.*",
     opts = {
         keymap = { preset = "enter" },
-        appearance = {
-            nerd_font_variant = "mono",
-        },
-        completion = {
-            documentation = { auto_show = true },
-        },
-        sources = {
-            default = { "lsp", "path", "snippets", "buffer" },
-        },
-        fuzzy = {
-            implementation = "prefer_rust_with_warning",
-        },
-        snippets = {
-            preset = "luasnip",
-        },
+        appearance = { nerd_font_variant = "mono" },
+        completion = { documentation = { auto_show = true } },
+        sources = { default = { "lsp", "path", "snippets", "buffer" } },
+        fuzzy = { implementation = "prefer_rust_with_warning" },
+        snippets = { preset = "luasnip" },
     },
     -- If blink.cmp is extended by another plugin, merge/append
     -- sources.default instead of replacing the whole list.

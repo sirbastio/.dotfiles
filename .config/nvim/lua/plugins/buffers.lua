@@ -94,11 +94,6 @@ return {
                 },
             },
         },
-        init = function()
-            vim.g.barbar_auto_setup = false
-            setup_preview_buf_marker()
-            setup_preview_buffers()
-        end,
         keys = {
             { "<D-1>", "<Cmd>BufferGoto 1<CR>", desc = "Go to buffer 1" },
             { "<D-2>", "<Cmd>BufferGoto 2<CR>", desc = "Go to buffer 2" },
@@ -117,5 +112,10 @@ return {
             },
             { "<leader>bd", "<Cmd>BufferClose<CR>", desc = "[b]uffer [d]elete" },
         },
+
+        init = function()
+            setup_preview_buf_marker()
+            setup_preview_buffers()
+        end,
     },
 }
