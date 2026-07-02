@@ -6,7 +6,7 @@ o.relativenumber = true      -- relative line numbers
 o.statuscolumn = "%s%=%l   " -- add space between line numbers and text
 o.cursorline = true          -- highlight current line
 o.guicursor =                -- blinking cursor
-"n-v-c:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver25-blinkwait700-blinkoff400-blinkon250,r-cr-o:hor20-blinkwait700-blinkoff400-blinkon250"
+    "n-v:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve-c:ver25-blinkwait700-blinkoff400-blinkon250,r-cr-o:hor20-blinkwait700-blinkoff400-blinkon250"
 o.wrap = false               -- disable word wrap
 o.scrolloff = 10             -- keep 10 lines above/below cursor
 o.sidescrolloff = 10         -- keep 10 lines to left/right of cursor
@@ -27,12 +27,18 @@ o.incsearch = true  -- show matches as you type
 
 -- EDITOR --
 o.signcolumn = "yes"        -- always show a sign column
--- o.colorcolumn = "100"                       -- show a column at position in chars
+-- o.colorcolumn = "100"       -- show a column at position in chars
 o.showmatch = true          -- highlights matching brackets
 o.showmode = false          -- do not show to mode, instead have it in statusline
 o.cmdheight = 0             -- hide the native command line
 o.winbar = " "              -- add transparent space between the tabline and text
 o.fillchars = { eob = " " } -- hide "~" on empty lines
+o.splitright = true         -- vertical splits go right
+o.splitbelow = true         -- horizontal splits go below
+o.foldmethod = "expr"       -- use expression for folding
+o.foldexpr =                -- use treesitter for folding
+    "v:lua.vim.treesitter.foldexpr()"
+o.foldlevel = 99            -- start with folds open
 
 -- HISTORY --
 o.backup = false      -- do not crate a backup file
@@ -44,9 +50,6 @@ o.autowrite = false   -- do not auto-save
 -- OTHER --
 o.updatetime = 200            -- faster completion
 o.mouse = "a"                 -- enable mouse support
-o.mousescroll = "ver:1,hor:6" -- smoother mouse wheel scrolling
 o.clipboard = "unnamedplus"   -- use system clipboard
 o.termguicolors = true        -- enable 24-bit RGB colors
-o.splitright = true           -- vertical splits go right
-o.splitbelow = true           -- horizontal splits go below
 o.iskeyword:append("-")       -- include - in words
