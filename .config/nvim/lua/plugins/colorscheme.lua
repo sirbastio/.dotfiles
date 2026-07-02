@@ -51,6 +51,42 @@ return {
                 return groups
             end
 
+            local function snacks_notifier_groups()
+                local bg = "bg0"
+                local fg = "fg1"
+                local levels = {
+                    Trace = "fg2",
+                    Debug = "fg2",
+                    Info = "palette.accent.fg",
+                    Warn = "palette.attention.fg",
+                    Error = "palette.danger.fg",
+                }
+                local groups = {
+                    SnacksNotifierHistory = { bg = bg, fg = fg },
+                    SnacksNotifierMinimal = { bg = bg, fg = fg },
+                }
+
+                for level, level_fg in pairs(levels) do
+                    groups["SnacksNotifier" .. level] = { bg = bg, fg = fg }
+                    groups["SnacksNotifierIcon" .. level] = { bg = bg, fg = level_fg }
+                    groups["SnacksNotifierBorder" .. level] = { bg = bg, fg = level_fg }
+                    groups["SnacksNotifierTitle" .. level] = { bg = bg, fg = level_fg }
+                    groups["SnacksNotifierFooter" .. level] = { bg = bg, fg = level_fg }
+                end
+
+                return groups
+            end
+
+            local function noice_groups()
+                return {
+                    NoiceCmdlinePopup = { bg = "bg0", fg = "fg1" },
+                    NoiceCmdlinePopupBorder = { bg = "bg0", fg = "palette.border.default" },
+                    NoiceCmdlinePopupBorderCmdline = { bg = "bg0", fg = "palette.border.default" },
+                    NoiceCmdlinePopupTitle = { bg = "bg0", fg = "fg1" },
+                    NoiceCmdlinePopupTitleCmdline = { bg = "bg0", fg = "fg1" },
+                }
+            end
+
             require("github-theme").setup({
                 options = {
                     transparent = true,
@@ -67,80 +103,19 @@ return {
                         SnacksIndent = { fg = "palette.border.subtle" },
                         SnacksIndentScope = { fg = "palette.neutral.muted" },
                         SnacksIndentChunk = { fg = "palette.neutral.muted" },
-                        RainbowDelimiterRed = { fg = "palette.danger.fg" },
-                        RainbowDelimiterYellow = { fg = "palette.attention.fg" },
-                        RainbowDelimiterBlue = { fg = "palette.accent.fg" },
-                        RainbowDelimiterOrange = { fg = "palette.severe.fg" },
-                        RainbowDelimiterGreen = { fg = "palette.success.fg" },
+                        RainbowDelimiterRed = { fg = "palette.red.bright" },
+                        RainbowDelimiterYellow = { fg = "palette.yellow.bright" },
+                        RainbowDelimiterBlue = { fg = "palette.blue.bright" },
+                        RainbowDelimiterOrange = { fg = "palette.orange.bright" },
+                        RainbowDelimiterGreen = { fg = "palette.green.bright" },
+                        RainbowDelimiterPink = { fg = "palette.pink.bright" },
+                        RainbowDelimiterPurple = { fg = "palette.magenta.bright" },
                         RainbowDelimiterViolet = { fg = "palette.done.fg" },
                         RainbowDelimiterCyan = { fg = "palette.cyan.base" },
-                    }, barbar_groups()),
+                    }, barbar_groups(), snacks_notifier_groups(), noice_groups()),
                 },
             })
             vim.cmd.colorscheme("github_dark_default")
-        end,
-    },
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        config = function()
-            require("tokyonight").setup({
-                transparent = true,
-                style = "night",
-                on_highlights = function(highlights, colors)
-                    highlights.GitSignsChange = { fg = colors.yellow }
-                    highlights.WinBar = { bg = colors.none, fg = colors.none }
-                    highlights.WinBarNC = { bg = colors.none, fg = colors.none }
-                    highlights.SnacksLazygitNormal = { fg = colors.fg, bg = "NONE" }
-                    highlights.RainbowDelimiterRed = { fg = colors.red }
-                    highlights.RainbowDelimiterYellow = { fg = colors.yellow }
-                    highlights.RainbowDelimiterBlue = { fg = colors.blue }
-                    highlights.RainbowDelimiterOrange = { fg = colors.orange }
-                    highlights.RainbowDelimiterGreen = { fg = colors.green }
-                    highlights.RainbowDelimiterViolet = { fg = colors.purple }
-                    highlights.RainbowDelimiterCyan = { fg = colors.cyan }
-
-                    -- barbar tab colors
-                    local barbar_statuses = {
-                        Alternate = { bg = colors.bg_dark, fg = colors.fg },
-                        Current = { bg = colors.bg_dark1, fg = colors.fg },
-                        Inactive = { bg = colors.bg_dark, fg = colors.dark5 },
-                        Visible = { bg = colors.bg_dark, fg = colors.fg_dark },
-                    }
-
-                    local barbar_parts = {
-                        ADDED = colors.git.add,
-                        CHANGED = colors.git.change,
-                        DELETED = colors.git.delete,
-                        ERROR = colors.error,
-                        HINT = colors.hint,
-                        INFO = colors.info,
-                        Index = colors.info,
-                        Mod = colors.warning,
-                        Target = colors.red,
-                        WARN = colors.warning,
-                    }
-
-                    for status, base in pairs(barbar_statuses) do
-                        local prefix = "Buffer" .. status
-
-                        highlights[prefix] = { bg = base.bg, fg = base.fg }
-                        highlights[prefix .. "Sign"] = { bg = base.bg, fg = base.bg }
-                        highlights[prefix .. "SignRight"] = { bg = base.bg, fg = base.bg }
-
-                        for part, fg in pairs(barbar_parts) do
-                            highlights[prefix .. part] = { bg = base.bg, fg = fg }
-                        end
-                    end
-
-                    highlights.BufferOffset = { bg = colors.bg_dark1, fg = colors.dark5 }
-                    highlights.BufferScrollArrow = { bg = colors.bg_dark1, fg = colors.dark3 }
-                    highlights.BufferTabpageFill = { bg = colors.none, fg = colors.none }
-                    highlights.BufferTabpages = { bg = colors.bg_dark1, fg = colors.dark5 }
-                    highlights.BufferTabpagesSep = { bg = colors.bg_dark1, fg = colors.dark3 }
-                end,
-            })
         end,
     },
 }

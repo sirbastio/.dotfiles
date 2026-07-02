@@ -8,37 +8,23 @@ return {
         init = function()
             vim.g.rainbow_delimiters = {
                 highlight = {
-                    "RainbowDelimiterRed",
-                    "RainbowDelimiterYellow",
                     "RainbowDelimiterBlue",
-                    "RainbowDelimiterOrange",
                     "RainbowDelimiterGreen",
-                    "RainbowDelimiterViolet",
-                    "RainbowDelimiterCyan",
+                    "RainbowDelimiterYellow",
+                    "RainbowDelimiterRed",
+                    "RainbowDelimiterPink",
+                    "RainbowDelimiterPurple",
                 },
             }
         end,
     },
     {
-        -- floating cmdline
         "folke/noice.nvim",
         event = "VimEnter",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-        },
+        dependencies = { "MunifTanjim/nui.nvim" },
         opts = {
-            cmdline = {
-                enabled = true,
-                view = "cmdline_popup",
-            },
-            messages = { enabled = false },
-            notify = { enabled = false },
-            popupmenu = { enabled = false },
-            lsp = {
-                progress = { enabled = false },
-                hover = { enabled = false },
-                signature = { enabled = false },
-                message = { enabled = false },
+            presets = {
+                lsp_doc_border = true,
             },
         },
     },
