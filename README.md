@@ -20,7 +20,7 @@
 - **Terminal**: Ghostty
 - **Package Manager**: Homebrew/Linuxbrew
 - **CLI Tools**: atuin, bat, curl, eza, fnm, fzf, gh, git, lazygit, ripgrep, starship, stow, uv, zoxide
-- **IDE**: VS Code, Cursor, Codex, ~~Neovim~~
+- **IDE**: Neovim, VS Code, Cursor, Codex
 - **Apps**: Chrome, Notion, Obsidian, Raycast, TickTick, Outlook, Excel
 
 ## Setup
