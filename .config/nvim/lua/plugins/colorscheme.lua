@@ -5,6 +5,8 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
+            local spell_underline = { sp = "bg4", style = "underdotted" }
+
             local function barbar_groups()
                 local statuses = {
                     Alternate = { bg = "bg1", fg = "fg1" },
@@ -96,6 +98,11 @@ return {
                         CursorLine = { bg = "bg2" },
                         NormalFloat = { bg = "bg0" },
                         FloatBorder = { fg = "palette.border.default", bg = "bg0" },
+                        DiagnosticUnderlineInfo = spell_underline,
+                        SpellBad = spell_underline,
+                        SpellCap = spell_underline,
+                        SpellLocal = spell_underline,
+                        SpellRare = spell_underline,
                         SnacksNormal = { bg = "NONE" },
                         SnacksTitle = { bg = "bg0" },
                         SnacksPickerPreviewTitle = { bg = "bg0" },
