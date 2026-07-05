@@ -3,7 +3,6 @@ return
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    ---@type snacks.Config
     opts = {
         dashboard = { enabled = true },
         quickfile = { enabled = true },
@@ -17,5 +16,8 @@ return
             height = { min = 1, max = 0.9 },
         },
         styles = { notification = { wo = { wrap = false, winblend = 0 } } },
+    },
+    keys = {
+        { "<leader>n", function() Snacks.notifier.show_history() end, desc = "[n]otifications" },
     },
 }

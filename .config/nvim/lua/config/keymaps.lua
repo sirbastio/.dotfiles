@@ -6,6 +6,11 @@ local autocmd = vim.api.nvim_create_autocmd
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- === UTIL === --
+set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
+set("n", "<leader>w", "<cmd>w<CR>", { desc = "[w]rite file" })
+set("n", "<leader>q", "<cmd>q<CR>", { desc = "[q]uit" })
+
 -- === KEEP CURSOR CENTERED === --
 set("n", "J", "mzJ`z", { desc = "[J]oin lines (keep cursor position)" })
 set("n", "<C-d>", "<C-d>zz", { desc = "Scroll [d]own (centered)" })
@@ -50,9 +55,6 @@ autocmd("LspAttach", {
         map("gi", vim.lsp.buf.implementation, "[g]o to [i]mplementation")
 
         map("<leader>r", vim.lsp.buf.rename, "Rename symbol")
-
-        map("<leader>x", vim.diagnostic.open_float, "Open diagnostics float")
-        -- map("<leader>xt", vim.diagnostic.enable(not vim.diagnostic.is_enabled()), "diagnostics [t]oggle")
         map("<leader>ca", vim.lsp.buf.code_action, "Code action")
 
     end
