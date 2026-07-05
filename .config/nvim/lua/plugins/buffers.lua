@@ -2,22 +2,19 @@ local autocmd = vim.api.nvim_create_autocmd
 local preview_buf = nil
 local preview_buf_marker = "◌"
 
-local function is_normal_file_buffer(buf)
-    return vim.api.nvim_buf_is_valid(buf)
-        and vim.bo[buf].buftype == ""
-        and vim.api.nvim_buf_get_name(buf) ~= ""
-end
-
 local function on_normal_file_buffer(callback)
     return function(event)
-        if is_normal_file_buffer(event.buf) then
+        if vim.api.nvim_buf_is_valid(event.buf)
+            and vim.bo[event.buf].buftype == ""
+            and vim.api.nvim_buf_get_name(event.buf) ~= ""
+        then
             callback(event)
         end
     end
 end
 
 local function add_preview_buf_marker()
-    if preview_buf ~= nil then
+    if preview_buf ~= nil and vim.api.nvim_buf_is_valid(preview_buf) then
         local preview_buf_data = require("barbar.state").get_buffer_data(preview_buf)
         preview_buf_data.name = (preview_buf_data.name or "[no name]") .. " " .. preview_buf_marker
     end
@@ -41,7 +38,10 @@ local function setup_preview_buffers()
         desc = "When a new file is being opened, set it as the preview buffer, and close the old",
         callback = on_normal_file_buffer(function(event)
             vim.schedule(function()
-                pcall(vim.api.nvim_buf_delete, preview_buf, {})
+                if preview_buf ~= nil and preview_buf ~= event.buf then
+                    pcall(vim.api.nvim_buf_delete, preview_buf, {})
+                end
+
                 preview_buf = event.buf
                 require("barbar.ui.render").update(true, false)
             end)
@@ -49,25 +49,15 @@ local function setup_preview_buffers()
 
     })
 
-    autocmd("BufModifiedSet", {
+    autocmd({ "BufWritePost", "BufModifiedSet" }, {
         group = preview_buf_group,
-        desc = "When a preview buffers file is modified, remove it as a preview buffer, and rerender the tabs",
+        desc = "When a preview buffers file is modified or saved, remove it as a preview buffer, and rerender the tabs",
         callback = on_normal_file_buffer(function(event)
             if event.buf == preview_buf then
                 preview_buf = nil
                 require("barbar.ui.render").update(true, false)
             end
         end)
-    })
-
-    autocmd("BufWritePost", {
-        group = preview_buf_group,
-        desc = "When a file is saved remove it as a preview buffer",
-        callback = on_normal_file_buffer(function(event)
-            if event.buf == preview_buf then
-                preview_buf = nil
-            end
-        end),
     })
 end
 

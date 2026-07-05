@@ -34,4 +34,15 @@ return {
             { "<leader>gl", function() Snacks.lazygit.log() end, desc = "[g]it [l]ogs (lazygit)" },
         },
     },
+    {
+        "NeogitOrg/neogit",
+        lazy = true,
+        cmd = "Neogit",
+        dependencies = {
+            "esmuellert/codediff.nvim",
+            "folke/snacks.nvim",
+        },
+        opts = { graph_style = "unicode", process_spinner = true },
+        keys = { { "<leader>gG", "<cmd>Neogit<cr>", desc = "Show Neogit UI" } },
+    },
 }
