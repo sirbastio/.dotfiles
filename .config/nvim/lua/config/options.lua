@@ -3,7 +3,8 @@ local o = vim.opt
 -- LINES --
 o.number = true              -- line numbers
 o.relativenumber = true      -- relative line numbers
-o.statuscolumn = "%s%=%l   " -- add space between line numbers and text
+o.numberwidth = 5            -- reserve space for four-digit line numbers
+o.statuscolumn = "%=%l%s%C " -- show signs, folds, and line numbers
 o.cursorline = true          -- highlight current line
 o.guicursor =                -- blinking cursor
     "n-v:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve-c:ver25-blinkwait700-blinkoff400-blinkon250,r-cr-o:hor20-blinkwait700-blinkoff400-blinkon250"
@@ -39,6 +40,9 @@ o.foldmethod = "expr"       -- use expression for folding
 o.foldexpr =                -- use treesitter for folding
     "v:lua.vim.treesitter.foldexpr()"
 o.foldlevel = 99            -- start with folds open
+vim.o.foldlevelstart = 99   -- start with folds open when opening files
+vim.o.foldcolumn = "1"      -- add a fold column to the gutter
+vim.o.fillchars = 'eob: ,fold: ,foldopen: ,foldsep: ,foldinner: ,foldclose:'
 
 -- HISTORY --
 o.backup = false      -- do not crate a backup file
