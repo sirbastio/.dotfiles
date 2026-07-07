@@ -37,6 +37,7 @@ return {
                 },
             }
         end,
+
         -- Replaces rainbow-delimiters anonymous highlight namespace table with named namespaces
         -- that can be read by plugins such as nvim-ufo and nvim-treesitter-context.
         -- This lets those plugins preserve rainbow-delimiters highlighting.

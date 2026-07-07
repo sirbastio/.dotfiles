@@ -42,7 +42,8 @@ o.foldexpr =                -- use treesitter for folding
 o.foldlevel = 99            -- start with folds open
 vim.o.foldlevelstart = 99   -- start with folds open when opening files
 vim.o.foldcolumn = "1"      -- add a fold column to the gutter
-vim.o.fillchars = 'eob: ,fold: ,foldopen: ,foldsep: ,foldinner: ,foldclose:'
+vim.o.fillchars =           -- fold signs
+    'eob: ,fold: ,foldopen: ,foldsep: ,foldinner: ,foldclose:'
 
 -- HISTORY --
 o.backup = false      -- do not crate a backup file
