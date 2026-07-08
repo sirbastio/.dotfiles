@@ -50,6 +50,7 @@ return {
         cmd = "Neogit",
         dependencies = { "esmuellert/codediff.nvim", "folke/snacks.nvim" },
         opts = {
+            commit_editor = { staged_diff_split_kind = "vsplit" },
             graph_style = "unicode",
             process_spinner = true,
             treesitter_diff_highlight = true,
