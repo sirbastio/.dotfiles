@@ -30,6 +30,7 @@ set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "[c]lear search highlights" })
 -- === COPY & PASTE === --
 set("x", "<leader>p", '"_dP', { desc = "[p]aste without yanking" })
 set({ "n", "v" }, "<leader>d", '"_d', { desc = "[d]elete without yanking" })
+set("n", "x", '"_x', { desc = "delete char without yanking"})
 
 -- === SPLITS === --
 set("n", "<leader>s", "<cmd>vsplit<CR>", { desc = "Split window vertically" })

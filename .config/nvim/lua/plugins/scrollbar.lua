@@ -54,6 +54,13 @@ return {
             update(0)
         end
 
+        vim.list_extend(require("scrollbar.config").get().excluded_filetypes, {
+            "oil",
+            "minifiles",
+            "codediff-explorer",
+            "snacks_notif",
+        })
+
         require("scrollbar").setup({
             handle = { color = "#2B3038" },
             handlers = { diagnostic = false },
