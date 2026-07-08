@@ -44,10 +44,11 @@ return {
                 ["<C-S-s>"] = { "actions.select", opts = { horizontal = true } },
                 ["<C-h>"] = false,
                 ["<C-l>"] = false,
+                ["q"] = "actions.close",
             },
         },
         keys = {
-            { "<leader>O", "<CMD>Oil<CR>", desc = "Open parent directory" },
+            { "-", "<CMD>Oil<CR>", desc = "Open parent directory" },
         },
     },
 }

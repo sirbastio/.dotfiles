@@ -40,15 +40,8 @@ return {
                 sections = {
                     lualine_a = { { "mode", fmt = format_mode } },
                     lualine_b = {
-                        {
-                            "branch",
-                            icon = "",
-                        },
-                        {
-                            "diff",
-                            symbols = { added = " ", modified = " ", removed = " " },
-                            -- cond = wide_statusline,
-                        },
+                        { "branch", icon = "" },
+                        { "diff", symbols = { added = " ", modified = " ", removed = " " } },
                     },
                     lualine_c = {
                         {
@@ -69,8 +62,8 @@ return {
                     lualine_x = {},
                     lualine_y = {
                         "diagnostics",
-                        { "lsp_status", symbols = { done = "" } },
-                        { "filetype", cond = wide_statusline },
+                        { "lsp_status", symbols = { done = "" }, cond = wide_statusline },
+                        "filetype",
                     },
                     lualine_z = { "location" },
                 },
