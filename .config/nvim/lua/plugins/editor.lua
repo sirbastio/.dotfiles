@@ -1,6 +1,5 @@
 return {
     { "nvim-tree/nvim-web-devicons", opts = {} },
-    { "nvim-mini/mini.statusline", version = false, opts = {} },
     { "folke/which-key.nvim", event = "VeryLazy", opts = {} },
     {
         "folke/todo-comments.nvim",
@@ -11,9 +10,7 @@ return {
     {
         "mbbill/undotree",
         lazy = true,
-        config = function()
-            vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-        end,
+        config = function() vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle) end,
     },
     {
         "folke/noice.nvim",
