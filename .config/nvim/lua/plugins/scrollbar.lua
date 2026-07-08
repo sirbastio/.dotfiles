@@ -59,6 +59,8 @@ return {
             "minifiles",
             "codediff-explorer",
             "snacks_notif",
+            "snacks-picker-input",
+            "snacks-picker-list",
         })
 
         require("scrollbar").setup({
