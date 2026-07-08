@@ -16,8 +16,11 @@ return
             height = { min = 1, max = 0.9 },
         },
         styles = { notification = { wo = { wrap = false, winblend = 0 } } },
+        terminal = { enabled = true, win = { style = "terminal" } },
     },
     keys = {
         { "<leader>n", function() Snacks.notifier.show_history() end, desc = "[n]otifications" },
+        { "<leader>tt", function() Snacks.terminal() end, desc = "[t]erminal [t]oggle" },
+        { "<leader>tn", function() Snacks.terminal.open() end, desc = "[t]erminal [n]ew" },
     },
 }
