@@ -98,6 +98,8 @@ return {
                         CursorLine = { bg = "bg2" },
                         NormalFloat = { bg = "bg0" },
                         FloatBorder = { fg = "palette.border.default", bg = "bg0" },
+                        MiniFilesTitle = { bg = "bg0", fg = "fg2" },
+                        MiniFilesTitleFocused = { bg = "bg0", fg = "fg1" },
                         DiagnosticUnderlineInfo = spell_underline,
                         SpellBad = spell_underline,
                         SpellCap = spell_underline,

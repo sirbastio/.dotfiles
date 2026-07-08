@@ -19,14 +19,22 @@ return {
     {
         "nvim-mini/mini.files",
         version = false,
-        opts = {},
-        config = function(_, opts)
-            require("mini.files").setup(opts)
+        config = function()
+            local files = require("mini.files")
             setup_mini_files_window()
+            files.setup({
+                mappings = {
+                    go_in = "<CR>",
+                    go_out = "_",
+                },
+            })
+
+            vim.keymap.set("n", "<leader>e", files.open, { desc = "[e]xplorer" })
+            vim.keymap.set("n", "<leader>E", function()
+                files.open(vim.api.nvim_buf_get_name(0), false)
+                files.reveal_cwd()
+            end, { desc = "[E]xplorer current file" })
         end,
-        keys = {
-            { "<leader>E", function() require("mini.files").open() end, desc = "[e]xplorer" },
-        },
     },
     {
         "stevearc/oil.nvim",
