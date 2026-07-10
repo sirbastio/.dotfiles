@@ -1,4 +1,11 @@
-# NeoVim
+# Neovim
+
+This is currently a work in progress project. 
+
+TODO:
+- Refactor code
+- Refactor theme into plugin specs
+- Integrate AI
 
 ## Plugins ([Lazy](https://github.com/folke/lazy.nvim))
 

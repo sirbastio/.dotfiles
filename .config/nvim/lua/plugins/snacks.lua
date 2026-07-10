@@ -7,7 +7,7 @@ return
         dashboard = { enabled = true },
         quickfile = { enabled = true },
         input = { enabled = true },
-        words = { enabled = true, debounce = 0 },
+        words = { enabled = true, debounce = 150 },
         indent = { enabled = true, animate = { enabled = false } },
         notifier = {
             enabled = true,

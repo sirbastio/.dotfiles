@@ -25,7 +25,7 @@ return {
             files.setup({
                 mappings = {
                     go_in = "<CR>",
-                    go_out = "_",
+                    go_out = "-",
                 },
             })
 

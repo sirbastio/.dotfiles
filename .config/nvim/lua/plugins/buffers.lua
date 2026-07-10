@@ -1,17 +1,8 @@
+local on_normal_file_buffer = require("config.utils").on_normal_file_buffer
+
 local autocmd = vim.api.nvim_create_autocmd
 local preview_buf = nil
 local preview_buf_marker = "◌"
-
-local function on_normal_file_buffer(callback)
-    return function(event)
-        if vim.api.nvim_buf_is_valid(event.buf)
-            and vim.bo[event.buf].buftype == ""
-            and vim.api.nvim_buf_get_name(event.buf) ~= ""
-        then
-            callback(event)
-        end
-    end
-end
 
 local function add_preview_buf_marker()
     if preview_buf ~= nil and vim.api.nvim_buf_is_valid(preview_buf) then
