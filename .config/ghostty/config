@@ -16,8 +16,8 @@ window-padding-balance = true
 window-padding-x = 12, 0
 # window-padding-y = 12, 1
 window-padding-color = extend-always
-background-opacity = 0.8
-background-blur = 12
+background-opacity = 0.85
+background-blur = 16
 background-opacity-cells = true
 
 # Other

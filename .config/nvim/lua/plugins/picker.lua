@@ -1,9 +1,20 @@
 local set = vim.keymap.set
+local backdrop_blend = 50
 
 local function in_git_worktree()
     vim.fn.system({ "git", "rev-parse", "--is-inside-work-tree" })
     return vim.v.shell_error == 0
 end
+
+local picker_backdrop = {
+    transparent = false,
+    win = {
+        on_win = function(win)
+            vim.wo[win.win].winhighlight = "Normal:SnacksBackdrop"
+            vim.wo[win.win].winblend = backdrop_blend
+        end,
+    },
+}
 
 return {
     "folke/snacks.nvim",
@@ -19,6 +30,7 @@ return {
             layouts = {
                 wide_preview = {
                     layout = {
+                        backdrop = picker_backdrop,
                         box = "horizontal",
                         width = 0.8,
                         min_width = 120,
@@ -35,7 +47,7 @@ return {
                 },
                 vertical_preview = {
                     layout = {
-                        backdrop = false,
+                        backdrop = picker_backdrop,
                         width = 0.5,
                         min_width = 80,
                         height = 0.85,
