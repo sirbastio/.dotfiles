@@ -1,3 +1,4 @@
+-- places mini files window in the very top left (otherwise would be under tabs)
 local function setup_mini_files_window()
     local group = vim.api.nvim_create_augroup("MiniFilesTopLeft", { clear = true })
 

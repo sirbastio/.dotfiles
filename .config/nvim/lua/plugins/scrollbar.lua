@@ -3,71 +3,43 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = { "lewis6991/gitsigns.nvim" },
     config = function()
-        -- Function written by AI: removes cspell (spellcheck) diagnostics in the sidebar
-        local function setup_diagnostic_scrollbar()
-            local diagnostic_handler = require("scrollbar.handlers.diagnostic")
+        local scrollbar = require("scrollbar")
+        local config = require("scrollbar.config").get()
+        local colors = vim.g.github_dark_default_colors
 
-            local diagnostic_mark_type = {
-                [vim.diagnostic.severity.ERROR] = "Error",
-                [vim.diagnostic.severity.WARN] = "Warn",
-                [vim.diagnostic.severity.INFO] = "Info",
-                [vim.diagnostic.severity.HINT] = "Hint",
-            }
-
-            local function update(bufnr)
-                if not bufnr or bufnr == 0 then
-                    bufnr = vim.api.nvim_get_current_buf()
-                end
-
-                if not vim.api.nvim_buf_is_valid(bufnr) then
-                    return
-                end
-
-                local config = require("scrollbar.config").get()
-                local function get_diagnostics()
-                    return vim.tbl_filter(function(diagnostic)
-                        return diagnostic.source ~= "cspell"
-                    end, vim.diagnostic.get(bufnr))
-                end
-
-                local function diagnostic_mapper(diagnostic)
-                    local mark_type = diagnostic_mark_type[diagnostic.severity]
-
-                    return {
-                        line = diagnostic.lnum,
-                        text = config.marks[mark_type].text[1],
-                        type = mark_type,
-                        level = 1,
-                    }
-                end
-
-                diagnostic_handler.generic_handler(bufnr, get_diagnostics, diagnostic_mapper)
-            end
-
-            vim.api.nvim_create_autocmd({ "BufEnter", "DiagnosticChanged" }, {
-                group = vim.api.nvim_create_augroup("ScrollbarDiagnostics", { clear = true }),
-                callback = function(args)
-                    update(args.buf)
-                end,
-            })
-
-            update(0)
-        end
-
-        vim.list_extend(require("scrollbar.config").get().excluded_filetypes, {
+        vim.list_extend(config.excluded_filetypes, {
             "oil",
             "minifiles",
             "codediff-explorer",
             "snacks_notif",
-            "snacks-picker-input",
-            "snacks-picker-list",
+            "snacks_picker_input",
+            "snacks_picker_list",
         })
 
-        require("scrollbar").setup({
-            handle = { color = "#2B3038" },
+        -- refresh when diagnostics change
+        table.insert(config.autocmd.render, "DiagnosticChanged")
+
+        local diagnostic_types = { "Error", "Warn", "Info", "Hint" }
+
+        -- custom handler to remove cspell diagnostics from the scrollbar
+        require("scrollbar.handlers").register("diagnostics", function(bufnr)
+            return vim.iter(vim.diagnostic.get(bufnr))
+                :filter(function(diagnostic)
+                    return diagnostic.source ~= "cspell"
+                end)
+                :map(function(diagnostic)
+                    return {
+                        line = diagnostic.lnum,
+                        type = diagnostic_types[diagnostic.severity],
+                    }
+                end)
+                :totable()
+        end)
+
+        scrollbar.setup({
+            handle = { color = colors.neutral },
             handlers = { diagnostic = false },
-            marks = { Cursor = { text = "━", color = "#3081F7" } },
+            marks = { Cursor = { text = "━", color = colors.cursor } },
         })
-        setup_diagnostic_scrollbar()
     end,
 }

@@ -69,34 +69,28 @@ return {
         set("n", "<leader>pp", function() Snacks.picker() end, { desc = "[p]ick [p]icker" })
 
         local function set_git_project_picker_keymaps()
-            set("n",
-                "<D-p>",
-                function()
-                    Snacks.picker.smart({
-                        multi = {
-                            "buffers",
-                            "recent",
-                            { source = "git_files", untracked = true } }
-                    })
-                end,
-                { desc = "pick [p]roject files" })
+            set("n", "<D-p>", function()
+                Snacks.picker.smart({
+                    multi = {
+                        "buffers",
+                        "recent",
+                        { source = "git_files", untracked = true },
+                    },
+                })
+            end, { desc = "pick [p]roject files" })
 
-            set("n",
-                "<leader>pw",
-                function() Snacks.picker.git_grep({ untracked = true }) end,
-                { desc = "[p]ick [w]ords" })
+            set("n", "<leader>pw", function() Snacks.picker.git_grep({ untracked = true }) end, { desc = "[p]ick [w]ords" })
 
-            set("n",
-                "<leader>pW",
-                function()
-                    Snacks.picker.git_grep({
-                        untracked = true,
-                        cmd_args = { "--fixed-strings", "--word-regexp" },
-                        search = function(picker) return picker:word() end,
-                        live = false,
-                    })
-                end,
-                { desc = "[p]ick [W]ord" })
+            set("n", "<leader>pW", function()
+                Snacks.picker.git_grep({
+                    untracked = true,
+                    cmd_args = { "--fixed-strings", "--word-regexp" },
+                    search = function(picker)
+                        return picker:word()
+                    end,
+                    live = false,
+                })
+            end, { desc = "[p]ick [W]ord" })
         end
 
         vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {

@@ -12,7 +12,6 @@ autocmd("TextYankPost", {
     end,
 })
 
-
 local file_view_group = augroup("PersistFileView", { clear = true })
 
 autocmd("BufWinLeave", {
@@ -33,7 +32,6 @@ autocmd("BufWinEnter", {
 
         if is_codediff_window(winid) then
             vim.wo[winid].foldlevel = 99
-            print("test")
         else
             pcall(vim.cmd, "silent! loadview")
         end

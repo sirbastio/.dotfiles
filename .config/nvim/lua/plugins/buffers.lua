@@ -66,11 +66,6 @@ return {
                 separator_at_end = false,
                 inactive = { separator = { left = "", right = "█" } },
                 pinned = { button = "", filename = true },
-                -- gitsigns = {
-                --     added = { enabled = true },
-                --     changed = { enabled = true },
-                --     deleted = { enabled = true },
-                -- },
             },
         },
         keys = {
