@@ -11,7 +11,7 @@ local function add_preview_buf_marker()
     end
 end
 
--- Hook to appened the preview buffer marker to the file name after barbar updates tab names
+-- Hook to append the preview buffer marker to the file name after barbar updates tab names
 local function setup_preview_buf_marker()
     local barbar_state = require("barbar.state")
     local update_names = barbar_state.update_names
@@ -36,8 +36,7 @@ local function setup_preview_buffers()
                 preview_buf = event.buf
                 require("barbar.ui.render").update(true, false)
             end)
-        end)
-
+        end),
     })
 
     autocmd({ "BufWritePost", "BufModifiedSet" }, {
@@ -48,7 +47,7 @@ local function setup_preview_buffers()
                 preview_buf = nil
                 require("barbar.ui.render").update(true, false)
             end
-        end)
+        end),
     })
 end
 
@@ -82,14 +81,14 @@ return {
                         preview_buf = nil
                     end
                 end,
-                desc = "[b]uffer [p]in"
+                desc = "[b]uffer [p]in",
             },
             { "<leader>bd", "<Cmd>BufferClose<CR>", desc = "[b]uffer [d]elete" },
         },
-
-        init = function()
+        config = function(_, opts)
             setup_preview_buf_marker()
             setup_preview_buffers()
+            require("barbar").setup(opts)
         end,
     },
 }

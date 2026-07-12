@@ -1,13 +1,22 @@
+-- TODO: Install mason tool installer
 return {
     "mason-org/mason-lspconfig.nvim",
     dependencies = {
         { "mason-org/mason.nvim", opts = {} },
         "neovim/nvim-lspconfig",
+        {
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
+            opts = {
+                ensure_installed = {
+                    "stylua",
+                    "cspell",
+                },
+            },
+        },
     },
     opts = {
         ensure_installed = {
             "lua_ls",
-            "stylua",
         },
         automatic_enable = {
             exclude = { "stylua" },
@@ -17,18 +26,12 @@ return {
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
             callback = function(event)
-                local map = function(keys, func, desc, mode)
-                    mode = mode or "n"
-                    vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
+                local map = function(keys, func, desc)
+                    vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
                 end
 
                 map("gd", vim.lsp.buf.definition, "[g]o to [d]efinition")
                 map("gD", vim.lsp.buf.declaration, "[g]o to [D]eclaration")
-                map("gr", vim.lsp.buf.references, "[g]o to [r]eferences")
-                map("gi", vim.lsp.buf.implementation, "[g]o to [i]mplementation")
-
-                map("<leader>r", vim.lsp.buf.rename, "Rename symbol")
-                map("<leader>ca", vim.lsp.buf.code_action, "Code action")
             end,
         })
 

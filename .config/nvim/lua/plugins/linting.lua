@@ -4,9 +4,11 @@ return {
     config = function()
         vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
             group = vim.api.nvim_create_augroup("Lint", { clear = true }),
-            callback = function()
-                require("lint").try_lint("cspell")
-            end,
+            callback = require("config.utils").on_normal_file_buffer(function(event)
+                vim.api.nvim_buf_call(event.buf, function()
+                    require("lint").try_lint("cspell")
+                end)
+            end),
         })
     end,
 }
