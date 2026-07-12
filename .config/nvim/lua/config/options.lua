@@ -42,7 +42,6 @@ o.fillchars =           -- hide "~" on empty lines and fold signs
     'eob: ,fold: ,foldopen: ,foldsep: ,foldinner: ,foldclose:'
 o.viewoptions = { "folds", "cursor" }
 
-
 -- HISTORY --
 o.writebackup = false -- do not write to a backup file
 o.swapfile = false    -- do not create a swapfile
