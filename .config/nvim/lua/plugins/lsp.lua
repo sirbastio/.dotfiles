@@ -23,6 +23,16 @@ return {
         },
     },
     init = function()
+        vim.lsp.config("lua_ls", {
+            settings = {
+                Lua = {
+                    diagnostics = { globals = { "Snacks" } },
+                    runtime = { version = "LuaJIT" },
+                    workspace = { checkThirdParty = false, library = { vim.env.VIMRUNTIME } },
+                },
+            },
+        })
+
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("LspKeymaps", { clear = true }),
             callback = function(event)

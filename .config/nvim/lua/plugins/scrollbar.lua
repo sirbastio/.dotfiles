@@ -14,6 +14,7 @@ return {
             "snacks_notif",
             "snacks_picker_input",
             "snacks_picker_list",
+            "gitcommit",
         })
 
         -- refresh when diagnostics change

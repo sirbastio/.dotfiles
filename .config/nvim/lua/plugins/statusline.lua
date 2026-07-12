@@ -24,6 +24,23 @@ local function format_mode(mode)
     return mode:sub(1, 1)
 end
 
+local function formatter()
+    local formatters, uses_lsp = require("conform").list_formatters_to_run(0)
+    local names = vim.tbl_map(function(item)
+        return item.name
+    end, formatters)
+
+    if uses_lsp then
+        table.insert(names, "LSP")
+    end
+
+    if vim.tbl_isempty(names) then
+        return ""
+    end
+
+    return "󰉼 " .. table.concat(names, ", ")
+end
+
 return {
     -- { "nvim-mini/mini.statusline", version = false, opts = {} },
     {
@@ -59,10 +76,10 @@ return {
                             end,
                         },
                     },
-                    lualine_x = {},
+                    lualine_x = { formatter, cond = wide_statusline },
                     lualine_y = {
-                        "diagnostics",
                         { "lsp_status", symbols = { done = "" }, cond = wide_statusline },
+                        "diagnostics",
                         "filetype",
                     },
                     lualine_z = { "location" },
