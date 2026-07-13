@@ -1,60 +1,124 @@
-# What's Included
+<div align="center">
 
-## Zsh (Z-shell)
+# `~/.dotfiles`
 
-- **Plugin Manager**: Zinit
-- **`cd` Replacement**: Zoxide
-- **`ls` Replacement**: eza
-- **`cat` Replacement**: bat
-- **History Replacement**: Atuin
+[![macOS](https://img.shields.io/badge/macOS-Apple_silicon-000000?style=for-the-badge&logo=apple&logoColor=white)](#support)
+[![Ubuntu](https://img.shields.io/badge/Ubuntu-native_%2F_WSL-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](#support)
+[![Zsh](https://img.shields.io/badge/shell-Zsh-F15A24?style=for-the-badge&logo=zsh&logoColor=white)](https://www.zsh.org/)
+[![Neovim](https://img.shields.io/badge/editor-Neovim-57A143?style=for-the-badge&logo=neovim&logoColor=white)](https://neovim.io/)
+[![Stow](https://img.shields.io/badge/managed_with-GNU_Stow-5E5E5E?style=for-the-badge&logo=gnu&logoColor=white)](https://www.gnu.org/software/stow/)
 
-#### Plugins
+<img src="./assets/terminal-preview.jpg" alt="Ghostty terminal running the dotfiles setup against a neon city wallpaper" width="100%">
 
-- **Theme**: Starship
-- **Completions**: zsh-completions
-- **Autosuggestions**: zsh-autosuggestions
-- **Completion Menu**: fzf-tab
+<sub>Ghostty · Zsh · Starship · GitHub Dark Default</sub>
 
-## Personal Tools
+</div>
 
-- **Terminal**: Ghostty
-- **Package Manager**: Homebrew/Linuxbrew
-- **CLI Tools**: Check Brewfile
-- **IDE**: Neovim, VS Code, Cursor, Codex
-- **Apps**: Chrome, Notion, Obsidian, Raycast, TickTick, Outlook, Excel
+## Lean, Minimal & Feature Rich 
 
-## Setup
+- **⚡ A shell that keeps up** — Zsh, Zinit, Starship, fzf-tab, autosuggestions, and syntax highlighting.
+- **🧠 An editor with teeth** — Custom Neovim powered by lazy.nvim, LSP, Treesitter, Blink, Snacks, and Copilot.
+- **🧭 Navigation without friction** — Jump with zoxide, search with fzf and ripgrep, and browse files with Yazi.
+- **♻️ Rebuildable by design** — Homebrew installs the toolchain while GNU Stow puts every config in its place.
 
-Clone the repo and run the bootstrap script:
+## Stack
 
-```
-git clone git@github.com:phillipe-s/.dotfiles.git ~/.dotfiles
+| Layer | Tools |
+| --- | --- |
+| Terminal | [Ghostty](https://ghostty.org/) + JetBrains Mono Nerd Font + GitHub Dark Default |
+| Shell | Zsh + [Zinit](https://github.com/zdharma-continuum/zinit) + [Starship](https://starship.rs/) |
+| Editor | [Neovim](https://neovim.io/) + [lazy.nvim](https://github.com/folke/lazy.nvim) |
+| Navigation | fzf · zoxide · fd · ripgrep · Yazi |
+| Daily CLI | bat · eza · lazygit · git-delta · Atuin · btop |
+| Runtimes | fnm · uv |
+| Packages | Homebrew on macOS · Linuxbrew on Ubuntu |
+
+The full package manifest lives in [`Brewfile`](./Brewfile).
+
+## Quick start
+
+> [!IMPORTANT]
+> This is a personal setup. Read the bootstrap script and fork the repo before running it as your own.
+
+### SSH
+
+```bash
+git clone git@github.com:sirbastio/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./scripts/bootstrap.sh
 ```
 
-Alternatively, clone over HTTPS if SSH access is not configured:
+<details>
+<summary><strong>Using HTTPS instead?</strong></summary>
 
-```
-git clone https://github.com/phillipe-s/.dotfiles.git ~/.dotfiles
+```bash
+git clone https://github.com/sirbastio/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ./scripts/bootstrap.sh
 ```
 
-The script supports Apple silicon macOS and Ubuntu (including Ubuntu on WSL). Other macOS architectures and Linux distributions exit before making changes. Both environments use Homebrew: `/opt/homebrew` on macOS and `/home/linuxbrew/.linuxbrew` on Ubuntu.
+</details>
 
-On Ubuntu/WSL, the script uses `apt` for OS-level prerequisites like `zsh` and the build tools Linuxbrew needs. It does not install zsh through Homebrew.
+For an unattended install:
 
-The script also creates the XDG directories, installs Homebrew/Linuxbrew if needed, runs `brew bundle`, installs Zinit into `~/.local/share/zinit/zinit.git`, links the dotfiles with `stow`, and configures Atuin's log directory. Zinit downloads the configured Zsh plugins when a new shell first starts, and Neovim installs its plugins on first launch.
-
-Stow does not overwrite conflicting files. If the target paths already contain unmanaged dotfiles, move or merge them before running the bootstrap again.
-
-For unattended setup:
-
-```
+```bash
 ./scripts/bootstrap.sh --yes
 ```
 
-Use `./scripts/bootstrap.sh --help` to see optional skips   for Homebrew, apt packages, Zinit, and stow.
+## What the bootstrap does
 
-The bootstrap script does not change your login shell automatically. If your shell is not zsh, it prints the `chsh` command to run after you have reviewed the detected zsh path.
+```text
+detect platform
+      │
+      ├── create XDG directories
+      ├── install system prerequisites on Ubuntu
+      ├── install Homebrew / Linuxbrew
+      ├── install everything in the Brewfile
+      ├── install Zinit
+      ├── link configs with GNU Stow
+      └── configure Atuin and check the login shell
+```
+
+| Flag | Effect |
+| --- | --- |
+| `--yes` | Accept bootstrap prompts for an unattended setup |
+| `--skip-brew` | Skip Homebrew installation and `brew bundle` |
+| `--skip-apt` | Skip Ubuntu packages installed through `apt` |
+| `--skip-zinit` | Skip the Zinit plugin manager |
+| `--skip-stow` | Skip linking dotfiles into `$HOME` |
+| `--help` | Show all available options |
+
+## Repository map
+
+```text
+.
+├── .config/
+│   ├── ghostty/       # terminal appearance and keybinds
+│   ├── git/           # Git defaults
+│   ├── nvim/          # custom Neovim distribution
+│   ├── yazi/          # terminal file manager theme
+│   ├── zsh/           # shell, plugins, aliases, and history
+│   └── starship.toml  # prompt configuration
+├── scripts/
+│   └── bootstrap.sh   # fresh-machine installer
+├── .zshenv            # XDG paths and environment
+└── Brewfile           # CLI tool manifest
+```
+
+## Support
+
+| Environment | Status | Package prefix |
+| --- | :---: | --- |
+| Apple silicon macOS | ✅ | `/opt/homebrew` |
+| Ubuntu | ✅ | `/home/linuxbrew/.linuxbrew` |
+| Ubuntu on WSL | ✅ | `/home/linuxbrew/.linuxbrew` |
+| Intel macOS / other Linux distributions | ❌ | The script exits before making changes |
+
+On Ubuntu, `apt` provides OS-level prerequisites such as Zsh and Linuxbrew build tools. Everything else is installed through the Brewfile.
+
+## Good to know
+
+- GNU Stow will not overwrite existing unmanaged dotfiles. Move or merge any conflicts before rerunning the bootstrap.
+- Zinit downloads the configured Zsh plugins when a new shell starts for the first time.
+- Neovim installs its plugins on first launch.
+- The bootstrap does not change your login shell automatically. If needed, it prints the exact `chsh` command for you to review and run.

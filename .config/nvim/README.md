@@ -1,96 +1,157 @@
-# Neovim
+<div align="center">
 
-> The vision was to create minimal, lean and maintainable, but feature-rich text editor
+# Neovim, tuned.
 
-## Build-In Features
+### Lean, minimal, maintainable and feature rich 
 
-### Smart Keymaps 
+Keep Vim's muscle memory. Remove the friction.
 
-- Keymaps stay true to the original vim experience with QOL improvements
-- `<leader>` set to space
-- Yank (copy) and pasting can be prefixed with `<leader>` to not copy text
-- QOL keymaps such as keeping the cursor centered when moving
-- `jk` while in insert mode to exit
-- Move selection/s in visual modes with `J` and `K`
-- Indent and outdent in visual modes with `<Tab>` and `<S-Tab>`
-- More found in `lua/config/keymaps.lua`
-- Plugin keymaps are all found within the corresponding implementations found in `lua/plugins`
+[![Neovim](https://img.shields.io/badge/Neovim-custom_build-57A143?style=for-the-badge&logo=neovim&logoColor=white)](https://neovim.io/)
+[![Lua](https://img.shields.io/badge/config-Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white)](https://www.lua.org/)
+[![lazy.nvim](https://img.shields.io/badge/plugins-lazy.nvim-2F2F2F?style=for-the-badge&logo=lazyvim&logoColor=white)](https://github.com/folke/lazy.nvim)
+[![GitHub Dark](https://img.shields.io/badge/theme-GitHub_Dark_Default-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/projekt0n/github-nvim-theme)
 
-### Sane Options
+[Back to the dotfiles](../../README.md)
 
-- Use system clipboard for yanking and pasting
-- Blinking cursor, especially useful over ssh connections to see if connection is stable
-- Use of an undofile so undos and redos persist
-- Swap file and backup files are off
-- Include hyphen (-) separated words as full words e.g. neovim, neo_vim, and neo-vim are all one word
-- More found in `lua/config/options.lua`
+</div>
 
-### Preview Buffers/Tabs
+## Built for flow
 
-- Allows auto-management of files that are not edited so the tabs/buffers stay clean and there isn't an excessive amount open
-- Similar to VS Codes preview tabs.
-- When a file is opened it is marked as the "preview buffer/tab"
-- If another file is opened then the existing preview tab is replaced by the new file
-- The opened file now the preview tab
-- If a preview tab/buffer has its file edited or saved, it is no longer marked as the preview tab and will persist
-- A file can be opened the written with `<leader>` to persist it without modifying, this has no effect since it would have no been modified
-- The code for this functionality is found in `lua/plugins/buffers.lua`
+> **Minimal at the core. Powerful at the edges.**
+>
+> This configuration stays close to native Vim behavior, then layers in the things that make everyday editing faster: intelligent completion, project-wide search, clean buffer management, persistent context, and a fully integrated Git workflow.
 
-### File View-States
+- **Native muscle memory** — familiar motions and modes with focused quality-of-life improvements.
+- **Fast by default** — plugins load lazily and configuration is split by concern.
+- **Quietly intelligent** — LSP, completion, diagnostics, formatting, spelling, and Copilot are there when needed.
+- **Visually cohesive** — every major surface is tuned around GitHub Dark Default.
 
-- Automatically loads and remembers file-view states
-- This includes cursor position and folded sections
-- Does not do this for diff views
+## What makes it different
 
-## Plugins ([Lazy](https://github.com/folke/lazy.nvim))
+### Preview buffers that clean up after themselves
 
-For specific implementations and keymaps of the plugins see their implementations in `lua/plugins`
+Opening a file marks it as a temporary preview with a `◌` in the buffer line. Open another file without touching the first and the old preview disappears automatically—similar to preview tabs in VS Code.
 
-### Coding
+```text
+open file A ◌  →  open file B ◌  →  file A closes
+                         │
+                         ├── edit or save  →  file B stays
+                         └── <leader>bp    →  file B is pinned
+```
 
-- **LSP Configs:** [lspconfig](https://github.com/neovim/nvim-lspconfig)
-- **Package Manager:** [Mason](https://github.com/mason-org/mason.nvim), [Mason-lspconfig](https://github.com/mason-org/mason-lspconfig.nvim), [mason-tool-installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim)
-- **Formatting:** [Conform](https://github.com/stevearc/conform.nvim)
-- **Completions:** [Blink](https://github.com/saghen/blink.cmp)
-    - **Snippets:** [LuaSnip](https://github.com/L3MON4D3/LuaSnip), [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
-- **AI Inline Suggestions:** [Copilot](https://github.com/zbirenbaum/copilot.lua)
-- **Linting:** [lint](https://github.com/mfussenegger/nvim-lint)
-- **Syntax Parser & Highlights:** [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-    - **Context:** [treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
-    - **Folds:** [ufo](https://github.com/kevinhwang91/nvim-ufo)
-- **Auto Delimiters:** [mini.pairs](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-pairs.md) ~~[autopairs](https://github.com/windwp/nvim-autopairs)~~
-- **Surround:** [mini.surround](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-surround.md) ~~[vim-surround](https://github.com/tpope/vim-surround)~~
-- **Argument Splits/Joins:** [mini.splitjoin](https://github.com/nvim-mini/mini.splitjoin)
-- **Auto-Tags:** [ts-autotag](https://github.com/windwp/nvim-ts-autotag)
+The result is a buffer list that stays useful instead of becoming a graveyard. The implementation lives in [`lua/plugins/buffers.lua`](./lua/plugins/buffers.lua).
 
-### Editor
+### File context that survives restarts
 
-- **Dashboard:** [Snacks.dashboard](https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md)
-- **Theme:** [GitHub](https://github.com/projekt0n/github-nvim-theme)
-- **Status Line:** [lualine](https://github.com/nvim-lualine/lualine.nvim) ~~[mini.statusline](https://github.com/nvim-mini/mini.statusline)~~
-- **Notifications**: [Snacks.notifier](https://github.com/folke/snacks.nvim/blob/main/docs/notifier.md) ~~[mini.notify](https://github.com/nvim-mini/mini.notify)~~ ~~[Fidget](https://github.com/j-hui/fidget.nvim)~~
-- **Command Line**: [Noice](https://github.com/folke/noice.nvim)
-- **Diagnostics:** [trouble](https://github.com/folke/trouble.nvim)
-- **Terminal:** [snacks.terminal](https://github.com/folke/snacks.nvim/blob/main/docs/terminal.md)
-- **Tabs**: [barbar](https://github.com/romgrk/barbar.nvim) ~~[bufferline](https://github.com/akinsho/bufferline.nvim)~~
-- **Icons:** [web-devicons](https://github.com/nvim-tree/nvim-web-devicons) ~~[mini.icons](https://github.com/nvim-mini/mini.icons)~~
-- **Delimiter Highlights:** [rainbow-delimiters](https://github.com/hiphish/rainbow-delimiters.nvim)
-- **Indent Guides:** [Snacks.indent](https://github.com/folke/snacks.nvim/blob/main/docs/indent.md) ~~[mini.indentscope](https://github.com/nvim-mini/mini.indentscope)~~ 
-- **Cursor Word Highlighting:** [Snacks.words](https://github.com/folke/snacks.nvim/blob/main/docs/words.md) ~~[mini.cursorword](https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-cursorword.md)~~ ~~[illuminate](https://github.com/rrethy/vim-illuminate)~~
-- **Scrollbar:** [scrollbar](https://github.com/petertriho/nvim-scrollbar)
-- **TODO Comments:** [todo-comments](https://github.com/folke/todo-comments.nvim)
+Cursor position and fold state are saved when a file leaves the window and restored when it returns. Diff views are deliberately excluded so CodeDiff can manage its own layout without interference.
 
-### Navigation
-- **Picker:** [Snacks.picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#-sources) ~~[fff](https://github.com/dmtrKovalenko/fff)~~ ~~[mini.pick](https://github.com/nvim-mini/mini.pick)~~ ~~[Telescope](https://github.com/nvim-telescope/telescope.nvim)~~
-- **Explorer:** [mini.files](https://github.com/nvim-mini/mini.files), [oil.nvim](https://github.com/stevearc/oil.nvim) ~~[Neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)~~
+### An interface that adapts
 
-### Git
-- **Diffs:** [gitsigns](https://github.com/lewis6991/gitsigns.nvim) ~~[mini.diff](https://github.com/nvim-mini/mini.diff)~~
-- **Gui:** [Neogit](https://github.com/neogitorg/neogit) [Snacks.Lazygit](https://github.com/folke/snacks.nvim/blob/main/docs/lazygit.md)
+- The Snacks picker switches between wide and vertical layouts based on available width.
+- The statusline collapses gracefully in narrow windows.
+- Tree-sitter folds, context, and rainbow delimiters share a consistent visual language.
+- Notifications, diagnostics, pickers, Git views, and floating windows use custom theme overrides.
 
-### Other
+## Daily controls
 
-- [undotree](https://github.com/mbbill/undotree)
-- [snacks.quickfile](https://github.com/folke/snacks.nvim/blob/main/docs/quickfile.md)
-- [snacks.input](https://github.com/folke/snacks.nvim/blob/main/docs/input.md): better `vim.ui.input`
-- [which-key](https://github.com/folke/which-key.nvim)
+`<leader>` is <kbd>Space</kbd>. Plugin-specific mappings live beside their implementations in [`lua/plugins`](./lua/plugins); global mappings live in [`lua/config/keymaps.lua`](./lua/config/keymaps.lua).
+
+| Area | Key | Action |
+| --- | --- | --- |
+| Mode | `jk` or `esc` | Leave insert mode |
+| Files | `⌘P` | Smart project picker |
+| Files | `<leader>pw` | Search text across the project |
+| Explorer | `<leader>e` / `<leader>E` | Open Mini Files at the working directory / current file |
+| Explorer | `-` | Open the parent directory with Oil |
+| Buffers | `<leader>bp` / `<leader>bd` | Pin or close the current buffer |
+| Buffers | `⌘1` … `⌘5` | Jump directly to a buffer |
+| Editing | `<leader>f` | Format the file or selection |
+| Editing | `<leader>p` | Paste over a selection without replacing the register |
+| Windows | `<leader>s` / `<leader>S` | Open a vertical / horizontal split |
+| Windows | `Ctrl` + `h` `j` `k` `l` | Move between splits |
+| Git | `<leader>gg` / `<leader>gG` | Open Neogit / Lazygit |
+| Git | `<leader>gh` | Preview the current Git hunk |
+| Diagnostics | `X` / `<leader>xx` | Inspect the current line / project diagnostics |
+| Tools | `<leader>tt` / `<leader>u` | Toggle the terminal / undo tree |
+
+Centered scrolling, search-result recentering, movable visual selections, selection-preserving indentation, and black-hole delete mappings are also configured globally.
+
+## Defaults
+
+- System clipboard integration and persistent undo history.
+- Relative line numbers, a fixed sign column, and ten lines of scroll context.
+- Smart-case searching and centered search navigation.
+- Tree-sitter-powered folds that start open and persist per file.
+- Right-opening vertical splits and below-opening horizontal splits.
+- No swap files, backup files, line wrapping, or redundant mode display.
+- Hyphenated identifiers are treated as complete words.
+- True-color rendering and a blinking cursor that makes stalled SSH sessions obvious.
+
+## Plugin map
+
+Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim) and grouped by responsibility rather than loaded from one giant file.
+
+| Area | Stack |
+| --- | --- |
+| Language intelligence | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) · [Mason](https://github.com/mason-org/mason.nvim) · [blink.cmp](https://github.com/Saghen/blink.cmp) · [LuaSnip](https://github.com/L3MON4D3/LuaSnip) |
+| AI suggestions | [copilot.lua](https://github.com/zbirenbaum/copilot.lua) |
+| Formatting and linting | [conform.nvim](https://github.com/stevearc/conform.nvim) · [nvim-lint](https://github.com/mfussenegger/nvim-lint) · cspell |
+| Syntax and folds | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) · [Treesitter Context](https://github.com/nvim-treesitter/nvim-treesitter-context) · [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) |
+| Search and navigation | [Snacks picker](https://github.com/folke/snacks.nvim) · [Mini Files](https://github.com/nvim-mini/mini.files) · [Oil](https://github.com/stevearc/oil.nvim) |
+| Git | [Gitsigns](https://github.com/lewis6991/gitsigns.nvim) · [Neogit](https://github.com/NeogitOrg/neogit) · [CodeDiff](https://github.com/esmuellert/codediff.nvim) · [Snacks Lazygit](https://github.com/folke/snacks.nvim/blob/main/docs/lazygit.md) |
+| Interface | [GitHub theme](https://github.com/projekt0n/github-nvim-theme) · [barbar.nvim](https://github.com/romgrk/barbar.nvim) · [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) · [Noice](https://github.com/folke/noice.nvim) |
+| Diagnostics | [Trouble](https://github.com/folke/trouble.nvim) · [nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar) · cspell filtering |
+| Editing | [mini.pairs](https://github.com/nvim-mini/mini.pairs) · [mini.surround](https://github.com/nvim-mini/mini.surround) · [mini.splitjoin](https://github.com/nvim-mini/mini.splitjoin) · [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) |
+| Extras | [which-key](https://github.com/folke/which-key.nvim) · [todo-comments](https://github.com/folke/todo-comments.nvim) · [undotree](https://github.com/mbbill/undotree) · [rainbow-delimiters](https://github.com/hiphish/rainbow-delimiters.nvim) |
+
+## First launch
+
+The main [bootstrap script](../../scripts/bootstrap.sh) installs Neovim and links this configuration with GNU Stow:
+
+```bash
+cd ~/.dotfiles
+./scripts/bootstrap.sh
+nvim
+```
+
+On first launch, Neovim bootstraps lazy.nvim, installs the plugin graph, downloads the configured Tree-sitter parsers, and provisions Lua tooling through Mason.
+
+> [!NOTE]
+> A Nerd Font is strongly recommended. The configuration uses icons throughout the buffer line, statusline, pickers, diagnostics, and file explorers.
+
+Useful maintenance commands:
+
+| Command | Purpose |
+| --- | --- |
+| `:Lazy` | Inspect, update, profile, or clean plugins |
+| `:Mason` | Inspect installed language servers and tools |
+| `:TSUpdate` | Update Tree-sitter parsers |
+| `:checkhealth` | Check Neovim and provider health |
+| `:ConformInfo` | Inspect formatters available to the current buffer |
+
+## Structure
+
+```text
+.
+├── init.lua
+├── lazy-lock.json
+└── lua/
+    ├── config/
+    │   ├── autocmds.lua   # persistent views and editor events
+    │   ├── keymaps.lua    # global controls
+    │   ├── lazy.lua       # plugin-manager bootstrap
+    │   ├── options.lua    # native editor behavior
+    │   └── utils.lua      # shared buffer and window helpers
+    └── plugins/
+        ├── buffers.lua    # preview-buffer lifecycle
+        ├── coding.lua     # editing primitives
+        ├── explorer.lua   # Mini Files and Oil
+        ├── git.lua        # Gitsigns, Neogit, and Lazygit
+        ├── lsp.lua        # language servers and Mason
+        ├── picker.lua     # project-aware search
+        └── ...            # UI, completion, diagnostics, and more
+```
+
+<div align="center">
+  <sub>Built to disappear when the work begins.</sub>
+</div>
