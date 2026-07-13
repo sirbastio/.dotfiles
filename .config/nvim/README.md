@@ -53,6 +53,7 @@ For specific implementations and keymaps of the plugins see their implementation
 - **Formatting:** [Conform](https://github.com/stevearc/conform.nvim)
 - **Completions:** [Blink](https://github.com/saghen/blink.cmp)
     - **Snippets:** [LuaSnip](https://github.com/L3MON4D3/LuaSnip), [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
+- **AI Inline Suggestions:** [Copilot](https://github.com/zbirenbaum/copilot.lua)
 - **Linting:** [lint](https://github.com/mfussenegger/nvim-lint)
 - **Syntax Parser & Highlights:** [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
     - **Context:** [treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)

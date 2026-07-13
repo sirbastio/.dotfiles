@@ -41,6 +41,15 @@ local function formatter()
     return "󰉼 " .. table.concat(names, ", ")
 end
 
+local function copilot_status()
+    local ok, status = pcall(require, "copilot.status")
+    if ok and status.data.status == "InProgress" then
+        return ""
+    end
+
+    return ""
+end
+
 return {
     -- { "nvim-mini/mini.statusline", version = false, opts = {} },
     {
@@ -76,11 +85,17 @@ return {
                             end,
                         },
                     },
-                    lualine_x = { formatter, cond = wide_statusline },
+                    lualine_x = { { formatter, cond = wide_statusline } },
                     lualine_y = {
-                        { "lsp_status", symbols = { done = "" }, cond = wide_statusline },
+                        {
+                            "lsp_status",
+                            symbols = { done = "" },
+                            ignore_lsp = { "copilot" },
+                            cond = wide_statusline,
+                        },
                         "diagnostics",
                         "filetype",
+                        { copilot_status, padding = { left = 1, right = 2 } },
                     },
                     lualine_z = { "location" },
                 },
