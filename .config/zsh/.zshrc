@@ -1,3 +1,6 @@
+export EDITOR=nvim
+export VISUAL=nvim
+
 # === History ===
 HISTSIZE=5000                           # commands stored in memory
 HISTFILE="$XDG_STATE_HOME/zsh/history"  # history file

@@ -1,0 +1,167 @@
+#:schema https://yazi-rs.github.io/schemas/theme.json
+
+# GitHub Dark Default for Yazi.
+#
+# The base and ANSI colors follow Ghostty's bundled GitHub Dark Default theme.
+# Semantic and syntax colors follow projekt0n/github-nvim-theme's
+# github_dark_default palette.
+
+[mgr]
+cwd = { fg = "#58a6ff", bold = true }
+
+# Find
+find_keyword  = { fg = "#e3b341", bg = "#3c3b33", bold = true }
+find_position = { fg = "#d2a8ff", bg = "reset", bold = true }
+
+# Symlink
+symlink_target = { fg = "#7d8590", italic = true }
+
+# Marker
+marker_copied   = { fg = "#56d364", bg = "#56d364" }
+marker_cut      = { fg = "#ffa198", bg = "#ffa198" }
+marker_marked   = { fg = "#56d4dd", bg = "#56d4dd" }
+marker_selected = { fg = "#79c0ff", bg = "#79c0ff" }
+marker_symbol   = "│"
+
+# Count
+count_copied   = { fg = "#0d1117", bg = "#56d364", bold = true }
+count_cut      = { fg = "#0d1117", bg = "#ffa198", bold = true }
+count_selected = { fg = "#0d1117", bg = "#79c0ff", bold = true }
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "#30363d" }
+
+[tabs]
+active   = { fg = "#0d1117", bg = "#58a6ff", bold = true }
+inactive = { fg = "#7d8590", bg = "#161b22" }
+
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+[mode]
+normal_main = { fg = "#0d1117", bg = "#58a6ff", bold = true }
+normal_alt  = { fg = "#79c0ff", bg = "#21262d" }
+
+select_main = { fg = "#0d1117", bg = "#56d364", bold = true }
+select_alt  = { fg = "#56d364", bg = "#21262d" }
+
+unset_main = { fg = "#0d1117", bg = "#d2a8ff", bold = true }
+unset_alt  = { fg = "#d2a8ff", bg = "#21262d" }
+
+[indicator]
+parent  = { fg = "#0d1117", bg = "#6e7681" }
+current = { fg = "#0d1117", bg = "#e6edf3", bold = true }
+preview = { fg = "#79c0ff", underline = true }
+padding = { open = "", close = "" }
+
+[status]
+overall   = { fg = "#7d8590", bg = "#161b22" }
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+# Permissions
+perm_sep   = { fg = "#484f58" }
+perm_type  = { fg = "#58a6ff" }
+perm_read  = { fg = "#e3b341" }
+perm_write = { fg = "#ff7b72" }
+perm_exec  = { fg = "#56d364" }
+
+# Progress
+progress_label  = { fg = "#e6edf3", bold = true }
+progress_normal = { fg = "#56d364", bg = "#21262d" }
+progress_error  = { fg = "#ffa198", bg = "#21262d" }
+
+[which]
+cols            = 3
+mask            = { bg = "#161b22" }
+cand            = { fg = "#56d4dd", bold = true }
+rest            = { fg = "#6e7681" }
+desc            = { fg = "#d2a8ff" }
+separator       = "  "
+separator_style = { fg = "#484f58" }
+
+[confirm]
+border     = { fg = "#58a6ff" }
+title      = { fg = "#79c0ff", bold = true }
+body       = { fg = "#e6edf3" }
+list       = { fg = "#b1bac4" }
+btn_yes    = { fg = "#0d1117", bg = "#56d364", bold = true }
+btn_no     = { fg = "#b1bac4", bg = "#21262d" }
+btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+
+[spot]
+border   = { fg = "#58a6ff" }
+title    = { fg = "#79c0ff", bold = true }
+tbl_col  = { fg = "#d2a8ff" }
+tbl_cell = { fg = "#0d1117", bg = "#58a6ff", bold = true }
+
+[notify]
+title_info  = { fg = "#58a6ff" }
+title_warn  = { fg = "#d29922" }
+title_error = { fg = "#f85149" }
+
+icon_info  = ""
+icon_warn  = ""
+icon_error = ""
+
+[pick]
+border   = { fg = "#58a6ff" }
+active   = { fg = "#79c0ff", bold = true }
+inactive = { fg = "#b1bac4" }
+
+[input]
+border   = { fg = "#58a6ff" }
+title    = { fg = "#79c0ff", bold = true }
+value    = { fg = "#e6edf3" }
+selected = { fg = "#0d1117", bg = "#e6edf3" }
+
+[cmp]
+border   = { fg = "#58a6ff" }
+active   = { fg = "#0d1117", bg = "#e6edf3" }
+inactive = { fg = "#b1bac4" }
+
+icon_file    = ""
+icon_folder  = ""
+icon_command = ""
+
+[tasks]
+border  = { fg = "#58a6ff" }
+title   = { fg = "#79c0ff", bold = true }
+hovered = { fg = "#d2a8ff", bold = true }
+
+[help]
+on      = { fg = "#56d4dd" }
+run     = { fg = "#d2a8ff" }
+desc    = { fg = "#7d8590" }
+hovered = { fg = "#0d1117", bg = "#e6edf3", bold = true }
+footer  = { fg = "#0d1117", bg = "#b1bac4" }
+
+[filetype]
+rules = [
+	# Images
+	{ mime = "image/*", fg = "#bc8cff" },
+
+	# Media
+	{ mime = "{audio,video}/*", fg = "#d29922" },
+
+	# Archives
+	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#ff7b72" },
+
+	# Documents
+	{ mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#56d4dd" },
+
+	# Virtual files
+	{ mime = "vfs/{absent,stale}", fg = "#6e7681" },
+
+	# Special files
+	{ url = "*", is = "orphan", fg = "#e6edf3", bg = "#f85149" },
+	{ url = "*", is = "exec", fg = "#56d364" },
+
+	# Dummy files
+	{ url = "*", is = "dummy", fg = "#e6edf3", bg = "#f85149" },
+	{ url = "*/", is = "dummy", fg = "#e6edf3", bg = "#f85149" },
+
+	# Fallback
+	{ url = "*/", fg = "#58a6ff", bold = true },
+]
