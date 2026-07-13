@@ -11,6 +11,8 @@ Keep Vim's muscle memory. Remove the friction.
 [![lazy.nvim](https://img.shields.io/badge/plugins-lazy.nvim-2F2F2F?style=for-the-badge&logo=lazyvim&logoColor=white)](https://github.com/folke/lazy.nvim)
 [![GitHub Dark](https://img.shields.io/badge/theme-GitHub_Dark_Default-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/projekt0n/github-nvim-theme)
 
+<img src="../../assets/neovim-preview.jpg" alt="Custom Neovim dashboard running in Ghostty" width="100%">
+
 [Back to the dotfiles](../../README.md)
 
 </div>
