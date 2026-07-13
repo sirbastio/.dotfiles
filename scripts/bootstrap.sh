@@ -49,37 +49,66 @@ command_exists() {
 }
 
 detect_platform() {
-  case "$(uname -s)" in
-    Darwin) printf 'macos' ;;
-    Linux) printf 'linux' ;;
-    *) printf 'unknown' ;;
+  local architecture
+  local distro_id
+  local kernel
+
+  kernel="$(uname -s)"
+  architecture="$(uname -m)"
+
+  case "$kernel" in
+    Darwin)
+      if [[ "$architecture" != "arm64" ]]; then
+        die "Unsupported macOS architecture: $architecture. This script requires Apple silicon (arm64)."
+      fi
+      printf 'macos'
+      ;;
+    Linux)
+      if [[ ! -r /etc/os-release ]]; then
+        die "Cannot identify this Linux distribution because /etc/os-release is unavailable. Only Ubuntu is supported."
+      fi
+
+      distro_id="$(. /etc/os-release && printf '%s' "${ID:-}")"
+      if [[ "$distro_id" != "ubuntu" ]]; then
+        die "Unsupported Linux distribution: ${distro_id:-unknown}. Only Ubuntu is supported."
+      fi
+      printf 'ubuntu'
+      ;;
+    *)
+      die "Unsupported operating system: $kernel. Only Apple silicon macOS and Ubuntu are supported."
+      ;;
   esac
 }
 
 detect_environment() {
-  local platform
-  platform="$(detect_platform)"
-
-  if [[ "$platform" == "linux" ]] && grep -qi microsoft /proc/sys/kernel/osrelease 2>/dev/null; then
-    printf 'wsl'
-    return 0
-  fi
-
-  printf '%s' "$platform"
+  case "$PLATFORM" in
+    macos)
+      printf 'Apple silicon macOS'
+      ;;
+    ubuntu)
+      if grep -qi microsoft /proc/sys/kernel/osrelease 2>/dev/null; then
+        printf 'Ubuntu (WSL)'
+      else
+        printf 'Ubuntu'
+      fi
+      ;;
+  esac
 }
 
 load_homebrew() {
+  local brew_paths=()
   local brew_path
 
   if command_exists brew; then
     return 0
   fi
 
-  for brew_path in \
-    /opt/homebrew/bin/brew \
-    /usr/local/bin/brew \
-    /home/linuxbrew/.linuxbrew/bin/brew
-  do
+  case "$PLATFORM" in
+    macos) brew_paths=(/opt/homebrew/bin/brew) ;;
+    ubuntu) brew_paths=(/home/linuxbrew/.linuxbrew/bin/brew) ;;
+  esac
+
+  for brew_path in "${brew_paths[@]}"; do
     if [[ -x "$brew_path" ]]; then
       eval "$("$brew_path" shellenv)"
       return 0
@@ -121,7 +150,7 @@ ensure_xdg_dirs() {
 install_ubuntu_packages() {
   local packages=()
 
-  if [[ "$(detect_platform)" != "linux" ]]; then
+  if [[ "$PLATFORM" != "ubuntu" ]]; then
     return 0
   fi
 
@@ -236,6 +265,7 @@ SKIP_APT=0
 SKIP_ZINIT=0
 SKIP_STOW=0
 ASSUME_YES=0
+PLATFORM=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -265,6 +295,8 @@ while [[ $# -gt 0 ]]; do
   esac
   shift
 done
+
+PLATFORM="$(detect_platform)"
 
 log "Bootstrapping dotfiles from $DOTFILES_DIR"
 log "Detected environment: $(detect_environment)"

@@ -1,4 +1,3 @@
--- TODO: Install mason tool installer
 return {
     "mason-org/mason-lspconfig.nvim",
     dependencies = {
