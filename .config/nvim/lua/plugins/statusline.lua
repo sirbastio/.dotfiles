@@ -50,6 +50,16 @@ local function copilot_status()
     return ""
 end
 
+local function copilot_color()
+    local ok, client = pcall(require, "copilot.client")
+    if ok and client.is_disabled() then
+        local spec = require("github-theme.spec").load("github_dark_default")
+        return { fg = spec.palette.fg.subtle }
+    end
+
+    return {}
+end
+
 return {
     -- { "nvim-mini/mini.statusline", version = false, opts = {} },
     {
@@ -95,7 +105,11 @@ return {
                         },
                         "diagnostics",
                         "filetype",
-                        { copilot_status, padding = { left = 1, right = 2 } },
+                        {
+                            copilot_status,
+                            color = copilot_color,
+                            padding = { left = 1, right = 2 },
+                        },
                     },
                     lualine_z = { "location" },
                 },
