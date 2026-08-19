@@ -8,6 +8,7 @@ vim.g.maplocalleader = " "
 set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 set("n", "<leader>w", "<cmd>w<CR>", { desc = "[w]rite file" })
 set("n", "<leader>q", "<cmd>q<CR>", { desc = "[q]uit" })
+set("n", "<leader>K", "<cmd>Man<CR>", {desc = "Open manual page under cursor"})
 
 -- === KEEP CURSOR CENTERED === --
 set("n", "J", "mzJ`z", { desc = "[J]oin lines (keep cursor position)" })
@@ -19,8 +20,8 @@ set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 -- === MOVE LINES === --
 set("x", "J", "<Esc><cmd>silent! '<,'>m '>+1 | silent! normal! gv=gv<CR>", { desc = "Move selected lines down" })
 set("x", "K", "<Esc><cmd>silent! '<,'>m '<-2 | silent! normal! gv=gv<CR>", { desc = "Move selected lines up" })
-set("x", "<S-Tab>", "<gv", { desc = "Outdent selected lines" })
-set("x", "<Tab>", ">gv", { desc = "Indent selected lines" })
+set({ "n", "x" }, "<S-Tab>", "<gv", { desc = "Outdent selected lines" })
+set({ "n", "x" }, "<Tab>", ">gv", { desc = "Indent selected lines" })
 
 -- === SEARCH === --
 set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "[c]lear search highlights" })

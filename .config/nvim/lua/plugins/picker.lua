@@ -66,7 +66,7 @@ return {
     },
     init = function()
         local function set_default_project_picker_keymaps()
-            set("n", "<C-p>", function() Snacks.picker.smart() end, { desc = "pick [p]roject files" })
+            set("n", "<C-p>", function() Snacks.picker.files() end, { desc = "pick [p]roject files" })
             set("n", "<leader>pw", function() Snacks.picker.grep() end, { desc = "[p]ick [w]ords" })
             set("n", "<leader>pW", function() Snacks.picker.grep_word() end, { desc = "[p]ick [W]ord" })
         end
