@@ -1,5 +1,6 @@
 export EDITOR=nvim
 export VISUAL=nvim
+export MANPAGER='nvim +Man!'
 
 # === History ===
 HISTSIZE=5000                           # commands stored in memory

@@ -20,8 +20,10 @@ set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 -- === MOVE LINES === --
 set("x", "J", "<Esc><cmd>silent! '<,'>m '>+1 | silent! normal! gv=gv<CR>", { desc = "Move selected lines down" })
 set("x", "K", "<Esc><cmd>silent! '<,'>m '<-2 | silent! normal! gv=gv<CR>", { desc = "Move selected lines up" })
-set({ "n", "x" }, "<S-Tab>", "<gv", { desc = "Outdent selected lines" })
-set({ "n", "x" }, "<Tab>", ">gv", { desc = "Indent selected lines" })
+set("n", "<S-Tab>", "<<", { desc = "Outdent current line" })
+set("n", "<Tab>", ">>", { desc = "Indent current line" })
+set("x", "<S-Tab>", "<gv", { desc = "Outdent selected lines" })
+set("x", "<Tab>", ">gv", { desc = "Indent selected lines" })
 
 -- === SEARCH === --
 set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "[c]lear search highlights" })
