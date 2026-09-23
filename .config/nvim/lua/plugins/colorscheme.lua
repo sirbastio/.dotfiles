@@ -56,6 +56,7 @@ return {
                         TabLineFill = { bg = colors.bg_transparent },
                         NormalFloat = { bg = colors.bg_float },
                         FloatBorder = { fg = colors.border, bg = colors.bg_float },
+                        BlinkCmpSignatureHelpBorder = { link = "FloatBorder" },
                         DiagnosticUnderlineInfo = spell_underline,
                         SpellBad = spell_underline,
                         SpellCap = spell_underline,

@@ -18,7 +18,7 @@ return {
         "folke/noice.nvim",
         event = "VimEnter",
         dependencies = { "MunifTanjim/nui.nvim" },
-        opts = { lsp = { progress = { enabled = false } }, presets = { lsp_doc_border = true } },
+        opts = { lsp = { progress = { enabled = false }, signature = { enabled = false } } },
     },
     {
         "MeanderingProgrammer/render-markdown.nvim",
