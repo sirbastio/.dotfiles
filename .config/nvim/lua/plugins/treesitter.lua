@@ -58,7 +58,11 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         opts = {
             open_fold_hl_timeout = 0,
-            provider_selector = function()
+            provider_selector = function(_, filetype)
+                if filetype == "bigfile" then
+                    return ""
+                end
+
                 return { "treesitter", "indent" }
             end,
         },

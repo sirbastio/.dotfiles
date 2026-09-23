@@ -10,6 +10,10 @@ return {
         vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
             group = vim.api.nvim_create_augroup("Lint", { clear = true }),
             callback = require("config.utils").on_normal_file_buffer(function(event)
+                if vim.bo[event.buf].filetype == "bigfile" then
+                    return
+                end
+
                 vim.api.nvim_buf_call(event.buf, function()
                     lint.try_lint("cspell")
                     lint.try_lint()
