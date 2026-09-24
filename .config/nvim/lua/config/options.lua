@@ -50,6 +50,7 @@ o.undofile = true     -- do create an undo file
 -- OTHER --
 o.updatetime = 200            -- faster completion
 o.mouse = "a"                 -- enable mouse support
+o.mousescroll = "ver:1,hor:1" -- scroll one line or column per mouse-wheel step
 o.clipboard = "unnamedplus"   -- use system clipboard
 o.termguicolors = true        -- enable 24-bit RGB colors
 o.iskeyword:append("-")       -- include - in words
