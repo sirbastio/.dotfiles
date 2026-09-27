@@ -185,13 +185,15 @@ stow_dotfiles() {
 
 configure_atuin() {
   if ! command_exists atuin; then
-    warn "atuin is not installed yet; skipping Atuin log directory setup."
+    warn "atuin is not installed yet; skipping Atuin configuration."
     return 0
   fi
 
-  log "Configuring Atuin log directory"
+  log "Configuring Atuin logs and history search"
   mkdir -p "$HOME/.local/share/atuin/logs"
   atuin config set logs.dir "$HOME/.local/share/atuin/logs"
+  atuin config set filter_mode global
+  atuin config set filter_mode_shell_up_key_binding directory
 
   if [[ -d "$HOME/.atuin" ]]; then
     warn "Leaving existing ~/.atuin in place. Remove it after confirming your Atuin data is migrated."

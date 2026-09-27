@@ -8,6 +8,11 @@ return {
             lua = { "stylua" },
             python = { "ruff_format" },
             c = { "clang-format" },
+
+            javascript = { "prettier" },
+            typescript = { "prettier" },
+            javascriptreact = { "prettier" },
+            typescriptreact = { "prettier" },
         },
         formatters = {
             stylua = {

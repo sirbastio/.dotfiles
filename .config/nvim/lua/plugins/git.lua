@@ -17,8 +17,9 @@ return {
             { "<leader>gh", ":Gitsigns preview_hunk<CR>", desc = "[g]it [h]unk preview" },
             { "<leader>gH", ":Gitsigns preview_hunk_inline<CR>", desc = "[G]it [H]unk preview inline" },
             { "<leader>gd", ":Gitsigns diffthis<CR>", desc = "[g]it [d]iff" },
-            { "<leader>gn", ":Gitsigns nav_hunk next<CR>", desc = "[g]it [n]ext (hunk)" },
-            { "<leader>gp", ":Gitsigns nav_hunk prev<CR>", desc = "[g]it [p]revious (hunk)" },
+            { "<leader>gn", ":Gitsigns nav_hunk next<CR>", desc = "[g]it [n]ext hunk" },
+            { "<leader>gp", ":Gitsigns nav_hunk prev<CR>", desc = "[g]it [p]revious hunk" },
+            { "<leader>gr", ":Gitsigns reset_hunk<CR>", desc = "[g]it [r]eset hunk" },
         },
     },
     {

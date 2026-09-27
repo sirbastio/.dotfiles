@@ -75,6 +75,10 @@ start bootstrap
 | `--skip-stow` | Skip linking dotfiles into `$HOME` |
 | `--help` | Show all available options |
 
+The bootstrap configures Atuin so Ctrl-R searches all history and Up Arrow searches
+history from the current directory. Rerunning it reapplies these settings while
+preserving other Atuin preferences.
+
 ## Repository Map
 
 ```text

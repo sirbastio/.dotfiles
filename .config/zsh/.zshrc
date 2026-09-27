@@ -1,6 +1,10 @@
+typeset -U path PATH
+
 export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER='nvim +Man!'
+
+mkdir -p "$XDG_STATE_HOME/zsh" "$XDG_CACHE_HOME/zsh"
 
 # === History ===
 HISTSIZE=5000                           # commands stored in memory
@@ -11,89 +15,41 @@ setopt sharehistory                     # shares commands across active terminal
 setopt hist_ignore_space                # type a space before a command to not save it to history
 setopt hist_ignore_all_dups             # removes older duplicate commands
 setopt hist_save_no_dups                # older duplicate commands are removed
-setopt hist_ignore_dups                 # only saves new commands
 setopt hist_find_no_dups                # skips over duplicates when searching history
 setopt hist_reduce_blanks               # cleans up accidental extra spaces
 
 # === Key Binds ===
+bindkey -v   # vim mode 
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey '^y' autosuggest-accept
 
-# === Other ===
-if command -v fzf &>/dev/null; then
-    source <(fzf --zsh)
-fi
+# === Shell Integrations ===
+source "$XDG_DATA_HOME/zinit/zinit.git/zinit.zsh"
+zinit light zsh-users/zsh-completions
 
-if command -v starship &>/dev/null; then
-    eval "$(starship init zsh)"
-fi
+autoload -Uz compinit
+compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
 
-if command -v atuin &>/dev/null; then
-    eval "$(atuin init zsh)"
-fi
+source <(fzf --zsh)
+eval "$(starship init zsh)"
+eval "$(atuin init zsh)"
+eval "$(fnm env --use-on-cd --shell zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
-if command -v zoxide &>/dev/null; then
-    eval "$(zoxide init --cmd cd zsh)"
-fi
+zinit light Aloxaf/fzf-tab
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
 
-if command -v fnm &>/dev/null; then
-    eval "$(fnm env --use-on-cd --shell zsh)"
-fi
-
-# Fix cursor in tmux
-if [[ -n "${GHOSTTY_RESOURCES_DIR:-}" ]]; then
-  source "$GHOSTTY_RESOURCES_DIR/shell-integration/zsh/ghostty-integration"
-fi
-
-# === Plugins ===
-ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
-
-# --- Plugins ---
-if [[ -r "$ZINIT_HOME/zinit.zsh" ]]; then
-    source "$ZINIT_HOME/zinit.zsh"
-
-    zinit light zsh-users/zsh-completions
-
-    autoload -Uz compinit
-    compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
-
-    zinit light Aloxaf/fzf-tab
-    zinit snippet OMZP::git
-    zinit light zsh-users/zsh-autosuggestions
-
-    zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-    zstyle ':completion:*' menu no
-    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --color=always --group-directories-first $realpath'
-    zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --color=always --group-directories-first $realpath'
-
-    zinit light zsh-users/zsh-syntax-highlighting
-fi
-
-# === Functions ===
-nssh() {
-    if (( $# < 1 || $# > 2 )); then
-        print -u2 "Usage: nssh <ssh-host> [remote-path]"
-        print -u2 "   or: nssh <ssh-host>/<remote-path>"
-        return 2
-    fi
-
-    local ssh_host
-    local remote_path
-
-    if (( $# == 1 )) && [[ "$1" == */* ]]; then
-        ssh_host="${1%%/*}"
-        remote_path="${1#*/}"
-    else
-        ssh_host="$1"
-        remote_path="${2:-.}"
-    fi
-
-    command nvim "oil-ssh://${ssh_host}/${remote_path}"
-}
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # case-insensitive tab matches
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} 
+zstyle ':completion:*' menu no                          # use fzf-tab for completion matches
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':fzf-tab:complete:(cd|__zoxide_z):*' fzf-preview \
+    'eza -1 --color=always --group-directories-first $realpath'
 
 # === Aliases ===
-if command -v eza &>/dev/null; then
+if (( $+commands[eza] )); then
     alias ls='eza --icons --group-directories-first'
     alias ll='eza -lh --icons --grid'
     alias tree='eza --group-directories-first --tree -L 3 '
