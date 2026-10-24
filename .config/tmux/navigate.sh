@@ -17,7 +17,7 @@ esac
 # Kept out of the command substitution: macOS /bin/sh (bash 3.2) brace-expands it there.
 at_edge="#{||:#{$edge},#{window_zoomed_flag}}"
 if [ "$(tmux display-message -p -t "$pane" "$at_edge")" = 1 ]; then
-    open -g "hammerspoon://navigate?dir=$direction"
+    hs -q -c "navigateWindow('$direction')" >/dev/null
 else
     tmux select-pane -t "$pane" "$flag"
 fi

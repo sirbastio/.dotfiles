@@ -10,9 +10,37 @@ local function samePosition(a, b)
     return largerArea > 0 and width * height / largerArea >= overlapThreshold
 end
 
+-- Like hs.window.orderedWindows(), front to back, but only asks apps that own
+-- an on-screen window. The stock version checks the kind of every running
+-- process (~100, mostly menu bar and background agents), which is most of its cost.
+local function orderedWindows()
+    local onscreen = hs.window.list() -- front to back
+    local byID, checkedPIDs = {}, {}
+    for _, info in ipairs(onscreen) do
+        local pid = info.kCGWindowOwnerPID
+        if info.kCGWindowLayer == 0 and not checkedPIDs[pid] then
+            checkedPIDs[pid] = true
+            local app = hs.application.applicationForPID(pid)
+            if app and app:kind() > 0 then
+                for _, win in ipairs(app:visibleWindows()) do
+                    local id = win:id()
+                    if id then byID[id] = win end
+                end
+            end
+        end
+    end
+
+    local ordered = {}
+    for _, info in ipairs(onscreen) do
+        local win = byID[info.kCGWindowNumber]
+        if win then table.insert(ordered, win) end
+    end
+    return ordered
+end
+
 local function windowGroups()
     local windows = {}
-    for stackIndex, win in ipairs(hs.window.orderedWindows()) do
+    for stackIndex, win in ipairs(orderedWindows()) do
         if win:isStandard() and not win:isMinimized() then
             local id = win:id()
             if id then
@@ -97,7 +125,7 @@ end)
 
 -- Ctrl+h/j/k/l focus the nearest window group in that direction.
 -- Ghostty keeps these keys so Neovim splits and tmux panes move first;
--- at their edge they hand off via `open -g hammerspoon://navigate?dir=left`.
+-- at their edge they hand off via `hs -c "navigateWindow('left')"`.
 local terminalBundleID = "com.mitchellh.ghostty"
 local directionKeys = { h = "left", j = "down", k = "up", l = "right" }
 
@@ -149,6 +177,7 @@ directionAppWatcher = hs.application.watcher.new(function(_, event, app)
 end):start()
 updateDirectionHotkeys(hs.application.frontmostApplication())
 
-hs.urlevent.bind("navigate", function(_, params)
-    focusWindowInDirection(params.dir)
-end)
+-- Global entry point for the `hs` CLI, which talks to Hammerspoon over IPC
+-- (faster than routing a hammerspoon:// URL through `open`).
+require("hs.ipc")
+navigateWindow = focusWindowInDirection

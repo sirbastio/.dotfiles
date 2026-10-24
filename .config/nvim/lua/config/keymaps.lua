@@ -50,7 +50,7 @@ for key, direction in pairs({ h = "left", j = "down", k = "up", l = "right" }) d
         if vim.env.TMUX then
             vim.system({ vim.fn.expand("~/.config/tmux/navigate.sh"), direction })
         else
-            vim.system({ "open", "-g", "hammerspoon://navigate?dir=" .. direction })
+            vim.system({ "hs", "-q", "-c", "navigateWindow('" .. direction .. "')" })
         end
     end, { desc = "Move to " .. direction .. " split, pane, or window" })
 end

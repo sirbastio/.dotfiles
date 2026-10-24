@@ -32,7 +32,7 @@ _navigate() {
     if [[ -n $TMUX ]]; then
         ~/.config/tmux/navigate.sh $direction &!
     else
-        open -g "hammerspoon://navigate?dir=$direction" &!
+        hs -q -c "navigateWindow('$direction')" >/dev/null &!
     fi
 }
 for key direction in h left j down k up l right; do
