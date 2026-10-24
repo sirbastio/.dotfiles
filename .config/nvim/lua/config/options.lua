@@ -49,6 +49,7 @@ o.undofile = true     -- do create an undo file
 
 -- OTHER --
 o.updatetime = 200            -- faster completion
+o.timeoutlen = 300            -- ms to wait for the next key of a mapping (e.g. jk)
 o.mouse = "a"                 -- enable mouse support
 o.mousescroll = "ver:1,hor:1" -- scroll one line or column per mouse-wheel step
 o.clipboard = "unnamedplus"   -- use system clipboard

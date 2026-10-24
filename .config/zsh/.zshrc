@@ -19,7 +19,8 @@ setopt hist_find_no_dups                # skips over duplicates when searching h
 setopt hist_reduce_blanks               # cleans up accidental extra spaces
 
 # === Key Binds ===
-bindkey -v   # vim mode 
+bindkey -v   # vim mode
+KEYTIMEOUT=1 # wait 10ms (not 400ms) after Esc before switching to normal mode
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^y' autosuggest-accept

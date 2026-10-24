@@ -63,6 +63,7 @@ start bootstrap
       ├── install Node.js LTS with fnm
       ├── link configs with GNU Stow
       ├── install TPM and configured tmux plugins
+      ├── build the bat theme cache (used by bat and delta)
       └── configure Atuin and check the login shell
 ```
 

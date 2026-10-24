@@ -199,6 +199,17 @@ stow_dotfiles() {
   stow --dir="$DOTFILES_DIR" --target="$HOME" --restow .
 }
 
+build_bat_cache() {
+  if ! command_exists bat; then
+    warn "bat is not installed yet; skipping the bat theme cache."
+    return 0
+  fi
+
+  # bat and delta only see the custom themes in ~/.config/bat/themes after this
+  log "Building bat theme cache"
+  bat cache --build >/dev/null
+}
+
 configure_atuin() {
   if ! command_exists atuin; then
     warn "atuin is not installed yet; skipping Atuin configuration."
@@ -340,6 +351,7 @@ main() {
     warn "Skipping Tmux Plugin Manager setup."
   fi
 
+  build_bat_cache
   configure_atuin
   check_zsh_shell
 

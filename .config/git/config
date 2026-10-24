@@ -4,3 +4,32 @@
 
 [init]
     defaultBranch = main
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true                         # n/N to jump between files
+    dark = true                             # skip background detection, which is unreliable in tmux
+    true-color = always                     # exact hex colours even when COLORTERM isn't passed through
+    line-numbers = true
+    syntax-theme = github-dark-default      # from ~/.config/bat/themes, loaded by `bat cache --build`
+    # --mouse lets the scroll wheel work inside tmux (hold Shift to select text)
+    pager = less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse
+    # GitHub Dark Default diff colours, matching the nvim theme
+    minus-style = syntax "#2c171b"
+    minus-emph-style = syntax "#5f2022"
+    plus-style = syntax "#10231c"
+    plus-emph-style = syntax "#164023"
+    line-numbers-minus-style = "#f85149"
+    line-numbers-plus-style = "#3fb950"
+    line-numbers-zero-style = "#6e7681"
+
+[diff]
+    colorMoved = default
+
+[merge]
+    conflictStyle = zdiff3
