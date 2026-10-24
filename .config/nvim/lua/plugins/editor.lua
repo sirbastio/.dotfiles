@@ -27,15 +27,6 @@ return {
         opts = { sign = { enabled = false } },
     },
     {
-        "christoomey/vim-tmux-navigator",
-        keys = {
-            { "<C-h>", "<cmd>TmuxNavigateLeft<CR>", desc = "Move to left split or pane" },
-            { "<C-j>", "<cmd>TmuxNavigateDown<CR>", desc = "Move to lower split or pane" },
-            { "<C-k>", "<cmd>TmuxNavigateUp<CR>", desc = "Move to upper split or pane" },
-            { "<C-l>", "<cmd>TmuxNavigateRight<CR>", desc = "Move to right split or pane" },
-        },
-    },
-    {
         "HiPhish/rainbow-delimiters.nvim",
         event = { "BufReadPost", "BufNewFile" },
         init = function()

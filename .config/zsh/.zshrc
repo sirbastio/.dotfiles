@@ -25,6 +25,22 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^y' autosuggest-accept
 
+# Ctrl+h/j/k/l: the prompt has no splits, so hand off straight to tmux panes
+# (navigate.sh) or, outside tmux, to macOS windows (Hammerspoon).
+_navigate() {
+    local direction=${WIDGET#navigate-}
+    if [[ -n $TMUX ]]; then
+        ~/.config/tmux/navigate.sh $direction &!
+    else
+        open -g "hammerspoon://navigate?dir=$direction" &!
+    fi
+}
+for key direction in h left j down k up l right; do
+    zle -N navigate-$direction _navigate
+    bindkey -M viins "^$key" navigate-$direction
+    bindkey -M vicmd "^$key" navigate-$direction
+done
+
 # === Shell Integrations ===
 source "$XDG_DATA_HOME/zinit/zinit.git/zinit.zsh"
 zinit light zsh-users/zsh-completions

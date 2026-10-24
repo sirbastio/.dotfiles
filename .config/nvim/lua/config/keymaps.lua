@@ -37,3 +37,20 @@ set("n", "x", '"_x', { desc = "delete char without yanking"})
 -- === SPLITS === --
 set("n", "<leader>s", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
 set("n", "<leader>S", "<cmd>split<CR>", { desc = "Split window horizontally" })
+
+-- === NAVIGATION === --
+-- Ctrl+h/j/k/l: Neovim split -> tmux pane -> macOS window (via Hammerspoon).
+for key, direction in pairs({ h = "left", j = "down", k = "up", l = "right" }) do
+    set("n", "<C-" .. key .. ">", function()
+        local win = vim.api.nvim_get_current_win()
+        vim.cmd.wincmd(key)
+        if vim.api.nvim_get_current_win() ~= win then
+            return
+        end
+        if vim.env.TMUX then
+            vim.system({ vim.fn.expand("~/.config/tmux/navigate.sh"), direction })
+        else
+            vim.system({ "open", "-g", "hammerspoon://navigate?dir=" .. direction })
+        end
+    end, { desc = "Move to " .. direction .. " split, pane, or window" })
+end
