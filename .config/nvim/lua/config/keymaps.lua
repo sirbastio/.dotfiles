@@ -6,6 +6,7 @@ vim.g.maplocalleader = " "
 
 -- === UTIL === --
 set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
+set("i", "kj", "<ESC>", { desc = "Exit insert mode" })
 set("n", "<leader>w", "<cmd>w<CR>", { desc = "[w]rite file" })
 set("n", "<leader>q", "<cmd>q<CR>", { desc = "[q]uit" })
 set("n", "<leader>K", "<cmd>Man<CR>", {desc = "Open manual page under cursor"})

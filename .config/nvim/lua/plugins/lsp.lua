@@ -11,6 +11,7 @@ return {
                     "cspell",
                     "ruff",
                     "clang-format",
+                    "prettier",
                 },
             },
         },
@@ -19,12 +20,23 @@ return {
         ensure_installed = {
             "lua_ls",
             "clangd",
+            "vtsls",
+            "eslint",
         },
         automatic_enable = {
             exclude = { "stylua" },
         },
     },
     init = function()
+        vim.lsp.config("clangd", {
+            cmd = {
+                "clangd",
+                "--query-driver=/opt/homebrew/bin/avr-gcc",
+                -- clangd logs info to stderr, which floods lsp.log
+                "--log=error",
+            },
+        })
+
         vim.lsp.config("lua_ls", {
             settings = {
                 Lua = {

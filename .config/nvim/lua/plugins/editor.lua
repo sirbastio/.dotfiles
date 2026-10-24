@@ -29,10 +29,10 @@ return {
     {
         "christoomey/vim-tmux-navigator",
         keys = {
-            { "<C-h>", "<cmd><C-U>TmuxNavigateLeft<CR>", desc = "Move to left split or pane" },
-            { "<C-j>", "<cmd><C-U>TmuxNavigateDown<CR>", desc = "Move to lower split or pane" },
-            { "<C-k>", "<cmd><C-U>TmuxNavigateUp<CR>", desc = "Move to upper split or pane" },
-            { "<C-l>", "<cmd><C-U>TmuxNavigateRight<CR>", desc = "Move to right split or pane" },
+            { "<C-h>", "<cmd>TmuxNavigateLeft<CR>", desc = "Move to left split or pane" },
+            { "<C-j>", "<cmd>TmuxNavigateDown<CR>", desc = "Move to lower split or pane" },
+            { "<C-k>", "<cmd>TmuxNavigateUp<CR>", desc = "Move to upper split or pane" },
+            { "<C-l>", "<cmd>TmuxNavigateRight<CR>", desc = "Move to right split or pane" },
         },
     },
     {

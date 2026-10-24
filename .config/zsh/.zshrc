@@ -59,6 +59,8 @@ fi
 
 alias ..='cd ..'
 alias c='clear'
+alias lsa="ls -a"
 
 alias n='nvim'
 alias gg='lazygit'
+alias t="tmux"

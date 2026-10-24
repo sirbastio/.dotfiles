@@ -68,7 +68,7 @@ set foldmethod=syntax
 set foldlevel=99
 set foldlevelstart=99
 set foldcolumn=0
-set fillchars = "eob: ,fold: "
+set fillchars=eob:\ ,fold:\
 set signcolumn=no
 set noshowmode                  " hides mode message e.g. -- INSERT --
 

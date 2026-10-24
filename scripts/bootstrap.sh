@@ -13,6 +13,7 @@ Bootstrap this dotfiles repo on a new machine.
 Options:
   --skip-brew       Do not install Homebrew or run brew bundle.
   --skip-zinit      Do not install the Zinit plugin manager.
+  --skip-node       Do not install a Node.js LTS version with fnm.
   --skip-tpm        Do not install Tmux Plugin Manager or tmux plugins.
   --skip-stow       Do not create symlinks with stow.
   --yes             Answer yes to bootstrap prompts.
@@ -142,6 +143,23 @@ install_zinit() {
   git clone https://github.com/zdharma-continuum/zinit.git "$zinit_home"
 }
 
+install_node() {
+  if ! command_exists fnm; then
+    warn "fnm is not installed yet; skipping Node.js installation."
+    return 0
+  fi
+
+  if grep -q "default" <<<"$(fnm list)"; then
+    log "Node.js already installed with fnm"
+    return 0
+  fi
+
+  # Mason needs npm to install the JS/TS language servers, prettier and cspell.
+  log "Installing Node.js LTS with fnm"
+  fnm install --lts
+  fnm default lts-latest
+}
+
 install_tpm() {
   local tmux_conf
   local tpm_home
@@ -177,10 +195,8 @@ stow_dotfiles() {
   command_exists stow || die "stow is not installed. Run without --skip-brew first, or install stow manually."
 
   log "Linking dotfiles with stow"
-  (
-    cd "$DOTFILES_DIR"
-    stow .
-  )
+  # --restow also prunes links to files that have been removed from the repo
+  stow --dir="$DOTFILES_DIR" --target="$HOME" --restow .
 }
 
 configure_atuin() {
@@ -250,6 +266,7 @@ check_zsh_shell() {
 
 SKIP_BREW=0
 SKIP_ZINIT=0
+SKIP_NODE=0
 SKIP_TPM=0
 SKIP_STOW=0
 ASSUME_YES=0
@@ -262,6 +279,9 @@ main() {
         ;;
       --skip-zinit)
         SKIP_ZINIT=1
+        ;;
+      --skip-node)
+        SKIP_NODE=1
         ;;
       --skip-tpm)
         SKIP_TPM=1
@@ -300,6 +320,12 @@ main() {
     install_zinit
   else
     warn "Skipping Zinit setup."
+  fi
+
+  if [[ "$SKIP_NODE" == "0" ]]; then
+    install_node
+  else
+    warn "Skipping Node.js setup."
   fi
 
   if [[ "$SKIP_STOW" == "0" ]]; then

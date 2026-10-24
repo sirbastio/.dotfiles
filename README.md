@@ -24,7 +24,6 @@
 | Editor | Both a custom neovim distribution ([found here](./.config/nvim/)) and a vim config - because most the time vim is all you need. |
 | Multiplexer | A minimal tmux setup with the option of herdr for AI integration (note: herdr still has some rough edges as of writing). |
 | CLI&nbsp;Tooling | Modern cli tooling without going overboard. |
-| SSH&nbsp;Editing | The `nssh <ssh-host> [remote-path]` helper opens a remote path in Neovim over SSH using oil. It is not a replacement for an on-host neovim config, but still works. 
 
 ## Quick Start
 
@@ -61,6 +60,7 @@ start bootstrap
       ├── run the official Homebrew installer
       ├── install everything in the Brewfile
       ├── install Zinit
+      ├── install Node.js LTS with fnm
       ├── link configs with GNU Stow
       ├── install TPM and configured tmux plugins
       └── configure Atuin and check the login shell
@@ -71,6 +71,7 @@ start bootstrap
 | `--yes` | Accept the bootstrap confirmation; Homebrew may still prompt |
 | `--skip-brew` | Skip Homebrew installation and `brew bundle` |
 | `--skip-zinit` | Skip the Zinit plugin manager |
+| `--skip-node` | Skip installing Node.js LTS with fnm |
 | `--skip-tpm` | Skip Tmux Plugin Manager and tmux plugins |
 | `--skip-stow` | Skip linking dotfiles into `$HOME` |
 | `--help` | Show all available options |

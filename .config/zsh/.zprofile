@@ -6,3 +6,6 @@ elif [[ -x "/usr/local/bin/brew" ]]; then
 elif [[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+path=("$HOME/.local/bin" ${path:#$HOME/.local/bin})
+export PATH
