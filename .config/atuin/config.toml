@@ -1,0 +1,8 @@
+store_failed = false                            # don't save commands that exit with an error
+enter_accept = true                             # enter runs selected command, tab puts it in the prompt
+filter_mode = "global"                          # ctrl-r searches all history
+filter_mode_shell_up_key_binding = "workspace"  # up arrow search current git repo's history
+
+[logs]
+dir = "~/.local/share/atuin/logs" # default is ~/.atuin/logs
+

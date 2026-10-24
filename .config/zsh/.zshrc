@@ -11,7 +11,7 @@ HISTSIZE=5000                           # commands stored in memory
 HISTFILE="$XDG_STATE_HOME/zsh/history"  # history file
 SAVEHIST=$HISTSIZE                      # commands saved to history file
 setopt appendhistory                    # appends commands to history file instead of overwriting
-setopt sharehistory                     # shares commands across active terminal sessions
+setopt inc_append_history               # saves each command immediately, but ctrl-p/ctrl-n only walk this session (atuin searches all)
 setopt hist_ignore_space                # type a space before a command to not save it to history
 setopt hist_ignore_all_dups             # removes older duplicate commands
 setopt hist_save_no_dups                # older duplicate commands are removed

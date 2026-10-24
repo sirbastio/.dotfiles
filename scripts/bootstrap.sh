@@ -199,6 +199,17 @@ stow_dotfiles() {
   stow --dir="$DOTFILES_DIR" --target="$HOME" --restow .
 }
 
+configure_hammerspoon() {
+  if [[ "$(uname -s)" != "Darwin" ]]; then
+    return 0
+  fi
+
+  # Hammerspoon reads ~/.hammerspoon unless told otherwise; this is a macOS
+  # preference rather than a file, so stow can't link it.
+  log "Pointing Hammerspoon at ~/.config/hammerspoon"
+  defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+}
+
 build_bat_cache() {
   if ! command_exists bat; then
     warn "bat is not installed yet; skipping the bat theme cache."
@@ -216,11 +227,9 @@ configure_atuin() {
     return 0
   fi
 
-  log "Configuring Atuin logs and history search"
+  # Settings live in .config/atuin/config.toml; this only creates its log directory.
+  log "Creating Atuin log directory"
   mkdir -p "$HOME/.local/share/atuin/logs"
-  atuin config set logs.dir "$HOME/.local/share/atuin/logs"
-  atuin config set filter_mode global
-  atuin config set filter_mode_shell_up_key_binding directory
 
   if [[ -d "$HOME/.atuin" ]]; then
     warn "Leaving existing ~/.atuin in place. Remove it after confirming your Atuin data is migrated."
@@ -351,6 +360,7 @@ main() {
     warn "Skipping Tmux Plugin Manager setup."
   fi
 
+  configure_hammerspoon
   build_bat_cache
   configure_atuin
   check_zsh_shell

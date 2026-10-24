@@ -63,8 +63,9 @@ start bootstrap
       ├── install Node.js LTS with fnm
       ├── link configs with GNU Stow
       ├── install TPM and configured tmux plugins
+      ├── point Hammerspoon at ~/.config/hammerspoon (macOS)
       ├── build the bat theme cache (used by bat and delta)
-      └── configure Atuin and check the login shell
+      └── create Atuin's log directory and check the login shell
 ```
 
 | Flag | Effect |
@@ -77,9 +78,9 @@ start bootstrap
 | `--skip-stow` | Skip linking dotfiles into `$HOME` |
 | `--help` | Show all available options |
 
-The bootstrap configures Atuin so Ctrl-R searches all history and Up Arrow searches
-history from the current directory. Rerunning it reapplies these settings while
-preserving other Atuin preferences.
+Atuin is configured in [`.config/atuin/config.toml`](./.config/atuin/config.toml) so Ctrl-R
+searches all history, Up Arrow searches history from the current git repo, and failed
+commands are not saved.
 
 ## Repository Map
 
