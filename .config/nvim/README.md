@@ -12,7 +12,7 @@
 
 - **Native muscle memory** — familiar motions and modes with focused quality-of-life improvements.
 - **Fast by default** — plugins load lazily and configuration is split by concern.
-- **Quietly intelligent** — LSP, completion, diagnostics, formatting, spelling, and Copilot are there when needed.
+- **Quietly intelligent** — LSP, completion, diagnostics, formatting, and spelling are there when needed.
 - **Visually cohesive** — every major surface is tuned around GitHub Dark Default.
 
 ## Features
@@ -83,7 +83,6 @@ Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim) and group
 | Area | Stack |
 | --- | --- |
 | Language intelligence | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) · [Mason](https://github.com/mason-org/mason.nvim) · [blink.cmp](https://github.com/Saghen/blink.cmp) · [LuaSnip](https://github.com/L3MON4D3/LuaSnip) |
-| AI suggestions | [copilot.lua](https://github.com/zbirenbaum/copilot.lua) |
 | Formatting and linting | [conform.nvim](https://github.com/stevearc/conform.nvim) · [nvim-lint](https://github.com/mfussenegger/nvim-lint) · cspell |
 | Syntax and folds | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) · [Treesitter Context](https://github.com/nvim-treesitter/nvim-treesitter-context) |
 | Search and navigation | [Snacks picker](https://github.com/folke/snacks.nvim) · [Mini Files](https://github.com/nvim-mini/mini.files) · [Oil](https://github.com/stevearc/oil.nvim) |

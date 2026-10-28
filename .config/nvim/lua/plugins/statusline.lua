@@ -57,25 +57,6 @@ local function linters()
     return "󰃢 " .. table.concat(names, ", ")
 end
 
-local function copilot_status()
-    local ok, status = pcall(require, "copilot.status")
-    if ok and status.data.status == "InProgress" then
-        return ""
-    end
-
-    return ""
-end
-
-local function copilot_color()
-    local ok, client = pcall(require, "copilot.client")
-    if ok and client.is_disabled() then
-        local spec = require("github-theme.spec").load("github_dark_default")
-        return { fg = spec.palette.fg.subtle }
-    end
-
-    return {}
-end
-
 return {
     -- { "nvim-mini/mini.statusline", version = false, opts = {} },
     {
@@ -119,16 +100,10 @@ return {
                         {
                             "lsp_status",
                             symbols = { done = "" },
-                            ignore_lsp = { "copilot" },
                             cond = wide_statusline,
                         },
                         "diagnostics",
                         "filetype",
-                        {
-                            copilot_status,
-                            color = copilot_color,
-                            padding = { left = 1, right = 2 },
-                        },
                     },
                     lualine_z = { { "location", color = muted_component_color } },
                 },
