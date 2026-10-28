@@ -61,7 +61,7 @@ Cursor position and fold state are saved when a file leaves the window and resto
 | Git | `<leader>gg` / `<leader>gG` | Open Neogit / Lazygit |
 | Git | `<leader>gh` | Preview the current Git hunk |
 | Diagnostics | `X` / `<leader>xx` | Inspect the current line / project diagnostics |
-| Tools | `<leader>tt` / `<leader>u` | Toggle the terminal / undo tree |
+| Tools | `<leader>tt` | Toggle the terminal |
 
 Centered scrolling, search-result recentering, movable visual selections, selection-preserving indentation, and black-hole delete mappings are also configured globally.
 
@@ -91,7 +91,7 @@ Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim) and group
 | Interface | [GitHub theme](https://github.com/projekt0n/github-nvim-theme) · [barbar.nvim](https://github.com/romgrk/barbar.nvim) · [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) · [Noice](https://github.com/folke/noice.nvim) |
 | Diagnostics | [Trouble](https://github.com/folke/trouble.nvim) · [nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar) · cspell filtering |
 | Editing | [mini.pairs](https://github.com/nvim-mini/mini.pairs) · [mini.surround](https://github.com/nvim-mini/mini.surround) · [mini.splitjoin](https://github.com/nvim-mini/mini.splitjoin) · [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) |
-| Extras | [which-key](https://github.com/folke/which-key.nvim) · [todo-comments](https://github.com/folke/todo-comments.nvim) · [undotree](https://github.com/mbbill/undotree) · [rainbow-delimiters](https://github.com/hiphish/rainbow-delimiters.nvim) |
+| Extras | [which-key](https://github.com/folke/which-key.nvim) · [todo-comments](https://github.com/folke/todo-comments.nvim) · [rainbow-delimiters](https://github.com/hiphish/rainbow-delimiters.nvim) |
 
 ## First launch
 

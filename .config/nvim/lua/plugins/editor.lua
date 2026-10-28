@@ -8,13 +8,6 @@ return {
         opts = { signs = false },
     },
     {
-        "mbbill/undotree",
-        event = { "BufReadPost", "BufNewFile" },
-        config = function()
-            vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-        end,
-    },
-    {
         "folke/noice.nvim",
         event = "VimEnter",
         dependencies = { "MunifTanjim/nui.nvim" },
