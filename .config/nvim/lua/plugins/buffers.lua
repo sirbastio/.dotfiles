@@ -27,16 +27,15 @@ local function setup_preview_buffers()
     autocmd("BufAdd", {
         group = preview_buf_group,
         desc = "When a new file is being opened, set it as the preview buffer, and close the old",
-        callback = on_normal_file_buffer(function(event)
-            vim.schedule(function()
-                if preview_buf ~= nil and preview_buf ~= event.buf then
-                    pcall(vim.api.nvim_buf_delete, preview_buf, {})
-                end
+        -- Checked after scheduling, since plugins like undotree only set buftype after BufAdd
+        callback = vim.schedule_wrap(on_normal_file_buffer(function(event)
+            if preview_buf ~= nil and preview_buf ~= event.buf then
+                pcall(vim.api.nvim_buf_delete, preview_buf, {})
+            end
 
-                preview_buf = event.buf
-                require("barbar.ui.render").update(true, false)
-            end)
-        end),
+            preview_buf = event.buf
+            require("barbar.ui.render").update(true, false)
+        end)),
     })
 
     autocmd({ "BufWritePost", "BufModifiedSet" }, {
