@@ -7,5 +7,5 @@ elif [[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-path=("$HOME/.local/bin" ${path:#$HOME/.local/bin})
-export PATH
+typeset -U PATH                 # avoid duplicates in the path
+PATH="$HOME/.local/bin:$PATH"   # ensure user commands take preference

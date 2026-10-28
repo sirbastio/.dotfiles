@@ -1,20 +1,12 @@
-typeset -U path PATH
-
-export EDITOR=nvim
-export VISUAL=nvim
-export MANPAGER='nvim +Man!'
-
 mkdir -p "$XDG_STATE_HOME/zsh" "$XDG_CACHE_HOME/zsh"
 
 # === History ===
 HISTSIZE=5000                           # commands stored in memory
 HISTFILE="$XDG_STATE_HOME/zsh/history"  # history file
 SAVEHIST=$HISTSIZE                      # commands saved to history file
-setopt appendhistory                    # appends commands to history file instead of overwriting
 setopt inc_append_history               # saves each command immediately, but ctrl-p/ctrl-n only walk this session (atuin searches all)
 setopt hist_ignore_space                # type a space before a command to not save it to history
 setopt hist_ignore_all_dups             # removes older duplicate commands
-setopt hist_save_no_dups                # older duplicate commands are removed
 setopt hist_find_no_dups                # skips over duplicates when searching history
 setopt hist_reduce_blanks               # cleans up accidental extra spaces
 
@@ -59,24 +51,19 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # case-insensitive tab matches
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} 
-zstyle ':completion:*' menu no                          # use fzf-tab for completion matches
-zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':fzf-tab:complete:(cd|__zoxide_z):*' fzf-preview \
-    'eza -1 --color=always --group-directories-first $realpath'
+zstyle ':completion:*' menu no                          # remove zsh's menu in favour of fzf-tab
+zstyle ':completion:*:descriptions' format '[%d]'       # enable group support for completions
+zstyle ':fzf-tab:*' switch-group '<' '>'                # switch group using `<` and `>`
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always --icons --group-directories-first $realpath' # preview folder contents when completing with cd
 
 # === Aliases ===
-if (( $+commands[eza] )); then
-    alias ls='eza --icons --group-directories-first'
-    alias ll='eza -lh --icons --grid'
-    alias tree='eza --group-directories-first --tree -L 3 '
-else
-    alias ls='ls --color'
-fi
+alias ls='eza --icons --group-directories-first'
+alias ll='ls -lh --grid'
+alias lsa="ls -a"
+alias tree='eza --group-directories-first --tree -L 3'
 
 alias ..='cd ..'
 alias c='clear'
-alias lsa="ls -a"
 
 alias n='nvim'
 alias gg='lazygit'
