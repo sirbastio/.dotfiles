@@ -82,10 +82,10 @@ Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim) and group
 
 | Area | Stack |
 | --- | --- |
-| Language intelligence | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) · [Mason](https://github.com/mason-org/mason.nvim) · [blink.cmp](https://github.com/Saghen/blink.cmp) · [LuaSnip](https://github.com/L3MON4D3/LuaSnip) |
-| Formatting and linting | [conform.nvim](https://github.com/stevearc/conform.nvim) · [nvim-lint](https://github.com/mfussenegger/nvim-lint) · cspell |
-| Syntax and folds | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) · [Treesitter Context](https://github.com/nvim-treesitter/nvim-treesitter-context) |
-| Search and navigation | [Snacks picker](https://github.com/folke/snacks.nvim) · [Mini Files](https://github.com/nvim-mini/mini.files) · [Oil](https://github.com/stevearc/oil.nvim) |
+| Language Intelligence | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) · [Mason](https://github.com/mason-org/mason.nvim) · [blink.cmp](https://github.com/Saghen/blink.cmp) · [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) |
+| Formatting & Linting | [conform.nvim](https://github.com/stevearc/conform.nvim) · [nvim-lint](https://github.com/mfussenegger/nvim-lint) |
+| Syntax & Folds | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) · [Treesitter Context](https://github.com/nvim-treesitter/nvim-treesitter-context) |
+| Search & Navigation | [Snacks picker](https://github.com/folke/snacks.nvim) · [Mini Files](https://github.com/nvim-mini/mini.files) · [Oil](https://github.com/stevearc/oil.nvim) |
 | Git | [Gitsigns](https://github.com/lewis6991/gitsigns.nvim) · [Neogit](https://github.com/NeogitOrg/neogit) · [CodeDiff](https://github.com/esmuellert/codediff.nvim) · [Snacks Lazygit](https://github.com/folke/snacks.nvim/blob/main/docs/lazygit.md) |
 | Interface | [GitHub theme](https://github.com/projekt0n/github-nvim-theme) · [barbar.nvim](https://github.com/romgrk/barbar.nvim) · [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) · [Noice](https://github.com/folke/noice.nvim) |
 | Diagnostics | [Trouble](https://github.com/folke/trouble.nvim) · [nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar) · cspell filtering |
