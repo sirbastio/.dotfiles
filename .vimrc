@@ -21,8 +21,6 @@ set sidescrolloff=10
 set sidescroll=1        " makes horizontal scrolling move on column at a time
 
 " CURSOR
-set guicursor=n-v:block-blinkwait700-blinkoff400-blinkon250,i-ci-ve-c:ver25-blinkwait700-blinkoff400-blinkon250,r-cr-o:hor20-blinkwait700-blinkoff400-blinkon250
-
 if !has("gui_running")
     " Avoid cursor-position replies being read as R (Replace) over SSH.
     if !empty($SSH_CONNECTION)
@@ -30,7 +28,7 @@ if !has("gui_running")
     endif
 
     let &t_SI = "\<Esc>[5 q"  " Insert: blinking bar
-    let &t_SR = "\<Esc>[3 q"  " Replace: blinking bar
+    let &t_SR = "\<Esc>[3 q"  " Replace: blinking underline
     let &t_EI = "\<Esc>[1 q"  " Normal: blinking block
 
     let &t_ti .= "\<Esc>[1 q" " Set Normal cursor when Vim starts
