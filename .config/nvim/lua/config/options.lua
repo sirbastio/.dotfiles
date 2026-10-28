@@ -35,6 +35,7 @@ o.splitbelow = true         -- horizontal splits go below
 o.foldmethod = "expr"       -- use expression for folding
 o.foldexpr =                -- use treesitter for folding
     "v:lua.vim.treesitter.foldexpr()"
+o.foldtext = ""             -- show folded lines with their own highlighting
 o.foldlevel = 99            -- start with folds open
 o.foldlevelstart = 99   -- start with folds open when opening files
 o.foldcolumn = "1"      -- add a fold column to the gutter

@@ -44,8 +44,8 @@ return {
         end,
 
         -- Makes rainbow-delimiters create named highlight namespaces instead of anonymous ones.
-        -- This allows nvim-ufo and nvim-treesitter-context to discover and copy delimiter
-        -- highlights into folded and context lines.
+        -- This allows nvim-treesitter-context to discover and copy delimiter highlights
+        -- into context lines.
         config = function()
             getmetatable(require("rainbow-delimiters.lib").nsids).__index = function(namespaces, lang)
                 local id = vim.api.nvim_create_namespace("nvim.rainbow-delimiters." .. lang)
