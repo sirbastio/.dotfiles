@@ -53,7 +53,6 @@ return {
             exclude = {
                 filetypes = {
                     oil = true,
-                    ["codediff-explorer"] = true,
                     gitcommit = true,
                 },
             },

@@ -26,7 +26,7 @@ return {
         "NeogitOrg/neogit",
         lazy = true,
         cmd = "Neogit",
-        dependencies = { "esmuellert/codediff.nvim", "folke/snacks.nvim" },
+        dependencies = { "folke/snacks.nvim" },
         opts = {
             commit_editor = { staged_diff_split_kind = "vsplit" },
             graph_style = "unicode",

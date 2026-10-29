@@ -14,8 +14,4 @@ function M.on_normal_file_buffer(callback)
     end
 end
 
-function M.is_codediff_window(winid)
-    return vim.w[winid].codediff_restore ~= nil
-end
-
 return M
