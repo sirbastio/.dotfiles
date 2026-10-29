@@ -62,10 +62,10 @@ return {
             marks = {
                 Cursor = mark(colors.cursor, "━"),
                 Search = mark(colors.orange),
-                Error = mark("DiagnosticVirtualTextError", "●"),
-                Warn = mark("DiagnosticVirtualTextWarn", "●"),
-                Info = mark("DiagnosticVirtualTextInfo", "●"),
-                Hint = mark("DiagnosticVirtualTextHint", "●"),
+                Error = mark("DiagnosticVirtualTextError", ""),
+                Warn = mark("DiagnosticVirtualTextWarn", ""),
+                Info = mark("DiagnosticVirtualTextInfo", ""),
+                Hint = mark("DiagnosticVirtualTextHint", ""),
                 Mark = mark("Special"),
                 GitAdd = mark("GitSignsAdd"),
                 GitChange = mark("GitSignsChange"),
@@ -75,8 +75,15 @@ return {
                 unit = "screenline",                                -- account for folds
                 layout = { columns = { { "thumb", "marks" } } },    -- scrollbar inclusions
                 thumb = { blend = blend, highlight = { bg = colors.neutral } }, -- scrollbar color
-                -- fully see-through so blank cells keep the cursorline and text colors underneath
-                window = { wo = { winblend = 100 } },
+                window = {
+                    wo = {
+                        -- fully see-through so blank cells keep the cursorline and text colors underneath
+                        winblend = 100,
+                        -- marks blend with the float's base, so a cursorline base keeps their cells
+                        -- matching the cursorline (and near the editor background elsewhere)
+                        winhighlight = "Normal:CursorLine,NormalNC:CursorLine",
+                    },
+                },
             },
         })
     end,
