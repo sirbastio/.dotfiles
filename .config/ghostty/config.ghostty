@@ -7,11 +7,9 @@ adjust-cell-height = 15%
 
 # Theme
 theme = GitHub Dark Default
-# theme = tokyonight
 
 # Window
 macos-titlebar-style = hidden
-#window-decoration = none
 window-padding-balance = true
 window-padding-x = 12, 0
 # window-padding-y = 12, 1
