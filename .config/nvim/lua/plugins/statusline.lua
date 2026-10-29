@@ -29,6 +29,25 @@ local function format_mode(mode)
     return mode:sub(1, 1)
 end
 
+local function plural(count, word)
+    return string.format("%d %s%s", count, word, count == 1 and "" or "s")
+end
+
+local function position()
+    local mode = vim.fn.mode()
+    local lines = math.abs(vim.fn.line("v") - vim.fn.line(".")) + 1
+
+    if mode == "\22" then
+        return string.format("%dx%d", lines, math.abs(vim.fn.virtcol("v") - vim.fn.virtcol(".")) + 1)
+    elseif mode == "v" and lines == 1 then
+        return plural(math.abs(vim.fn.charcol("v") - vim.fn.charcol(".")) + 1, "char")
+    elseif mode == "v" or mode == "V" then
+        return plural(lines, "line")
+    end
+
+    return string.format("%3d:%-2d", vim.fn.line("."), vim.fn.charcol("."))
+end
+
 local function formatter()
     local formatters, uses_lsp = require("conform").list_formatters_to_run(0)
     local names = vim.tbl_map(function(item)
@@ -105,7 +124,7 @@ return {
                         "diagnostics",
                         "filetype",
                     },
-                    lualine_z = { { "location", color = muted_component_color } },
+                    lualine_z = { { position, color = muted_component_color } },
                 },
             }
         end,
