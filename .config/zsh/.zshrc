@@ -17,6 +17,11 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^y' autosuggest-accept
 
+# load ghostty shell integration into tmux
+if [[ -n $TMUX && -n $GHOSTTY_RESOURCES_DIR ]]; then
+    source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration
+fi
+
 # Ctrl+h/j/k/l: the prompt has no splits, so hand off straight to tmux panes
 # (navigate.sh) or, outside tmux, to macOS windows (Hammerspoon).
 _navigate() {
