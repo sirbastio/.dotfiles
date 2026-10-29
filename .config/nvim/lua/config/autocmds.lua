@@ -33,7 +33,7 @@ autocmd("BufWinEnter", {
         if is_codediff_window(winid) then
             vim.wo[winid].foldlevel = 99
         else
-            pcall(vim.cmd, "silent! loadview")
+            pcall(vim.cmd, "silent! noautocmd loadview")
         end
     end),
 })
