@@ -9,6 +9,14 @@ return {
         -- transparency from 0 (opaque) to 100 (invisible)
         local blend = 40
 
+        -- marks carry the thumb's blend themselves, so they keep one color on and off the thumb
+        local function mark(color, text)
+            if not color:find("^#") then
+                color = vim.api.nvim_get_hl(0, { name = color, link = false }).fg
+            end
+            return { text = text, highlight = { fg = color, blend = blend } }
+        end
+
         local diagnostic_types = { "Error", "Warn", "Info", "Hint" }
 
         local function collect(bufnr)
@@ -52,18 +60,23 @@ return {
             },
             providers = { diagnostic = false, gitsigns = true },
             marks = {
-                Cursor = { text = "━", highlight = { fg = colors.cursor } },
-                Search = { highlight = { fg = colors.orange } },
-                Error = { text = "●" },
-                Warn = { text = "●" },
-                Info = { text = "●" },
-                Hint = { text = "●" },
+                Cursor = mark(colors.cursor, "━"),
+                Search = mark(colors.orange),
+                Error = mark("DiagnosticVirtualTextError", "●"),
+                Warn = mark("DiagnosticVirtualTextWarn", "●"),
+                Info = mark("DiagnosticVirtualTextInfo", "●"),
+                Hint = mark("DiagnosticVirtualTextHint", "●"),
+                Mark = mark("Special"),
+                GitAdd = mark("GitSignsAdd"),
+                GitChange = mark("GitSignsChange"),
+                GitDelete = mark("GitSignsDelete"),
             },
             scrollbar = {
                 unit = "screenline",                                -- account for folds
                 layout = { columns = { { "thumb", "marks" } } },    -- scrollbar inclusions
                 thumb = { blend = blend, highlight = { bg = colors.neutral } }, -- scrollbar color
-                window = { wo = { winblend = blend } },             -- make transparent; matches the thumb's blend so marks keep one color
+                -- fully see-through so blank cells keep the cursorline and text colors underneath
+                window = { wo = { winblend = 100 } },
             },
         })
     end,
