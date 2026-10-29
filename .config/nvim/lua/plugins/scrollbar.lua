@@ -6,7 +6,6 @@ return {
     dependencies = { "lewis6991/gitsigns.nvim" },
     config = function()
         local colors = vim.g.github_dark_default_colors
-        -- transparency from 0 (opaque) to 100 (invisible)
         local blend = 40
 
         -- marks carry the thumb's blend themselves, so they keep one color on and off the thumb
