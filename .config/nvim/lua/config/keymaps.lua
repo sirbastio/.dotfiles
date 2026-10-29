@@ -8,7 +8,13 @@ vim.g.maplocalleader = " "
 set("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 set("i", "kj", "<ESC>", { desc = "Exit insert mode" })
 set("n", "<leader>w", "<cmd>w<CR>", { desc = "[w]rite file" })
-set("n", "<leader>q", "<cmd>q<CR>", { desc = "[q]uit" })
+set("n", "<leader>q", function()
+    vim.cmd("confirm BufferClose")
+    if vim.api.nvim_buf_get_name(0) == "" and vim.bo.buftype == "" then
+        Snacks.dashboard({ buf = 0, win = 0 })
+    end
+end, { desc = "[q]uit buffer" })
+set("n", "<leader>Q", "<cmd>confirm quit<CR>", { desc = "[Q]uit window" })
 set("n", "<leader>K", "<cmd>Man<CR>", {desc = "Open manual page under cursor"})
 
 -- === KEEP CURSOR CENTERED === --

@@ -82,7 +82,6 @@ return {
                 end,
                 desc = "[b]uffer [p]in",
             },
-            { "<leader>bd", "<Cmd>BufferClose<CR>", desc = "[b]uffer [d]elete" },
             {
                 "<leader>bt",
                 function()

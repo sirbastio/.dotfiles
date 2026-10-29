@@ -52,7 +52,8 @@ Cursor position and fold state are saved when a file leaves the window and resto
 | Text | `<leader>pw` | Search text across the project |
 | Explorer | `<leader>e` / `<leader>E` | Open Mini Files at the working directory / current file |
 | Explorer | `-` | Open the parent directory with Oil |
-| Buffers | `<leader>bp` / `<leader>bd` | Pin or close the current buffer |
+| Buffers | `<leader>bp` | Pin the current buffer |
+| Close | `<leader>q` / `<leader>Q` | Close the buffer (dashboard after the last) / close the window or quit Neovim |
 | Buffers | `<leader>1` … `<leader>5` | Jump directly to a buffer |
 | Editing | `<leader>f` | Format the file or selection |
 | Editing | `<leader>p` | Paste over a selection without replacing the register |
