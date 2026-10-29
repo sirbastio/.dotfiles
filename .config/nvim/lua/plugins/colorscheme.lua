@@ -6,6 +6,13 @@ return {
         priority = 1000,
         config = function()
             local spec = require("github-theme.spec").load("github_dark_default")
+            local Color = require("github-theme.lib.color")
+
+            -- fade a color 35% of the way toward the editor background
+            local function mute(hex)
+                return Color.from_hex(hex):blend(Color.from_hex(spec.bg1), 0.35):to_css()
+            end
+
             local colors = {
                 text = spec.fg1,
                 text_muted = spec.fg2,
@@ -43,6 +50,10 @@ return {
 
                 diff_add = spec.diff.add,
                 diff_delete = spec.diff.delete,
+
+                git_add = mute(spec.palette.success.emphasis),
+                git_change = mute(spec.palette.attention.emphasis),
+                git_delete = mute(spec.palette.danger.emphasis),
             }
 
             vim.g.github_dark_default_colors = colors
@@ -96,10 +107,10 @@ return {
 
                 local function gitsigns_groups()
                     return {
-                        GitSignsTopdelete = { link = "GitSignsChange" },
-                        GitSignsTopdeleteNr = { link = "GitSignsChangeNr" },
-                        GitSignsTopdeleteLn = { link = "GitSignsChangeLn" },
-                        GitSignsTopdeleteCul = { link = "GitSignsChangeCul" },
+                        -- muted signs; the scrollbar's git marks take their color from these too
+                        GitSignsAdd = { fg = colors.git_add },
+                        GitSignsChange = { fg = colors.git_change },
+                        GitSignsDelete = { fg = colors.git_delete },
                         GitSignsAddPreview = { bg = colors.diff_add },
                         GitSignsDeletePreview = { bg = colors.diff_delete },
                         GitSignsDeleteVirtLn = { bg = colors.diff_delete },
