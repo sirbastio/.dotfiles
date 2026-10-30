@@ -3,8 +3,9 @@ brew "atuin"
 brew "bat"
 brew "curl"
 brew "eza"
-brew "fd"
 brew "fastfetch"
+brew "fd"
+brew "ffmpeg"
 brew "fzf"
 brew "ripgrep"
 brew "starship"
@@ -25,6 +26,10 @@ brew "neovim"
 brew "tmux"
 brew "vim"
 brew "yazi"
+
+# AI
+cask "claude-code"
+cask "codex"
 
 ## Dependencies
 brew "poppler"
