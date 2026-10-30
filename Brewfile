@@ -40,4 +40,4 @@ brew "go"
 brew "uv"
 
 # Fonts
-cask "font-jetbrains-mono-nerd-font"
+cask "font-jetbrains-mono-nerd-font" if OS.mac? # on Linux/WSL, install the font where the terminal runs

@@ -98,6 +98,18 @@ The bootstrap does not detect Linux distributions or any  system package manager
 
 If Homebrew cannot install, read its error, install the reported system prerequisites manually, and rerun the bootstrap. Once Homebrew is available, Zsh and the rest of the user-facing toolchain are installed through the Brewfile.
 
+### WSL2
+
+Ubuntu on WSL2 works with the same bootstrap. A few things live on the Windows side:
+
+- Clone into the Linux filesystem (`~/.dotfiles`), not under `/mnt/c`. Stow symlinks and git are slow or unreliable there.
+- Install Homebrew's prerequisites first: `sudo apt install build-essential procps curl file git`.
+- Use Windows Terminal. Install JetBrainsMono Nerd Font on Windows and select it in the Ubuntu profile; the Brewfile cask only installs it inside Linux, where Windows Terminal can't see it.
+- Windows Terminal pastes on `Ctrl+V`, so Vim never receives it; use `Ctrl+Q` for visual-block mode instead.
+- For the clipboard, install `win32yank.exe` on Windows (e.g. `scoop install win32yank`) for Neovim; tmux-yank uses `clip.exe`. Don't install `wl-clipboard`, as Neovim prefers it over win32yank.
+- Optionally set `appendWindowsPath = false` under `[interop]` in `/etc/wsl.conf` to keep Windows binaries out of `PATH`, then symlink `win32yank.exe` and `clip.exe` into `~/.local/bin`.
+- If Homebrew's Zsh ever breaks, WSL can't start your login shell. Recover with `wsl -e bash` from PowerShell.
+
 ### Remote development (SSH)
 
 The same bootstrap sets up a server. Over SSH:
