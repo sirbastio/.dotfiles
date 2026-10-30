@@ -23,12 +23,12 @@ if [[ -n $TMUX && -n $GHOSTTY_RESOURCES_DIR ]]; then
 fi
 
 # Ctrl+h/j/k/l: the prompt has no splits, so hand off straight to tmux panes
-# (navigate.sh) or, outside tmux, to macOS windows (Hammerspoon).
+# (navigate.sh) or, outside tmux, to macOS windows (Hammerspoon, when installed).
 _navigate() {
     local direction=${WIDGET#navigate-}
     if [[ -n $TMUX ]]; then
         ~/.config/tmux/navigate.sh $direction &!
-    else
+    elif (( $+commands[hs] )); then
         hs -q -c "navigateWindow('$direction')" >/dev/null &!
     fi
 }
