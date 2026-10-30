@@ -22,7 +22,7 @@
 | Theme | Github Dark Default. This config is optimised heavily for this theme. |
 | Terminal | Ghostty. Any modern terminal should work. |
 | Editor | Both a custom neovim distribution ([found here](./.config/nvim/)) and a vim config - because most the time vim is all you need. |
-| Multiplexer | A minimal tmux setup with the option of herdr for AI integration (note: herdr still has some rough edges as of writing). |
+| Multiplexer | A minimal tmux setup. |
 | CLI&nbsp;Tooling | Modern cli tooling without going overboard. |
 
 ## Quick Start
