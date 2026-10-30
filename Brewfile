@@ -21,7 +21,6 @@ brew "lazygit"
 
 # CLI Tools
 brew "btop"
-brew "herdr"
 brew "neovim"
 brew "tmux"
 brew "vim"
