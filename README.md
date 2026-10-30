@@ -61,7 +61,7 @@ start bootstrap
       ├── install everything in the Brewfile
       ├── install Zinit
       ├── install Node.js LTS with fnm
-      ├── link configs with GNU Stow
+      ├── create ~/.ssh, then link configs with GNU Stow
       ├── install TPM and configured tmux plugins
       ├── point Hammerspoon at ~/.config/hammerspoon (macOS)
       ├── build the bat theme cache (used by bat and delta)
@@ -97,6 +97,18 @@ commands are not saved.
 The bootstrap does not detect Linux distributions or any  system package manager. It requires Bash and `curl`, then delegates host detection and prerequisite checks to the [official Homebrew installer](https://docs.brew.sh/Installation).
 
 If Homebrew cannot install, read its error, install the reported system prerequisites manually, and rerun the bootstrap. Once Homebrew is available, Zsh and the rest of the user-facing toolchain are installed through the Brewfile.
+
+### Remote development (SSH)
+
+The same bootstrap sets up a server. Over SSH:
+
+- tmux uses `Ctrl-b` as its prefix and puts the status bar at the bottom, so a remote session nested in a local one stays usable.
+- `Ctrl-h/j/k/l` pass through `ssh` panes to the remote Neovim and tmux. Leave an `ssh` pane with the local prefix instead (`Ctrl-a` then an arrow).
+- [`.ssh/config`](./.ssh/config) only holds shared settings (a keepalive so idle connections aren't dropped). Put host entries in `~/.ssh/config.d/`, which is never committed.
+- Neovim on the server uses OSC 52, an escape code that lets it use your local terminal's clipboard over SSH:
+  - `y` copies to your local clipboard in any terminal that supports OSC 52 copying, which is most modern ones.
+  - `p` pastes your local clipboard only if the terminal also allows OSC 52 reads. Ghostty does, asking each time unless you set `clipboard-read = allow`, which lets anything running in the terminal read your clipboard.
+  - In terminals without OSC 52 reads, such as Windows Terminal, `p` waits up to 10 seconds and pastes nothing outside tmux; inside tmux it falls back to tmux's buffer. Use the terminal's own paste shortcut instead.
 
 ## Good to know
 

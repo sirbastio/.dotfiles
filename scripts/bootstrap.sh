@@ -194,6 +194,11 @@ install_tpm() {
 stow_dotfiles() {
   command_exists stow || die "stow is not installed. Run without --skip-brew first, or install stow manually."
 
+  # Without a real ~/.ssh, stow would link the whole directory into the repo
+  # and new keys would be written inside the working tree.
+  log "Creating ~/.ssh"
+  mkdir -p -m 700 "$HOME/.ssh" "$HOME/.ssh/config.d"
+
   log "Linking dotfiles with stow"
   # --restow also prunes links to files that have been removed from the repo
   stow --dir="$DOTFILES_DIR" --target="$HOME" --restow .

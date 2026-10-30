@@ -55,3 +55,7 @@ o.mousescroll = "ver:1,hor:1" -- scroll one line or column per mouse-wheel step
 o.clipboard = "unnamedplus"   -- use system clipboard
 o.termguicolors = true        -- enable 24-bit RGB colors
 o.iskeyword:append("-")       -- include - in words
+
+-- Over SSH, use the local terminal's clipboard through OSC 52 (via tmux when inside it). Forced so a
+-- clipboard tool on the server, like win32yank on WSL, doesn't send copies to the server's clipboard.
+if vim.env.SSH_TTY then vim.g.clipboard = vim.env.TMUX and "tmux" or "osc52" end

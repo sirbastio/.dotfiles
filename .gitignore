@@ -2,3 +2,5 @@
 .zsh_history
 .zcompdump
 .zsh_sessions
+/.ssh/*
+!/.ssh/config
