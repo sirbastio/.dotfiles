@@ -20,19 +20,9 @@ set scrolloff=10
 set sidescrolloff=10
 set sidescroll=1        " makes horizontal scrolling move on column at a time
 
-" CURSOR
-if !has("gui_running")
-    " Avoid cursor-position replies being read as R (Replace) over SSH.
-    if !empty($SSH_CONNECTION)
-        set t_u7=
-    endif
-
-    let &t_SI = "\<Esc>[5 q"  " Insert: blinking bar
-    let &t_SR = "\<Esc>[3 q"  " Replace: blinking underline
-    let &t_EI = "\<Esc>[1 q"  " Normal: blinking block
-
-    let &t_ti .= "\<Esc>[1 q" " Set Normal cursor when Vim starts
-    let &t_te .= "\<Esc>[0 q" " Restore terminal default when Vim exits
+" Avoid cursor-position replies being read as R (Replace) over SSH.
+if !has("gui_running") && !empty($SSH_CONNECTION)
+    set t_u7=
 endif
 
 " TABS & INDENTATION

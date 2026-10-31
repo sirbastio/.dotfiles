@@ -22,6 +22,18 @@ if [[ -n $TMUX && -n $GHOSTTY_RESOURCES_DIR ]]; then
     source "$GHOSTTY_RESOURCES_DIR"/shell-integration/zsh/ghostty-integration
 fi
 
+# vim mode cursor: block in normal mode, bar in insert mode
+# (ghostty's shell integration does this locally, but isn't loaded over SSH)
+zle-line-init zle-keymap-select() {
+    if [[ $KEYMAP == vicmd || $KEYMAP == visual ]]; then
+        print -n '\e[1 q' # block
+    else
+        print -n '\e[5 q' # bar
+    fi
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 # Ctrl+h/j/k/l: the prompt has no splits, so hand off straight to tmux panes
 # (navigate.sh) or, outside tmux, to macOS windows (Hammerspoon, when installed).
 _navigate() {

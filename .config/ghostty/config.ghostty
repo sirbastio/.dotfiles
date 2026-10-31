@@ -19,7 +19,8 @@ window-padding-color = extend-always
 # background-opacity-cells = true
 
 # Other
-adjust-cursor-thickness = 1
+cursor-style = bar
+adjust-cursor-thickness = 3
 mouse-hide-while-typing = true
 window-save-state = always
 shell-integration-features = true

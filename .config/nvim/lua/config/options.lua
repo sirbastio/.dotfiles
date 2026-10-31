@@ -6,7 +6,6 @@ o.relativenumber = true      -- relative line numbers
 o.numberwidth = 5            -- reserve space for four-digit line numbers
 o.statuscolumn = "%=%l%s%C " -- show signs, folds, and line numbers
 o.cursorline = true          -- highlight current line
-o.guicursor:append({ "c:ver25", "a:blinkwait700-blinkoff400-blinkon250" }) -- blinking cursor and bar on command line
 o.wrap = false               -- disable word wrap
 o.scrolloff = 10             -- keep 10 lines above/below cursor
 o.sidescrolloff = 10         -- keep 10 lines to left/right of cursor
