@@ -20,7 +20,7 @@ window-padding-color = extend-always
 
 # Other
 cursor-style = bar
-adjust-cursor-thickness = 3
+adjust-cursor-thickness = 1
 mouse-hide-while-typing = true
 window-save-state = always
 shell-integration-features = true

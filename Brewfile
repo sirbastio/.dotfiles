@@ -44,5 +44,25 @@ brew "fnm"
 brew "go"
 brew "uv"
 
-# Fonts
-cask "font-jetbrains-mono-nerd-font" if OS.mac? # on Linux/WSL, install the font where the terminal runs
+# MacOS (local)
+if OS.mac?
+  # Apps
+  cask "alt-tab"
+  cask "blender"
+  cask "chatgpt"
+  cask "claude"
+  cask "discord"
+  cask "ghostty"
+  cask "google-chrome"
+  cask "hammerspoon"
+  cask "notion"
+  cask "obsidian"
+  cask "raycast"
+  cask "spotify"
+  cask "tailscale-app"
+  cask "ticktick"
+  cask "visual-studio-code"
+
+  # Fonts
+  cask "font-jetbrains-mono-nerd-font"
+end

@@ -15,7 +15,7 @@ local file_view_group = augroup("PersistFileView", { clear = true })
 
 autocmd("BufWinLeave", {
     group = file_view_group,
-    desc = "Save file view state (cursor position, folds, etc.)",
+    desc = "Save file view state (cursor position)",
     callback = on_normal_file_buffer(function()
         pcall(vim.cmd, "silent! mkview!")
     end),

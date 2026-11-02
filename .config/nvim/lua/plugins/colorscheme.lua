@@ -117,6 +117,20 @@ return {
                     }
                 end
 
+                local function neogit_groups()
+                    return {
+                        -- unchanged diff lines keep the editor background; the cursor line stays as usual
+                        -- (linked rather than bg = NONE, which Neogit treats as unset and overrides)
+                        NeogitDiffContext = { link = "Normal" },
+                        NeogitDiffContextHighlight = { link = "Normal" },
+                        NeogitDiffContextCursor = { bg = colors.cursor_line },
+                        -- hunk headers styled like GitHub's: muted text on a faint blue bar
+                        NeogitHunkHeader = { fg = colors.text_muted, bg = "#111d2e" },
+                        NeogitHunkHeaderHighlight = { fg = colors.text_muted, bg = "#111d2e" },
+                        NeogitHunkHeaderCursor = { fg = colors.text, bg = "#17335a" },
+                    }
+                end
+
                 local function snacks_groups()
                     local groups = {
                         SnacksNotifierHistory = { bg = colors.bg_float, fg = colors.text },
@@ -125,7 +139,6 @@ return {
                         SnacksPicker = { bg = colors.bg_editor },
                         SnacksPickerBorder = { bg = colors.bg_editor, fg = colors.border_muted },
                         SnacksPickerPreviewTitle = { bg = colors.bg_editor, fg = colors.blue },
-                        SnacksLazygitInactiveBorder = { fg = colors.border_muted },
                         SnacksIndent = { fg = colors.border_muted },
                         SnacksIndentScope = { fg = colors.neutral },
                     }
@@ -184,6 +197,7 @@ return {
                     barbar_groups(),
                     minifiles_groups(),
                     gitsigns_groups(),
+                    neogit_groups(),
                     snacks_groups(),
                     noice_groups(),
                     treesitter_context_groups(),

@@ -26,38 +26,31 @@ return {
         "NeogitOrg/neogit",
         lazy = true,
         cmd = "Neogit",
-        dependencies = { "folke/snacks.nvim" },
+        dependencies = {
+            "folke/snacks.nvim",
+            { "m00qek/baleia.nvim", config = function() vim.g.baleia = require("baleia").setup({}) end },
+        },
         opts = {
+            log_pager = {"sh", "-c", [[delta --file-style omit --hunk-header-style omit | tail -n +2 | perl -pe 's/\e\[0K/" " x 400/ge']],},
             commit_editor = { staged_diff_split_kind = "vsplit" },
             graph_style = "unicode",
             process_spinner = true,
             treesitter_diff_highlight = true,
         },
         keys = { { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" } },
-    },
-    {
-        "folke/snacks.nvim",
-        opts = {
-            lazygit = {
-                enabled = true,
-                theme = { inactiveBorderColor = { fg = "SnacksLazygitInactiveBorder" } },
-                win = {
-                    style = "lazygit",
-                    width = 0,
-                    height = 0,
-                    wo = {
-                        winhighlight = table.concat({
-                            "Normal:SnacksLazygitNormal",
-                            "NormalNC:SnacksLazygitNormal",
-                            "NormalFloat:SnacksLazygitNormal",
-                        }, ","),
-                    },
-                },
-            },
-        },
-        keys = {
-            { "<leader>gG", function() Snacks.lazygit() end, desc = "[g]it [G]ui (lazygit)" },
-            { "<leader>gl", function() Snacks.lazygit.log() end, desc = "[g]it [l]ogs (lazygit)" },
-        },
+        init = function()
+            -- clean up hunk headers
+            vim.api.nvim_create_autocmd("BufWinEnter", {
+                callback = function(args)
+                    local diff_views = { "NeogitStatus", "NeogitCommitView", "NeogitDiffView" }
+                    if not vim.tbl_contains(diff_views, vim.bo[args.buf].filetype) or vim.w.neogit_hunk_conceal then
+                        return
+                    end
+                    vim.wo.conceallevel = 3
+                    vim.wo.concealcursor = "nvic"
+                    vim.w.neogit_hunk_conceal = vim.fn.matchadd("Conceal", [[^@@ [^@]* @@ \?]], 10, -1, { conceal = "" })
+                end,
+            })
+        end,
     },
 }

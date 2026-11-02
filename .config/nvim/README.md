@@ -32,7 +32,7 @@ The result is a buffer list that stays useful instead of becoming a graveyard. T
 
 ### File context that survives restarts
 
-Cursor position and fold state are saved when a file leaves the window and restored when it returns.
+Cursor position is saved when a file leaves the window and restored when it returns.
 
 ### An interface that adapts
 
@@ -59,7 +59,7 @@ Cursor position and fold state are saved when a file leaves the window and resto
 | Editing | `<leader>p` | Paste over a selection without replacing the register |
 | Windows | `<leader>s` / `<leader>S` | Open a vertical / horizontal split |
 | Windows | `Ctrl` + `h` `j` `k` `l` | Move between splits |
-| Git | `<leader>gg` / `<leader>gG` | Open Neogit / Lazygit |
+| Git | `<leader>gg` | Open Neogit |
 | Git | `<leader>gh` | Preview the current Git hunk |
 | Diagnostics | `X` / `<leader>xx` | Inspect the current line / project diagnostics |
 | Tools | `<leader>tt` | Toggle the terminal |
@@ -71,7 +71,7 @@ Centered scrolling, search-result recentering, movable visual selections, select
 - System clipboard integration and persistent undo history.
 - Relative line numbers, a fixed sign column, and ten lines of scroll context.
 - Smart-case searching and centered search navigation.
-- Tree-sitter-powered folds that start open, keep syntax highlighting when closed, and persist per file.
+- Tree-sitter-powered folds that start open and keep syntax highlighting when closed.
 - Right-opening vertical splits and below-opening horizontal splits.
 - No swap files, backup files, line wrapping, or redundant mode display.
 - Hyphenated identifiers are treated as complete words.
@@ -87,7 +87,7 @@ Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim) and group
 | Formatting & Linting | [conform.nvim](https://github.com/stevearc/conform.nvim) · [nvim-lint](https://github.com/mfussenegger/nvim-lint) |
 | Syntax & Folds | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) · [Treesitter Context](https://github.com/nvim-treesitter/nvim-treesitter-context) |
 | Search & Navigation | [Snacks picker](https://github.com/folke/snacks.nvim) · [Mini Files](https://github.com/nvim-mini/mini.files) · [Oil](https://github.com/stevearc/oil.nvim) |
-| Git | [Gitsigns](https://github.com/lewis6991/gitsigns.nvim) · [Neogit](https://github.com/NeogitOrg/neogit) · [Snacks Lazygit](https://github.com/folke/snacks.nvim/blob/main/docs/lazygit.md) |
+| Git | [Gitsigns](https://github.com/lewis6991/gitsigns.nvim) · [Neogit](https://github.com/NeogitOrg/neogit) |
 | Interface | [GitHub theme](https://github.com/projekt0n/github-nvim-theme) · [barbar.nvim](https://github.com/romgrk/barbar.nvim) · [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) · [Noice](https://github.com/folke/noice.nvim) |
 | Diagnostics | [Trouble](https://github.com/folke/trouble.nvim) · [nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar) · cspell filtering |
 | Editing | [mini.pairs](https://github.com/nvim-mini/mini.pairs) · [mini.surround](https://github.com/nvim-mini/mini.surround) · [mini.splitjoin](https://github.com/nvim-mini/mini.splitjoin) · [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) |
@@ -135,7 +135,7 @@ Useful maintenance commands:
         ├── buffers.lua    # preview-buffer lifecycle
         ├── coding.lua     # editing primitives
         ├── explorer.lua   # Mini Files and Oil
-        ├── git.lua        # Gitsigns, Neogit, and Lazygit
+        ├── git.lua        # Gitsigns and Neogit
         ├── lsp.lua        # language servers and Mason
         ├── picker.lua     # project-aware search
         └── ...            # UI, completion, diagnostics, and more

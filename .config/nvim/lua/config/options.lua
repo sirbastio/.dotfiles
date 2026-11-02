@@ -39,7 +39,7 @@ o.foldlevelstart = 99   -- start with folds open when opening files
 o.foldcolumn = "1"      -- add a fold column to the gutter
 o.fillchars =           -- hide "~" on empty lines and fold signs
     'eob: ,fold: ,foldopen: ,foldsep: ,foldinner: ,foldclose:'
-o.viewoptions = { "folds", "cursor" }
+o.viewoptions = { "cursor" }
 
 -- HISTORY --
 o.writebackup = false -- do not write to a backup file

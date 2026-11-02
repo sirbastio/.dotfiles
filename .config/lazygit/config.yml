@@ -1,7 +1,21 @@
 gui:
-  sidePanelWidth: 0.2
+  wrapLinesInDiffView: false
+  theme:
+    activeBorderColor:
+      - "#58a6ff"
+      - bold
+    inactiveBorderColor:
+      - "#30363d"
+    optionsTextColor:
+      - "#58a6ff"
+    unstagedChangesColor:
+      - "#f85149"
+    selectedLineBgColor:
+      - "#17335a" # nvim's Visual colour
+keybinding:
+  universal:
+    edit: o
 git:
   diffRenderers:
     - colorArg: always
-      command: 'delta --paging=never --side-by-side --line-numbers --hunk-header-style=omit'
-    - type: rawGit
+      command: delta --paging=never

@@ -12,24 +12,22 @@
     diffFilter = delta --color-only
 
 [delta]
-    navigate = true                         # n/N to jump between files
-    dark = true                             # skip background detection, which is unreliable in tmux
-    true-color = always                     # exact hex colours even when COLORTERM isn't passed through
     line-numbers = true
-    syntax-theme = github-dark-default      # from ~/.config/bat/themes, loaded by `bat cache --build`
-    # --mouse lets the scroll wheel work inside tmux (hold Shift to select text)
-    pager = less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse
-    # GitHub Dark Default diff colours, matching the nvim theme
+    true-color = always
+    syntax-theme = github-dark-default
     minus-style = syntax "#2c171b"
     minus-emph-style = syntax "#5f2022"
     plus-style = syntax "#10231c"
     plus-emph-style = syntax "#164023"
-    line-numbers-minus-style = "#f85149"
-    line-numbers-plus-style = "#3fb950"
     line-numbers-zero-style = "#6e7681"
-
-[diff]
-    colorMoved = default
-
-[merge]
-    conflictStyle = zdiff3
+    line-numbers-plus-style = "#6e7681"
+    line-numbers-left-format = ""
+    line-numbers-right-format = "{np:>4} "
+    file-style = bold "#e6edf3"
+    file-decoration-style = "#30363d" ul ol
+    hunk-header-decoration-style = none
+    hunk-header-style = syntax
+    file-added-label = "[38;2;63;185;80m[38;2;230;237;243m"
+    file-modified-label = "[38;2;210;153;34m[38;2;230;237;243m"
+    file-removed-label = "[38;2;248;81;73m[38;2;230;237;243m"
+    file-renamed-label = "[38;2;88;166;255m[38;2;230;237;243m"
