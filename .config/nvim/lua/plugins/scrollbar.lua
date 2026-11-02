@@ -71,6 +71,7 @@ return {
             },
             scrollbar = {
                 unit = "screenline",                                -- account for folds
+                hide_if_all_visible = true,                         -- no scrollbar (or marks) when the buffer fits
                 layout = { columns = { { "thumb", "marks" } } },    -- scrollbar inclusions
                 thumb = { blend = blend, highlight = { bg = colors.neutral } }, -- scrollbar color
                 window = {
