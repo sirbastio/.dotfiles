@@ -94,6 +94,7 @@ return {
             setup_preview_buf_marker()
             setup_preview_buffers()
             require("barbar").setup(opts)
+            vim.o.showtabline = 0 -- hidden until toggled with <leader>bt
         end,
     },
 }

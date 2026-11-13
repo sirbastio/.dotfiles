@@ -180,6 +180,49 @@ return {
                     }
                 end
 
+                local function render_markdown_groups()
+                    return {
+                        -- a terminal can't size headings: h1 alone is blue and the rest are white. h1 and
+                        -- h2 get a rule under them and h3 is underlined
+                        ["@markup.heading.1.markdown"] = { fg = colors.blue_bright, style = "bold" },
+                        ["@markup.heading.2.markdown"] = { fg = colors.text, style = "bold" },
+                        ["@markup.heading.3.markdown"] = { fg = colors.text, style = "bold,underline" },
+                        ["@markup.heading.4.markdown"] = { fg = colors.text, style = "bold" },
+                        ["@markup.heading.5.markdown"] = { fg = colors.text, style = "bold" },
+                        ["@markup.heading.6.markdown"] = { fg = colors.text, style = "bold" },
+                        -- table header cells, bold body text as on GitHub instead of the heading blue
+                        ["@markup.heading.markdown"] = { fg = colors.text, style = "bold" },
+                        -- quoted text reads as body text; the bar is what marks it
+                        ["@markup.quote.markdown"] = { fg = colors.text },
+                        -- upright code, with inline code in light blue
+                        ["@markup.raw.markdown_inline"] = { fg = colors.blue_bright, style = "NONE" },
+                        ["@markup.raw.block.markdown"] = { fg = colors.text },
+                        ["@markup.link.label.markdown_inline"] = { fg = colors.accent, style = "underline" },
+
+                        RenderMarkdownHeadingRule = { fg = colors.border_muted },
+                        -- explicit code backgrounds, since the editor background is transparent. darker
+                        -- than the editor, the same shade as floating windows
+                        RenderMarkdownCode = { bg = colors.bg_float },
+                        RenderMarkdownCodeInfo = { fg = colors.text_muted, bg = colors.bg_float },
+                        RenderMarkdownCodeInline = { bg = colors.bg_float },
+                        RenderMarkdownBullet = { fg = colors.text_muted },
+                        RenderMarkdownDash = { fg = colors.neutral },
+                        RenderMarkdownQuote = { fg = colors.blue_bright },
+                        RenderMarkdownTableHead = { fg = colors.neutral },
+                        RenderMarkdownTableRow = { fg = colors.neutral },
+                        RenderMarkdownLink = { fg = colors.accent },
+                        RenderMarkdownUnchecked = { fg = colors.text_muted },
+                        RenderMarkdownChecked = { fg = colors.accent },
+                        RenderMarkdownTodo = { fg = colors.attention },
+                        -- callouts in GitHub's colors
+                        RenderMarkdownInfo = { fg = colors.accent },
+                        RenderMarkdownSuccess = { fg = colors.success },
+                        RenderMarkdownHint = { fg = colors.purple },
+                        RenderMarkdownWarn = { fg = colors.attention },
+                        RenderMarkdownError = { fg = colors.danger },
+                    }
+                end
+
                 local function rainbow_delimiters_groups()
                     return {
                         RainbowDelimiterRed = { fg = colors.red_bright },
@@ -201,6 +244,7 @@ return {
                     snacks_groups(),
                     noice_groups(),
                     treesitter_context_groups(),
+                    render_markdown_groups(),
                     rainbow_delimiters_groups()
                 )
             end

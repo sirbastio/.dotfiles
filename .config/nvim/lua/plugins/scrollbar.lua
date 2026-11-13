@@ -54,6 +54,7 @@ return {
                 filetypes = {
                     oil = true,
                     gitcommit = true,
+                    markdown = true,
                 },
             },
             providers = { diagnostic = false, gitsigns = true },

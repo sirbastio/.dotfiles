@@ -16,6 +16,7 @@
   "mini.splitjoin": { "branch": "main", "commit": "de43d1ace70185b2d1da97781586ffba9fbb0338" },
   "mini.surround": { "branch": "main", "commit": "5357f00aca51a3b43e7775901b1ad9699f8c2678" },
   "neogit": { "branch": "master", "commit": "697ad3ee86a73cf6b6758b838d7a7d76cf3b9f86" },
+  "no-neck-pain.nvim": { "branch": "main", "commit": "83ed5249cfdfc5790ab2c05f96038eeca7dd9451" },
   "noice.nvim": { "branch": "main", "commit": "7bfd942445fb63089b59f97ca487d605e715f155" },
   "nui.nvim": { "branch": "main", "commit": "10fc361835c856ba4233ef5ea135b919bf3dce97" },
   "nvim-lint": { "branch": "master", "commit": "f6230a5c06ba59e6059c14637f1dbe29a7978b9b" },

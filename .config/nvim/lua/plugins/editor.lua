@@ -14,12 +14,6 @@ return {
         opts = { lsp = { progress = { enabled = false }, signature = { enabled = false } } },
     },
     {
-        "MeanderingProgrammer/render-markdown.nvim",
-        ft = { "markdown" },
-        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-        opts = { sign = { enabled = false } },
-    },
-    {
         "HiPhish/rainbow-delimiters.nvim",
         event = { "BufReadPost", "BufNewFile" },
         init = function()

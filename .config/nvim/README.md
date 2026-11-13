@@ -53,7 +53,7 @@ Cursor position is saved when a file leaves the window and restored when it retu
 | Explorer | `<leader>e` / `<leader>E` | Open Mini Files at the working directory / current file |
 | Explorer | `-` | Open the parent directory with Oil |
 | Buffers | `<leader>bp` | Pin the current buffer |
-| Close | `<leader>q` / `<leader>Q` | Close the buffer (dashboard after the last) / close the window or quit Neovim |
+| Close | `<leader>bd` / `<leader>q` | Close buffer / window or quit Neovim |
 | Buffers | `<leader>1` … `<leader>5` | Jump directly to a buffer |
 | Editing | `<leader>f` | Format the file or selection |
 | Editing | `<leader>p` | Paste over a selection without replacing the register |
@@ -74,6 +74,7 @@ Centered scrolling, search-result recentering, movable visual selections, select
 - Tree-sitter-powered folds that start open and keep syntax highlighting when closed.
 - Right-opening vertical splits and below-opening horizontal splits.
 - No swap files, backup files, line wrapping, or redundant mode display.
+- Markdown reads as prose: soft wrapping aligned under list items and quotes, screen-line `j`/`k`, no line numbers, two-space indents, GitHub-style rendering, and a centred 90-column text column.
 - Hyphenated identifiers are treated as complete words.
 - True-color rendering and a blinking cursor that makes stalled SSH sessions obvious.
 
@@ -91,6 +92,7 @@ Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim) and group
 | Interface | [GitHub theme](https://github.com/projekt0n/github-nvim-theme) · [barbar.nvim](https://github.com/romgrk/barbar.nvim) · [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) · [Noice](https://github.com/folke/noice.nvim) |
 | Diagnostics | [Trouble](https://github.com/folke/trouble.nvim) · [nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar) · cspell filtering |
 | Editing | [mini.pairs](https://github.com/nvim-mini/mini.pairs) · [mini.surround](https://github.com/nvim-mini/mini.surround) · [mini.splitjoin](https://github.com/nvim-mini/mini.splitjoin) · [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) |
+| Markdown | [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) · [no-neck-pain.nvim](https://github.com/shortcuts/no-neck-pain.nvim) |
 | Extras | [which-key](https://github.com/folke/which-key.nvim) · [todo-comments](https://github.com/folke/todo-comments.nvim) · [rainbow-delimiters](https://github.com/hiphish/rainbow-delimiters.nvim) |
 
 ## First launch
@@ -124,6 +126,9 @@ Useful maintenance commands:
 .
 ├── init.lua
 ├── lazy-lock.json
+├── after/
+│   └── ftplugin/
+│       └── markdown.lua   # prose settings for markdown buffers
 └── lua/
     ├── config/
     │   ├── autocmds.lua   # persistent views and editor events
@@ -133,10 +138,12 @@ Useful maintenance commands:
     │   └── utils.lua      # shared buffer and window helpers
     └── plugins/
         ├── buffers.lua    # preview-buffer lifecycle
+        ├── centering.lua  # centred text column for markdown
         ├── coding.lua     # editing primitives
         ├── explorer.lua   # Mini Files and Oil
         ├── git.lua        # Gitsigns and Neogit
         ├── lsp.lua        # language servers and Mason
+        ├── markdown.lua   # GitHub-style markdown rendering
         ├── picker.lua     # project-aware search
         └── ...            # UI, completion, diagnostics, and more
 ```
