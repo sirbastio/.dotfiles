@@ -15,6 +15,7 @@ gui:
 keybinding:
   universal:
     edit: o
+    openFile: O
 git:
   diffRenderers:
     - colorArg: always

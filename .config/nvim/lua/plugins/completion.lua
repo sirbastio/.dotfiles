@@ -3,7 +3,10 @@ return {
     dependencies = { "rafamadriz/friendly-snippets" },
     version = "1.*",
     opts = {
-        keymap = { preset = "default" },
+        keymap = {
+            preset = "default",
+            ["<S-Tab>"] = {}, -- Keep insert-mode outdent mapping.
+        },
         appearance = { nerd_font_variant = "mono" },
         completion = { documentation = { auto_show = true } },
         signature = { enabled = true, window = { border = "rounded" } },

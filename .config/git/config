@@ -8,10 +8,30 @@
 [core]
     pager = delta
 
+[push]
+    autoSetupRemote = true
+
+[fetch]
+    prune = true
+
+[pull]
+    ff = only
+
+[merge]
+    conflictStyle = zdiff3
+
+[branch]
+    sort = -committerdate
+
 [interactive]
     diffFilter = delta --color-only
 
+[diff]
+    algorithm = histogram
+
 [delta]
+    pager = less -RXS
+    max-line-length = 0
     line-numbers = true
     true-color = always
     syntax-theme = github-dark-default
@@ -31,3 +51,9 @@
     file-modified-label = "[38;2;210;153;34m[38;2;230;237;243m"
     file-removed-label = "[38;2;248;81;73m[38;2;230;237;243m"
     file-renamed-label = "[38;2;88;166;255m[38;2;230;237;243m"
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
