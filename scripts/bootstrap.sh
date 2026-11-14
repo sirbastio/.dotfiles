@@ -199,6 +199,10 @@ stow_dotfiles() {
   log "Creating ~/.ssh"
   mkdir -p -m 700 "$HOME/.ssh" "$HOME/.ssh/config.d"
 
+  # Same for ~/.claude: Claude Code keeps sessions and credentials there.
+  log "Creating ~/.claude"
+  mkdir -p "$HOME/.claude"
+
   log "Linking dotfiles with stow"
   # --restow also prunes links to files that have been removed from the repo
   stow --dir="$DOTFILES_DIR" --target="$HOME" --restow .

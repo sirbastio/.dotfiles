@@ -5,3 +5,5 @@
 /.config/nvim/spell/*.spl
 /.ssh/*
 !/.ssh/config
+/.claude/*
+!/.claude/CLAUDE.md
