@@ -2,5 +2,6 @@
 .zsh_history
 .zcompdump
 .zsh_sessions
+/.config/nvim/spell/*.spl
 /.ssh/*
 !/.ssh/config

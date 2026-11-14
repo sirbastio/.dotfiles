@@ -36,6 +36,12 @@ set("x", "<Tab>", ">gv", { desc = "Indent selected lines" })
 -- === SEARCH === --
 set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "[c]lear search highlights" })
 
+-- === SPELLING === --
+set("n", "zg", function()
+    vim.cmd("normal! zg")
+    require("lint").try_lint("cspell")
+end, { desc = "Add word to the spellfile and recheck spelling" })
+
 -- === COPY & PASTE === --
 set("x", "<leader>p", '"_dP', { desc = "[p]aste without yanking" })
 set({ "n", "v" }, "<leader>d", '"_d', { desc = "[d]elete without yanking" })
