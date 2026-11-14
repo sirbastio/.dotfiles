@@ -14,4 +14,16 @@ function M.on_normal_file_buffer(callback)
     end
 end
 
+function M.mason_ensure_installed(names)
+    local registry = require("mason-registry")
+    registry.refresh(function()
+        for _, name in ipairs(names) do
+            local package = registry.get_package(name)
+            if not package:is_installed() then
+                package:install()
+            end
+        end
+    end)
+end
+
 return M

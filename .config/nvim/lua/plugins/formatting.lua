@@ -1,6 +1,17 @@
 return {
     "stevearc/conform.nvim",
     lazy = true,
+    init = function()
+        require("config.utils").mason_ensure_installed({
+            "stylua",
+            "ruff",
+            "clang-format",
+            "prettier"
+        })
+
+        -- use conform for formatting instead of vim's built-in formatter with
+        vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
     opts = {
         default_format_opts = { lsp_format = "fallback" },
         -- format_on_save = { timeout_ms = 1000 },
@@ -29,10 +40,10 @@ return {
             mode = { "n", "v" },
             desc = "[f]ormat",
         },
+        {
+            "<leader>F",
+            "mzgg=G`z",
+            desc = "[F]ormat with Vim (keep cursor position)"
+        },
     },
-    init = function()
-        -- use conform for formatting instead of vim's built-in formatter
-        vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-        vim.keymap.set("n", "<leader>F", "mzgg=G`z", { desc = "[F]ormat with Vim (keep cursor position)" })
-    end,
 }

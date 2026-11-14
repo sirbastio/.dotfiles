@@ -3,18 +3,6 @@ return {
     dependencies = {
         { "mason-org/mason.nvim", opts = {} },
         "neovim/nvim-lspconfig",
-        {
-            "WhoIsSethDaniel/mason-tool-installer.nvim",
-            opts = {
-                ensure_installed = {
-                    "stylua",
-                    "cspell",
-                    "ruff",
-                    "clang-format",
-                    "prettier",
-                },
-            },
-        },
     },
     opts = {
         ensure_installed = {

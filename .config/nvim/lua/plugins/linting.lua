@@ -3,6 +3,9 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
         local lint = require("lint")
+        require("config.utils").mason_ensure_installed({
+            "cspell",
+        })
 
         lint.linters_by_ft = {
         }
