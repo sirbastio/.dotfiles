@@ -1,18 +1,17 @@
 # How To Work With Me
 
-- These are my global rules for every project.
-- A project's AGENTS.md or CLAUDE.md adds to the rules here.
+- These are global agent rules for every project.
+- A project's rules (AGENTS.md or CLAUDE.md) adds to the rules here.
 - These rules may not cover everything, use your own discretion still.
 
 ## General
 
-- Always send a push notification, regardless of if I'm present.
-- Never wait on on general background tasks.
+- Never wait on general background tasks.
 
 ## Git
 
 - Commits
-  - When: A piece of work is finished and before starting unrelated work.
+  - When: By default only when asked or needed. A project's rules may overwrite this.
   - How: Only commit changes you made. Preserve existing uncommitted changes.
 
 - Pushing, PRs & Merging: Never, unless asked. Commit related work beforehand.
@@ -40,9 +39,8 @@
 ### Working
 
 - Keep going until every acceptance check holds.
-  - Check each one yourself.
+  - Check each one yourself. Batch UI changes.
   - Only stop earlier when you're blocked or a decision is mine.
-- Batch UI changes.
 - Run `/code-review` on logic, data and server changes
   - Fix what is found before handing over.
 

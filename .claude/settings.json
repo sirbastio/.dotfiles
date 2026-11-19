@@ -1,0 +1,41 @@
+{
+  "theme": "dark",
+  "editorMode": "vim",
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true,
+  "modelSettings": {
+      "claude-opus-5-5": {
+          "effortLevel": "medium"
+      }
+  },
+  "attribution": {
+      "commit": "",
+      "pr": "",
+      "sessionUrl": false
+  },
+  "enabledPlugins": {
+      "clangd-lsp@claude-plugins-official": true,
+      "typescript-lsp@claude-plugins-official": true
+  },
+  "permissions": {
+    "defaultMode": "auto",
+    "allow": [
+      "Bash(git branch *)",
+      "Bash(git push *)",
+      "Bash(gh pr *)",
+      "Bash(gh issue *)"
+    ],
+    "ask": [
+      "Bash(git switch *)",
+      "Bash(git checkout *)",
+      "Bash(gh pr merge *)"
+    ],
+    "deny": [
+      "Bash(git push *--force*)",
+      "Bash(git push *-f)",
+      "Bash(git push *-f *)",
+      "Bash(git reset *--hard*)",
+      "Bash(git clean *)"
+    ]
+  }
+}

@@ -7,4 +7,5 @@
 !/.ssh/config
 /.claude/*
 !/.claude/CLAUDE.md
+!/.claude/settings.json
 !/.claude/skills/
