@@ -16,6 +16,8 @@ keybinding:
   universal:
     edit: o
     openFile: O
+  commits:
+    openLogMenu: M # Ctrl+L moves between Rex panes and macOS windows
 git:
   diffRenderers:
     - colorArg: always
