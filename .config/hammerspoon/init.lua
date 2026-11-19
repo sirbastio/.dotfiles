@@ -124,14 +124,27 @@ hs.hotkey.bind({"ctrl"}, "i", function()
 end)
 
 -- Ctrl+h/j/k/l focus the nearest window group in that direction.
--- Ghostty keeps these keys so Neovim splits and tmux panes move first;
--- at their edge they hand off via `hs -c "navigateWindow('left')"`.
-local terminalBundleID = "com.mitchellh.ghostty"
+-- Ghostty and Rex keep these keys so Neovim splits and tmux or Rex panes move
+-- first; at their edge they hand off via `hs -c "navigateWindow('left')"`.
+local terminalBundleIDs = { ["com.mitchellh.ghostty"] = true, ["com.superlogical.rex"] = true }
 local directionKeys = { h = "left", j = "down", k = "up", l = "right" }
+
+local function focusFrontmostWindow()
+    for _, win in ipairs(orderedWindows()) do
+        if win:isStandard() and not win:isMinimized() then
+            win:focus()
+            return
+        end
+    end
+end
 
 local function focusWindowInDirection(direction)
     local focused = hs.window.focusedWindow()
-    if not focused then return end
+    -- Nothing to move from (e.g. the app's last window closed), so start at the top.
+    if not focused then
+        focusFrontmostWindow()
+        return
+    end
     local focusedID = focused:id()
 
     -- Only the frontmost window of each other group is a candidate, so
@@ -163,7 +176,7 @@ for key, direction in pairs(directionKeys) do
 end
 
 local function updateDirectionHotkeys(app)
-    local inTerminal = app ~= nil and app:bundleID() == terminalBundleID
+    local inTerminal = app ~= nil and terminalBundleIDs[app:bundleID()] == true
     for _, hotkey in ipairs(directionHotkeys) do
         if inTerminal then hotkey:disable() else hotkey:enable() end
     end

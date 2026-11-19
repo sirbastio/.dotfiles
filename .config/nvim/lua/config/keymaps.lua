@@ -52,7 +52,7 @@ set("n", "<leader>s", "<cmd>vsplit<CR>", { desc = "Split window vertically" })
 set("n", "<leader>S", "<cmd>split<CR>", { desc = "Split window horizontally" })
 
 -- === NAVIGATION === --
--- Ctrl+h/j/k/l: Neovim split -> tmux pane -> macOS window (via Hammerspoon).
+-- Ctrl+h/j/k/l: Neovim split -> tmux or Rex pane -> macOS window (via Hammerspoon).
 for key, direction in pairs({ h = "left", j = "down", k = "up", l = "right" }) do
     set("n", "<C-" .. key .. ">", function()
         local win = vim.api.nvim_get_current_win()
@@ -62,6 +62,8 @@ for key, direction in pairs({ h = "left", j = "down", k = "up", l = "right" }) d
         end
         if vim.env.TMUX then
             vim.system({ vim.fn.expand("~/.config/tmux/navigate.sh"), direction })
+        elseif vim.env.REX_SESSION then
+            vim.system({ "rex", "do", "navigate", "direction=" .. direction })
         else
             vim.system({ "hs", "-q", "-c", "navigateWindow('" .. direction .. "')" })
         end
