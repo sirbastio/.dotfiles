@@ -22,24 +22,6 @@ local function heading_rules(ctx)
             }
         end
     end
-
-    -- line numbers down the left of fenced code blocks, which the plugin has no option for
-    local code = vim.treesitter.query.parse("markdown", "(code_fence_content) @code")
-    for _, node in code:iter_captures(ctx.root, ctx.buf) do
-        local first, col, last = node:range()
-        for row = first, last - 1 do
-            local line = vim.api.nvim_buf_get_lines(ctx.buf, row, row + 1, false)[1]
-            marks[#marks + 1] = {
-                conceal = false,
-                start_row = row,
-                start_col = math.min(col, #line),
-                opts = {
-                    virt_text = { { ("%2d "):format(row - first + 1), "RenderMarkdownCodeInfo" } },
-                    virt_text_pos = "inline",
-                },
-            }
-        end
-    end
     return marks
 end
 

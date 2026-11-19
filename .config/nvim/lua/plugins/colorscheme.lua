@@ -78,9 +78,9 @@ return {
 
                 local function barbar_groups()
                     local statuses = {
-                        Current = { bg = colors.bg_transparent, fg = colors.text },
-                        Inactive = { bg = colors.bg_transparent, fg = colors.text_muted },
-                        Visible = { bg = colors.bg_editor, fg = colors.text_muted },
+                        Current = { bg = colors.bg_float, fg = colors.text },
+                        Inactive = { bg = colors.bg_float, fg = colors.text_muted },
+                        Visible = { bg = colors.bg_float, fg = colors.text_muted },
                     }
 
                     local groups = {
@@ -182,10 +182,10 @@ return {
 
                 local function render_markdown_groups()
                     return {
-                        -- a terminal can't size headings: h1 alone is blue and the rest are white. h1 and
+                        -- a terminal can't size headings: h1 is blue, h2 light blue and the rest white. h1 and
                         -- h2 get a rule under them and h3 is underlined
-                        ["@markup.heading.1.markdown"] = { fg = colors.blue_bright, style = "bold" },
-                        ["@markup.heading.2.markdown"] = { fg = colors.text, style = "bold" },
+                        ["@markup.heading.1.markdown"] = { fg = colors.blue, style = "bold" },
+                        ["@markup.heading.2.markdown"] = { fg = colors.blue_bright, style = "bold" },
                         ["@markup.heading.3.markdown"] = { fg = colors.text, style = "bold,underline" },
                         ["@markup.heading.4.markdown"] = { fg = colors.text, style = "bold" },
                         ["@markup.heading.5.markdown"] = { fg = colors.text, style = "bold" },
@@ -198,6 +198,11 @@ return {
                         ["@markup.raw.markdown_inline"] = { fg = colors.blue_bright, style = "NONE" },
                         ["@markup.raw.block.markdown"] = { fg = colors.text },
                         ["@markup.link.label.markdown_inline"] = { fg = colors.accent, style = "underline" },
+                        ["@markup.strong.markdown_inline"] = { fg = colors.purple, style = "bold" },
+                        -- bare URLs and autolinks, matching the label of a [text](url) link
+                        ["@markup.link.url.markdown_inline"] = { fg = colors.accent, style = "underline" },
+                        -- the raw list marker on the cursor line, matching the rendered bullet
+                        ["@markup.list.markdown"] = { fg = colors.orange },
 
                         RenderMarkdownHeadingRule = { fg = colors.border_muted },
                         -- explicit code backgrounds, since the editor background is transparent. darker
@@ -205,12 +210,11 @@ return {
                         RenderMarkdownCode = { bg = colors.bg_float },
                         RenderMarkdownCodeInfo = { fg = colors.text_muted, bg = colors.bg_float },
                         RenderMarkdownCodeInline = { bg = colors.bg_float },
-                        RenderMarkdownBullet = { fg = colors.text_muted },
+                        RenderMarkdownBullet = { fg = colors.orange },
                         RenderMarkdownDash = { fg = colors.neutral },
                         RenderMarkdownQuote = { fg = colors.blue_bright },
                         RenderMarkdownTableHead = { fg = colors.neutral },
                         RenderMarkdownTableRow = { fg = colors.neutral },
-                        RenderMarkdownLink = { fg = colors.accent },
                         RenderMarkdownUnchecked = { fg = colors.text_muted },
                         RenderMarkdownChecked = { fg = colors.accent },
                         RenderMarkdownTodo = { fg = colors.attention },

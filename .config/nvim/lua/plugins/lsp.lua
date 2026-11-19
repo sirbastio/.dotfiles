@@ -10,6 +10,7 @@ return {
             "clangd",
             "vtsls",
             "eslint",
+            "jsonls",
         },
         automatic_enable = {
             exclude = { "stylua" },

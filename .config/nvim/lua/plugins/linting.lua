@@ -10,6 +10,9 @@ return {
         lint.linters_by_ft = {
         }
 
+        -- accept both US and British spelling
+        table.insert(lint.linters.cspell.args, 2, "--locale=en,en-GB")
+
         -- cspell has no way to add words, so pull from neovim's spellfile (added with zg)
         local parse = lint.linters.cspell.parser
         lint.linters.cspell.parser = function(output, bufnr)

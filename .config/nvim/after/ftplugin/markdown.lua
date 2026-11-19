@@ -5,6 +5,7 @@ opt.linebreak = true
 opt.breakindent = true
 opt.breakindentopt = "list:-1"
 opt.cursorline = false
+opt.smoothscroll = true -- scroll wrapped paragraphs a row at a time
 
 -- the width of the match is the wrap indent. task items stop at the box, since the rendered
 opt.formatlistpat = table.concat({
