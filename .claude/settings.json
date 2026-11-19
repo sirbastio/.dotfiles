@@ -3,6 +3,7 @@
   "editorMode": "vim",
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
+  "autoMemoryEnabled": false,
   "modelSettings": {
       "claude-opus-5-5": {
           "effortLevel": "medium"
