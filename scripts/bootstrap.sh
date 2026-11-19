@@ -203,6 +203,11 @@ stow_dotfiles() {
   log "Creating ~/.claude"
   mkdir -p "$HOME/.claude"
 
+  # And for ~/.codex and ~/.agents: Codex keeps credentials and history in the
+  # first, and agents install skills into the second.
+  log "Creating ~/.codex and ~/.agents"
+  mkdir -p "$HOME/.codex" "$HOME/.agents"
+
   log "Linking dotfiles with stow"
   # --restow also prunes links to files that have been removed from the repo
   stow --dir="$DOTFILES_DIR" --target="$HOME" --restow .

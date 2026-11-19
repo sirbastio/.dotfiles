@@ -9,3 +9,7 @@
 !/.claude/CLAUDE.md
 !/.claude/settings.json
 !/.claude/skills/
+/.codex/*
+!/.codex/AGENTS.md
+/.agents/*
+!/.agents/AGENTS.md
