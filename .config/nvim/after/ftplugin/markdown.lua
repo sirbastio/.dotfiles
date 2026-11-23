@@ -18,7 +18,7 @@ opt.formatlistpat = table.concat({
 opt.number = false
 opt.relativenumber = false
 opt.foldcolumn = "0"
-opt.statuscolumn = "" -- the global one keeps a padding column even without numbers
+opt.statuscolumn = "%{%v:lua.require'config.utils'.prose_statuscolumn()%}"
 opt.fillchars:append({ vert = " " }) -- no divider beside the centring plugin's padding window
 
 opt.shiftwidth = 2

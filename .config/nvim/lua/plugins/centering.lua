@@ -33,7 +33,7 @@ return {
     version = "*",
     lazy = true,
     opts = {
-        width = 92, -- about 90 columns of text beside the markdown sign column
+        width = 93, -- about 90 columns of text beside the markdown gutter (sign column and a blank cell)
         -- no divider between the left padding and the text; the markdown ftplugin hides the right one
         buffers = { wo = { fillchars = "vert: ,eob: " } },
         callbacks = {
