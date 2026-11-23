@@ -1,4 +1,4 @@
-# Questions: where each idea came from
+# Question: where each idea came from
 
 The steps of `SKILL.md` in order, and the source of each idea.
 
@@ -23,6 +23,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | The user makes the final choice | Claude |
 | 6. Ask for the decisions | Only decisions go to the user | poteto: "Multi-phase plan" playbook, `sharpen` |
 | | "Anything that can't be undone" counts as a decision | Claude |
+| | Ask for access and secrets the build will need | poteto: guide page "Run work while you sleep". Matt: `wayfinder`, `wizard` |
 | | Ask in rounds, everything answerable now | Matt: `grilling` |
 | | A recommended answer that "yes" accepts | Matt: `grilling` |
 | | Done when nothing is assumed | Matt: `grilling` |

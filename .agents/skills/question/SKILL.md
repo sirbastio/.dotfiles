@@ -1,10 +1,10 @@
 ---
-name: questions
+name: question
 description: Ask the user about a task or idea until every decision is settled.
 disable-model-invocation: true
 ---
 
-# Questions
+# Question
 
 Facts are yours to find. Decisions are the user's.
 
@@ -44,6 +44,7 @@ A decision is what the product should do, a preference, or anything that can't b
 - Ask in rounds.
   - A round holds every question that can be answered now.
   - A question that depends on an answer still open, or on a lookup still running, waits for a later round. Ask the rest now.
+- Ask for any access or secrets the build will need, so the build never stops for them.
 - Number each question and give your recommended answer, worded so "yes" accepts it.
 - Wait for the answers, then ask the next round.
 - Done when every decision the work rests on has the user's answer and none is assumed.
