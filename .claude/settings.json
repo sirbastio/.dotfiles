@@ -24,10 +24,10 @@
       "Bash(git branch *)",
       "Bash(git push *)",
       "Bash(gh pr *)",
-      "Bash(gh issue *)"
+      "Bash(gh issue *)",
+      "Bash(git switch *)"
     ],
     "ask": [
-      "Bash(git switch *)",
       "Bash(git checkout *)",
       "Bash(gh pr merge *)"
     ],
