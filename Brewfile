@@ -32,6 +32,7 @@ cask "claude-code"
 cask "codex"
 
 ## Dependencies
+brew "bun" # github-preview.nvim
 brew "poppler"
 brew "sevenzip"
 brew "tree-sitter-cli"
