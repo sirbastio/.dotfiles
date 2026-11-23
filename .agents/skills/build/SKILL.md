@@ -65,11 +65,7 @@ For a change of structure only:
   - Take out leftovers from earlier attempts, unrelated edits, and anything that doesn't match the code around it.
 - Run the project's full checks and fix what they find.
 - Follow `../verify/SKILL.md`.
-- Once it holds, push and open the pull request, where the project uses them.
-  - Say what changed, why, and how it was checked.
-  - Say what couldn't be checked from this machine, as steps someone else can follow.
-  - Never merge.
-- Tell the user the outcome, what you decided, and what isn't done.
+  - It proves the change, opens the pull request and tells the user the outcome.
 
 ## While building
 

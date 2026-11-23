@@ -42,12 +42,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | 6. Check and hand on | Read the whole diff once and take out what shouldn't ship | poteto: `deslop`, in the `cursor-team-kit` plugin of `cursor/plugins` |
 | | Once for the branch, not once per commit | poteto: `deslop`. Phillipe asked for the loop to be faster |
 | | Run the project's full checks | Matt: `implement`. Phillipe |
-| | Go on to Verify | Phillipe |
-| | Then push and open the pull request | Phillipe |
-| | Say what changed, why, and how it was checked | poteto: "Opening a PR" playbook. Matt: `pr` |
-| | Say what couldn't be checked from this machine, as steps to follow | Phillipe: prepr's `pr-handover` ("To check in the simulator") |
-| | Never merge | Phillipe |
-| | Tell the user the outcome, the decisions and what isn't done | Phillipe |
+| | Go on to Verify, which opens the pull request and tells the user the outcome | Phillipe |
 | While building | Keep going, and stop only when blocked or for what can't be undone | Phillipe. poteto: `poteto-mode` ("Autonomy") |
 | | Make the decisions that can be undone and list them | Phillipe. poteto: `worker.md` |
 | | A bug or missing feature found on the way is a follow-up | poteto: "Refactoring" playbook, where it covers refactors only. Claude stretched it to all work |
@@ -80,4 +75,4 @@ Left out, and why:
 | Do a run of the same edit with a script | poteto: `principle-build-the-lever` (summary only, not read in full) | Left to the agent |
 | Bug: read the real state instead of guessing, and revert what didn't fix it | poteto: "Bug fix" playbook | Left to the agent |
 
-Step 6 leads on to the Verify skill, which doesn't exist yet.
+Step 6 is the exit: on to the Verify skill, which opens the pull request. The pull request lines that were here moved to Verify's step 6.
