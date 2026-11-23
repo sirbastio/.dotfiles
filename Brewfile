@@ -30,6 +30,7 @@ brew "yazi"
 # AI
 cask "claude-code"
 cask "codex"
+brew "gemini-cli"
 
 ## Dependencies
 brew "bun" # github-preview.nvim

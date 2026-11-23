@@ -14,3 +14,6 @@
 /.agents/*
 !/.agents/AGENTS.md
 !/.agents/skills/
+/.gemini/*
+!/.gemini/AGENTS.md
+!/.gemini/settings.json
