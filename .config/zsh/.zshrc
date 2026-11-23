@@ -56,6 +56,7 @@ zinit light zsh-users/zsh-completions
 
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zsh/.zcompdump"
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 
 source <(fzf --zsh)
 eval "$(starship init zsh)"
