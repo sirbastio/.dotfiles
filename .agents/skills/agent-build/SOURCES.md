@@ -41,6 +41,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | Structure only: after a rename, search strings and docs for the old name | poteto: "Refactoring" playbook |
 | 5. Record | Write the plan's "To record" items in the same change | Phillipe. Matt: `grill-with-docs` |
 | 6. Check | Read the whole diff once and take out what shouldn't ship | poteto: `deslop`, in the `cursor-team-kit` plugin of `cursor/plugins` |
+| | Comments the Code section doesn't allow come out in this read | poteto: `no-comments`, `deslop` ("extra comments"). Loose: hers is a fresh agent on every change. Here the builder does it, so a small change that skips step 7 is still covered |
 | | Once for the branch, not once per commit | poteto: `deslop`. Phillipe asked for the loop to be faster |
 | | Run the project's full checks | Matt: `implement`. Phillipe |
 | 7. Review the code | Have the code reviewed before the pull request, and fix what is found | Matt: `implement` (ends with `code-review`). Phillipe: global rule to run `/code-review` and fix before handing over. Review is optional, so it can't wait for Review |

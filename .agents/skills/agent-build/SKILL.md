@@ -64,7 +64,7 @@ For a change of structure only:
 ## 6. Check
 
 - Read the whole diff against the main branch once.
-  - Take out leftovers from earlier attempts, unrelated edits, and anything that doesn't match the code around it.
+  - Take out leftovers from earlier attempts, unrelated edits, comments the Code section doesn't allow, and anything that doesn't match the code around it.
 - Run the project's full checks and fix what they find.
 
 ## 7. Review the code

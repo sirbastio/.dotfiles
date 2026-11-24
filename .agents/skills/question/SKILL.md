@@ -34,6 +34,7 @@ Facts are yours to find. Decisions are the user's.
 ## 5. Compare approaches
 
 - When more than one approach is sensible, sketch two that differ.
+  - Where the change doesn't fit the design as it is, make one sketch the design you'd build if this had been required from the start.
 - Recommend one, and say what each gives and costs.
 - Put the choice to the user in step 6.
 

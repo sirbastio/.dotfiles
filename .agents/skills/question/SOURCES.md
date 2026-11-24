@@ -19,6 +19,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | 4. Settle by running where possible | Run something instead of asking | poteto: "Prototype" playbook, `sharpen` |
 | | The throwaway lives in a scratch folder outside the project | Claude |
 | 5. Compare approaches | Sketch two approaches that differ | poteto: `architect` |
+| | Where the change doesn't fit the design, one sketch is the design built as if it had been required from the start | poteto: `principle-redesign-from-first-principles`. Loose: hers is a rule to always redesign. Here it is one option the user chooses between, so it doesn't override the smallest change |
 | | The agent recommends one | Phillipe. poteto: `architect` |
 | | The user makes the final choice | Claude |
 | 6. Ask for the decisions | Only decisions go to the user | poteto: "Multi-phase plan" playbook, `sharpen` |
