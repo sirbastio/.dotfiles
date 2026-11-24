@@ -1,0 +1,10 @@
+# User rules from ~/.claude/settings.json.
+# Branch mutations, pushes and PR actions still require the user's approval.
+prefix_rule(pattern = ["git", ["branch", "checkout", "switch", "push", "reset"]], decision = "prompt")
+prefix_rule(pattern = ["git", "push", ["-f", "--force", "--force-with-lease", "--force-if-includes"]], decision = "forbidden")
+prefix_rule(pattern = ["git", "reset", "--hard"], decision = "forbidden")
+prefix_rule(pattern = ["git", "clean"], decision = "forbidden")
+
+prefix_rule(pattern = ["gh", "pr", ["checks", "diff", "list", "status", "view"]], decision = "allow")
+prefix_rule(pattern = ["gh", "pr", ["close", "comment", "create", "edit", "merge", "ready", "reopen", "review", "update-branch"]], decision = "prompt")
+prefix_rule(pattern = ["gh", "issue", ["list", "status", "view"]], decision = "allow")
