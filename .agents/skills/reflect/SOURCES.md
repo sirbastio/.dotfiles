@@ -33,9 +33,11 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | 5. Propose | Worst first | Matt: `retro` ("in order of severity") |
 | | Show what was dropped and why | poteto: `reflect` (Accepted, Rejected) |
 | | Wait for the user's yes | poteto: `reflect`. Matt's `retro` only suggests |
-| 6. Make the changes | Project changes are made the way Build builds | Claude |
+| 6. Make the changes | A check or code is built the way Build builds | Claude |
 | | A new check must fail on the mistake it's for | poteto: `correct` ("Prove each new check fails on a real past mistake") |
-| | Update the skill's `SOURCES.md` too | Phillipe: every idea is traced to its source |
+| | A line in a rule or skill is edited in place, naming the mistake it answers | Phillipe asked what happens when the change is to a skill. Claude's wording |
+| | In the project, it lands the way the project's changes land | Claude |
+| | In a global skill, update its `SOURCES.md` too | Phillipe: every idea is traced to its source |
 | | Tell the user what changed | Claude |
 
 Left out, and why:

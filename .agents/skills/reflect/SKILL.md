@@ -50,7 +50,9 @@ Change or remove a line before adding one.
 
 ## 6. Make the changes
 
-- In the project, make them the way `../agent-build/SKILL.md` builds.
+- A check or code: build it the way `../agent-build/SKILL.md` builds.
   - A new check must fail on the mistake it's for.
-- In a global skill, update its `SOURCES.md` too.
+- A line in a rule or skill: edit it in place, and say which mistake it answers.
+  - In the project, it lands the way the project's changes land.
+  - In a global skill, update its `SOURCES.md` too.
 - Tell the user what changed.
