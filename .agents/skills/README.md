@@ -11,18 +11,18 @@ Boxes are skills. Rounded shapes are you, or something handed to you.
 ```mermaid
 flowchart TD
     idea([You have an idea or a task])
-    plan["<b>agent-plan</b><br/>write the plan, you confirm it,<br/>publish it as an issue"]
-    question["<b>question</b><br/>settle every decision with you"]
-    solo([Or on its own, when you only<br/>want a task talked through])
+    plan["<b>agent-plan</b><br/>agree a plan,<br/>saved as an issue"]
+    question["<b>question</b><br/>settle every decision"]
+    solo([Or on its own,<br/>to talk a task through])
     small([Small and obvious:<br/>no plan needed])
-    split["<b>split</b><br/>cut the plan into issues<br/>that each fit one session"]
-    build["<b>agent-build</b><br/>build in small tested units,<br/>then review the code"]
-    verify["<b>agent-verify</b><br/>prove it on the real thing,<br/>then open the pull request"]
-    pr([Pull request with the evidence])
-    review["<b>agent-review</b><br/>run the checks Verify couldn't,<br/>give a verdict"]
-    merge([You merge, or take further action])
-    setup["<b>verify-setup</b><br/>once per project: write the skill<br/>that says how to verify it"]
-    reflect["<b>reflect</b><br/>turn a session's mistakes into<br/>checks, rules and skill edits"]
+    split["<b>split</b><br/>cut the plan into<br/>one-session issues"]
+    build["<b>agent-build</b><br/>build in tested units,<br/>review the code"]
+    verify["<b>agent-verify</b><br/>prove it for real,<br/>open the pull request"]
+    pr([Pull request<br/>with the evidence])
+    review["<b>agent-review</b><br/>run the unrun checks,<br/>give a verdict"]
+    merge([You merge,<br/>or take further action])
+    setup["<b>verify-setup</b><br/>once per project:<br/>write how to verify it"]
+    reflect["<b>reflect</b><br/>turn mistakes into<br/>checks and rules"]
 
     idea --> plan
     plan -->|asks the questions first| question
