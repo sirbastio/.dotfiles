@@ -1,5 +1,5 @@
 ---
-name: build
+name: agent-build
 description: Build a planned change in small tested units, review the code, then hand it to Verify.
 disable-model-invocation: true
 ---
@@ -11,7 +11,7 @@ Every rule here is a default. The project's own rules win, and a step the projec
 ## 1. Read the plan
 
 - Read the plan or issue the user names, and say its title.
-  - With no plan, follow `../plan/SKILL.md` first.
+  - With no plan, follow `../agent-plan/SKILL.md` first.
   - If it stops at "small and obvious", build without one.
 - Its acceptance checks are the finish line.
 - List any access or secrets the work will need.
@@ -82,7 +82,7 @@ On a small change, skip this step.
 
 ## 8. Hand on
 
-- Follow `../verify/SKILL.md`.
+- Follow `../agent-verify/SKILL.md`.
   - It proves the change, opens the pull request and tells the user the outcome.
 
 ## While building

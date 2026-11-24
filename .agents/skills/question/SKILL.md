@@ -53,4 +53,4 @@ A decision is what the product should do, a preference, or anything that can't b
 
 - List what was decided and what the throwaways showed.
 - If Plan started these questions, go back to it.
-  - Otherwise ask the user whether to write the plan, and on yes follow `../plan/SKILL.md`.
+  - Otherwise ask the user whether to write the plan, and on yes follow `../agent-plan/SKILL.md`.

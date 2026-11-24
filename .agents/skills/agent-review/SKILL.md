@@ -1,5 +1,5 @@
 ---
-name: review
+name: agent-review
 description: Review an open pull request another session built, by running the checks it couldn't and giving a verdict.
 disable-model-invocation: true
 ---
@@ -18,7 +18,7 @@ Run this in a session that didn't build the change.
 
 ## 2. Run what Verify couldn't
 
-- Work down the checks not run, the way `../verify/SKILL.md` runs and judges a check.
+- Work down the checks not run, the way `../agent-verify/SKILL.md` runs and judges a check.
 - Rerun any check whose code changed since its evidence.
 - A check this machine can't run either stays "not run here".
 
@@ -26,7 +26,7 @@ Run this in a session that didn't build the change.
 
 - Open each changed screen or command once more, and try what the checks don't name.
 - A finding counts only when a run shows it.
-- Review the code again only if the user asks, the way step 7 of `../build/SKILL.md` does.
+- Review the code again only if the user asks, the way step 7 of `../agent-build/SKILL.md` does.
 
 ## 4. Fix or send back
 

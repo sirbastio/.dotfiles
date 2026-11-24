@@ -1,5 +1,5 @@
 ---
-name: verify
+name: agent-verify
 description: Prove a change works on the real thing, then open its pull request with the evidence.
 disable-model-invocation: true
 ---

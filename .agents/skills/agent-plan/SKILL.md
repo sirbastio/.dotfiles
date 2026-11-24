@@ -1,5 +1,5 @@
 ---
-name: plan
+name: agent-plan
 description: Turn a task into a plan the user has agreed to, before anything is built.
 disable-model-invocation: true
 ---

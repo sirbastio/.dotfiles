@@ -51,7 +51,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | Tell the user the outcome, the decisions and what isn't done | Phillipe |
 | | With no pull request, the evidence goes in the reply | Claude |
 
-Moved to `../review/SKILL.md`, because checking a pull request someone else built is Review's job:
+Moved to `../agent-review/SKILL.md`, because checking a pull request someone else built is Review's job:
 
 | Idea | Source |
 |---|---|
@@ -81,4 +81,4 @@ Left out, and why:
 
 Not read: poteto's talk "All Code Is Slop (Except Mine)". Her written guide was used in its place.
 
-Step 6 is the exit: the pull request is open, or with none the evidence is in the reply. `../review/SKILL.md` comes next, started by the user.
+Step 6 is the exit: the pull request is open, or with none the evidence is in the reply. `../agent-review/SKILL.md` comes next, started by the user.

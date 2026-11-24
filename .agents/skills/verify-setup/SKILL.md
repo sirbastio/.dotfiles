@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Verify Setup
 
-The facts go in the project. The method stays in `../verify/SKILL.md`.
+The facts go in the project. The method stays in `../agent-verify/SKILL.md`.
 
 ## 1. Read the project
 
