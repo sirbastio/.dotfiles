@@ -15,6 +15,7 @@ Tests and the project's checks belong to Build. This is proof on the real thing.
 - Use the plan's acceptance checks.
   - With no plan, write the checks from the diff before running anything.
 - Add a check for each state the change touches.
+  - On a screen: empty, filled, long text, error, and the keyboard open where there's a text field.
 - Each check is a scenario and what must be seen.
   - It names the data it needs.
   - It must be able to fail on this change.

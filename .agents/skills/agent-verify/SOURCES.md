@@ -13,7 +13,8 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | Tests and checks are Build's, this is proof on the real thing | poteto: `principle-prove-it-works`. Plan already says a passing test suite is not the proof |
 | 1. List the checks | The plan's acceptance checks are the list | Phillipe. poteto: guide 06 ("State the finish condition up front") |
 | | With no plan, write them from the diff before running anything | Claude |
-| | A check for each state the change touches | Phillipe: `pr-handover` ("To check in the simulator"), without its UI list |
+| | A check for each state the change touches | Phillipe: prepr's `pr-handover` skill ("To check in the simulator"), since removed from prepr |
+| | On a screen: empty, filled, long text, error, keyboard open | Phillipe: the same skill's list. First left out as a project fact, then added because it holds for any screen |
 | | A scenario and what must be seen | poteto: "Multi-phase plan" playbook, by way of Plan |
 | | Each check names the data it needs | Phillipe: `pr-handover` ("Say what the data must be when it matters"). poteto: `create-verification-skill` feature-map example (Preconditions) |
 | | Each check must be able to fail on this change | Matt: `diagnosing-bugs` ("red-capable"). Loose: he says it of a bug's reproduction, Claude stretched it to every check |
@@ -73,7 +74,6 @@ Left out, and why:
 | A per-project skill for launch, health check, drive, evidence and clean-up, with a feature map | poteto: `create-verification-skill`, `maintain-verification-skill` | Its own skill: `../verify-setup/SKILL.md` |
 | A small driver agents call | poteto: guide 06 | Built when agents keep improvising the same steps, not part of Verify |
 | Launch and drive it the project's own way, and reuse a running instance | Phillipe. poteto: `create-verification-skill` | Phillipe cut it. The opening line already puts the project's rules first |
-| The UI states by name: empty, filled, long text, error, keyboard open | Phillipe: `pr-handover` | A project fact, not a method |
 | "Looks right" is not a result | Phillipe: `pr-handover` | Step 6 already asks what was seen |
 | A check run by a different path has not held | poteto: `create-verification-skill` feature-map example | "The path a user takes" already covers it |
 | Several agents checking at once | poteto: `swarm` | One simulator at a time on Phillipe's machine |
