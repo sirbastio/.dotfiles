@@ -1,6 +1,6 @@
 # How the skills fit together
 
-Seven skills, one per stage of a change. Each is started by hand with a slash command, and each can lead into the next.
+Eight skills, one per stage of a change. Each is started by hand with a slash command, and each can lead into the next.
 
 Boxes are skills. Rounded shapes are you, or something handed to you.
 
@@ -22,6 +22,7 @@ flowchart TD
     review["<b>agent-review</b><br/>run the checks Verify couldn't,<br/>give a verdict"]
     merge([You merge, or take further action])
     setup["<b>verify-setup</b><br/>once per project: write the skill<br/>that says how to verify it"]
+    reflect["<b>reflect</b><br/>turn a session's mistakes into<br/>checks, rules and skill edits"]
 
     idea --> plan
     plan -->|asks the questions first| question
@@ -39,6 +40,7 @@ flowchart TD
     pr -->|checks not run here,<br/>or you want a second look| review
     review --> merge
     setup -.-> verify
+    merge -.->|after it lands,<br/>or after a bad run| reflect
 
     classDef you fill:none,stroke:#888780,stroke-width:1px
     classDef withYou fill:none,stroke:#7F77DD,stroke-width:2px
@@ -47,7 +49,7 @@ flowchart TD
     class idea,solo,small,pr,merge you
     class plan,question,split withYou
     class build,verify alone
-    class review,setup sometimes
+    class review,setup,reflect sometimes
 ```
 
 | Skill | Starts from | What it does | Hands on to |
@@ -59,7 +61,8 @@ flowchart TD
 | `agent-verify` | A built change | Runs each acceptance check on the real thing, and goes back to building when one fails | A pull request with the evidence, the checks it couldn't run, and the risk |
 | `agent-review` | An open pull request, in a session that didn't build it | Runs the checks Verify couldn't, looks past the list, and fixes a small slip or sends a wrong approach back | A verdict. You merge |
 | `verify-setup` | A project with no written way to verify it | Writes a `verify-<project>` skill and a feature map, then proves them once | Every later `agent-verify` in that project |
+| `reflect` | A finished session, after its change lands or after a bad run | Finds what went wrong, keeps what will last, and proposes a check, a project rule or a skill edit for each. Changes nothing until you say yes | The next run, in that project or in the skills |
 
-You stay in the loop through `question`, `agent-plan` and `split`. From `agent-build` to the pull request the agent works alone, and stops only when blocked or for a decision that can't be undone. `agent-review` is optional: use it when checks couldn't be run, or when you want a second look.
+You stay in the loop through `question`, `agent-plan` and `split`. From `agent-build` to the pull request the agent works alone, and stops only when blocked or for a decision that can't be undone. `agent-review` is optional: use it when checks couldn't be run, or when you want a second look. `reflect` sits outside the flow: run it when a session has something to teach the next one.
 
 Each skill's folder has a `SOURCES.md` that says where every idea in it came from.
