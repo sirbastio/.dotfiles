@@ -4,6 +4,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 
 - **Matt**: Matt Pocock's skills, `mattpocock/skills` on GitHub.
 - **poteto**: Pstack, `harness/pstack` in `cursor/plugins` on GitHub.
+- **Addy**: Addy Osmani's skills, `addyosmani/agent-skills` on GitHub. Read after the skill was written.
 - **Phillipe**: asked for while the skill was being written, or carried from his own rules.
 - **Claude**: wording or a choice made while drafting, from neither set of skills.
 
@@ -42,12 +43,14 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | 5. Record | Write the plan's "To record" items in the same change | Phillipe. Matt: `grill-with-docs` |
 | 6. Check | Read the whole diff once and take out what shouldn't ship | poteto: `deslop`, in the `cursor-team-kit` plugin of `cursor/plugins` |
 | | Comments the Code section doesn't allow come out in this read | poteto: `no-comments`, `deslop` ("extra comments"). Loose: hers is a fresh agent on every change. Here the builder does it, so a small change that skips step 7 is still covered |
+| | Look for a bar that got lower: skipped or deleted tests, removed assertions, new suppressions, stubs, empty catches | Addy: `constraint-driven-development` ("Guard the bar itself"). His also watches a thresholds file, which these skills don't have |
 | | Once for the branch, not once per commit | poteto: `deslop`. Phillipe asked for the loop to be faster |
 | | Run the project's full checks | Matt: `implement`. Phillipe |
 | 7. Review the code | Have the code reviewed before the pull request, and fix what is found | Matt: `implement` (ends with `code-review`). Phillipe: global rule to run `/code-review` and fix before handing over. Review is optional, so it can't wait for Review |
 | | Fresh sub-agents, one question each | Matt: `code-review` (two parallel sub-agents) |
 | | Bugs: try to break the change | poteto: `interrogate` ("Break this change"). Loose: hers is a panel of different models, this is one sub-agent |
 | | A bug finding counts only when a run shows it | poteto: `interrogate` ("Leave out anything you did not run") |
+| | Bugs: flip one condition the change adds, and a suite that still passes is missing a test | Addy: `code-review-and-quality` ("A mutation that stays green is a finding: name the test case that is missing") |
 | | Plan: what's missing, what wasn't asked for, what's built wrong | Matt: `code-review` (Spec) |
 | | Each plan finding quotes the plan's line | Matt: `code-review` ("Quote the spec line for each finding") |
 | | Rules: where it breaks the project's written rules | Matt: `code-review` (Standards), without his list of code smells |
