@@ -1,6 +1,6 @@
 ---
 name: build
-description: Build a planned change in small tested units, through to its pull request.
+description: Build a planned change in small tested units, review the code, then hand it to Verify.
 disable-model-invocation: true
 ---
 

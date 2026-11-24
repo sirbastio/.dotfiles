@@ -48,4 +48,6 @@ Left out, and why:
 
 Not read in full: poteto's `comment-sicko` agent and her `arena` skill.
 
+Read after this skill was written, so not a source: Cursor's team kit (`cursor-team-kit` in `cursor/plugins`). Its `review-and-ship` reviews before the pull request, which here is Build's step 7. Nothing in it covers a review after the pull request.
+
 The skill ends at the verdict. Phillipe decides to merge or take further action.

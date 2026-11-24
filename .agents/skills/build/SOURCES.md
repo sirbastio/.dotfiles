@@ -90,5 +90,9 @@ Left out, and why:
 | Shape the types so a wrong state can't be written | poteto: `principle-type-system-discipline`, `principle-model-the-domain` | Left to the agent |
 | Do a run of the same edit with a script | poteto: `principle-build-the-lever` (summary only, not read in full) | Left to the agent |
 | Bug: read the real state instead of guessing, and revert what didn't fix it | poteto: "Bug fix" playbook | Left to the agent |
+| Grade review findings as critical, warning or note | Cursor's team kit: `review-and-ship` | The build fixes what is found, it doesn't report it |
+| Regroup commits in dependency order before review | Cursor's team kit: `make-pr-easy-to-review` | Each unit is already its own commit |
+
+Read after step 7 was written, so not a source: `review-and-ship` in Cursor's team kit (`cursor-team-kit` in `cursor/plugins`). It reviews for correctness, regressions, security and fit to intent with parallel sub-agents, and fixes the critical findings before the pull request, which is the same shape as step 7.
 
 Step 8 is the exit: on to the Verify skill, which opens the pull request. The pull request lines that were here moved to Verify's step 6.
