@@ -32,10 +32,11 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | Bug: rerun the original reproduction | Matt: `diagnosing-bugs`. poteto: "Bug fix" playbook |
 | 5. Judge each one | Held, failed or not run here | poteto: guide 06 ("inconclusive"), `swarm` (PASS, ISSUES, BLOCKED) |
 | | Failed: suspect how you looked before the code | poteto: `principle-prove-it-works` |
+| | If the project's verify skill was wrong, fix it in the same change | poteto: `maintain-verification-skill` ("a doctor failure caused by skill drift is drift: fix it"). Here it happens when a run trips over it, not on a daily pass |
 | | Then fix it and run every check again | Claude |
 | | Never weaken a check to make it pass | poteto: `create-verification-skill` ("Never weaken the journey to make it pass"), "Autonomous run" playbook ("never relax the predicate") |
 | 6. Open the pull request | Stop only what you started, and keep the evidence | poteto: `create-verification-skill` (Cleanup) |
-| | A change to a screen or command updates the feature map in the same change | poteto: `maintain-verification-skill`, as one line instead of a daily pass. Phillipe: prepr's feature-map test |
+| | A change to a screen, a command or anything the verify skill names updates that skill and its feature map in the same change | poteto: `maintain-verification-skill`, as one line instead of a daily pass. Phillipe: prepr's feature-map test, and he asked what happens when a change alters something Verify uses |
 | | Verify opens the pull request, not Build | Phillipe: "verifies it the best it can, notes where it comes short and makes a PR". poteto: guide 06 has the same order |
 | | Only once no check has failed. A check not run here doesn't stop it | Phillipe. Claude's wording |
 | | Say what changed and why | poteto: "Opening a PR" playbook. Matt: `pr` |

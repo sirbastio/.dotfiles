@@ -51,13 +51,14 @@ Tests and the project's checks belong to Build. This is proof on the real thing.
 
 - Each check held, failed or was not run here.
 - When one fails, suspect how you looked before the code.
+  - If the project's verify skill was wrong, fix it in the same change.
   - Then fix it the way Build builds, and run every check again.
 - Never weaken a check to make it pass.
 
 ## 6. Open the pull request
 
 - Stop only what you started, and keep the evidence.
-- When the change adds or alters a screen or command, update the project's feature map in the same change.
+- When the change alters a screen, a command, or anything the project's verify skill names, update that skill and its feature map in the same change.
 - Once no check has failed, push and open the pull request, where the project uses them.
   - Say what changed and why, and link the plan's issue.
     - Open with the smallest picture that shows the change: pseudocode, a call tree, a component tree, a file tree or a diagram.
