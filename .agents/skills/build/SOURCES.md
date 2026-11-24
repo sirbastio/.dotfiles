@@ -39,10 +39,22 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | Structure only: move every caller and delete the old way | poteto: `principle-migrate-callers-then-delete-legacy-apis` |
 | | Structure only: after a rename, search strings and docs for the old name | poteto: "Refactoring" playbook |
 | 5. Record | Write the plan's "To record" items in the same change | Phillipe. Matt: `grill-with-docs` |
-| 6. Check and hand on | Read the whole diff once and take out what shouldn't ship | poteto: `deslop`, in the `cursor-team-kit` plugin of `cursor/plugins` |
+| 6. Check | Read the whole diff once and take out what shouldn't ship | poteto: `deslop`, in the `cursor-team-kit` plugin of `cursor/plugins` |
 | | Once for the branch, not once per commit | poteto: `deslop`. Phillipe asked for the loop to be faster |
 | | Run the project's full checks | Matt: `implement`. Phillipe |
-| | Go on to Verify, which opens the pull request and tells the user the outcome | Phillipe |
+| 7. Review the code | Have the code reviewed before the pull request, and fix what is found | Matt: `implement` (ends with `code-review`). Phillipe: global rule to run `/code-review` and fix before handing over. Review is optional, so it can't wait for Review |
+| | Fresh sub-agents, one question each | Matt: `code-review` (two parallel sub-agents) |
+| | Bugs: try to break the change | poteto: `interrogate` ("Break this change"). Loose: hers is a panel of different models, this is one sub-agent |
+| | A bug finding counts only when a run shows it | poteto: `interrogate` ("Leave out anything you did not run") |
+| | Plan: what's missing, what wasn't asked for, what's built wrong | Matt: `code-review` (Spec) |
+| | Each plan finding quotes the plan's line | Matt: `code-review` ("Quote the spec line for each finding") |
+| | Rules: where it breaks the project's written rules | Matt: `code-review` (Standards), without his list of code smells |
+| | Comments included | poteto: `no-comments`. Phillipe |
+| | Each rules finding names the rule | Matt: `code-review` ("cite the standard") |
+| | Skip what the project's tooling already enforces | Matt: `code-review` |
+| | No findings is a valid result | poteto: `interrogate` |
+| | On a small change, skip the review | Claude. Phillipe: small tasks aren't forced through every stage, and his global rule names logic, data and server changes only |
+| 8. Hand on | Go on to Verify, which opens the pull request and tells the user the outcome | Phillipe |
 | While building | Keep going, and stop only when blocked or for what can't be undone | Phillipe. poteto: `poteto-mode` ("Autonomy") |
 | | Make the decisions that can be undone and list them | Phillipe. poteto: `worker.md` |
 | | A bug or missing feature found on the way is a follow-up | poteto: "Refactoring" playbook, where it covers refactors only. Claude stretched it to all work |
@@ -64,9 +76,13 @@ Left out, and why:
 |---|---|---|
 | Agree with the user where the tests go | Matt: `tdd` | A question round before every build |
 | Tidying belongs to review, not the loop | Matt: `tdd` | Covered by the smallest change and the read of the whole diff in step 6 |
-| A fresh agent strips the comments | poteto: `no-comments` | Belongs to Review |
+| A fresh agent that only strips comments | poteto: `no-comments` | Folded into the Rules question in step 7 |
 | A sub-agent per issue in its own worktree | Matt: `implement-spec`. poteto: "Feature" playbook | Running several builds at once is a different skill |
-| Code review at the end of the build | Matt: `implement` | Belongs to Review |
+| A fixed list of code smells for the reviewer | Matt: `code-review` | The project's written rules only |
+| Use the tool's own code review, such as Claude Code's `/code-review` | Phillipe: global rule | Phillipe cut it, to follow Matt and poteto instead |
+| Report the reviews side by side and never merge them into one ranking | Matt: `code-review` | The build fixes the findings, it doesn't report them |
+| A panel of different models reviewing the same diff | poteto: `interrogate`, `arena` | One reviewer per question |
+| Ask the user about any finding on security, data or sign-in | poteto: `bugbot-triage` | The build doesn't stop for it. Review keeps the line |
 | Proof on the real thing | poteto: `principle-prove-it-works` | Belongs to Verify |
 | Name the data and its types before writing logic | poteto: `principle-foundational-thinking`, `principle-model-the-domain` | Left to the agent |
 | Fake only what can't be run | Matt: `tdd/mocking.md`. poteto: `typescript-best-practices` | Left to the agent |
@@ -75,4 +91,4 @@ Left out, and why:
 | Do a run of the same edit with a script | poteto: `principle-build-the-lever` (summary only, not read in full) | Left to the agent |
 | Bug: read the real state instead of guessing, and revert what didn't fix it | poteto: "Bug fix" playbook | Left to the agent |
 
-Step 6 is the exit: on to the Verify skill, which opens the pull request. The pull request lines that were here moved to Verify's step 6.
+Step 8 is the exit: on to the Verify skill, which opens the pull request. The pull request lines that were here moved to Verify's step 6.

@@ -59,11 +59,29 @@ For a change of structure only:
 
 - Write the plan's "To record" items into the project's decision record and glossary, where it keeps them, in the same change.
 
-## 6. Check and hand on
+## 6. Check
 
 - Read the whole diff against the main branch once.
   - Take out leftovers from earlier attempts, unrelated edits, and anything that doesn't match the code around it.
 - Run the project's full checks and fix what they find.
+
+## 7. Review the code
+
+On a small change, skip this step.
+
+- Give the diff to fresh sub-agents, one question each:
+  - **Bugs**: try to break the change.
+    - A finding counts only when a run shows it.
+  - **Plan**: what's missing, what wasn't asked for, and what's built wrong.
+    - Each finding quotes the plan's line.
+  - **Rules**: where it breaks the project's written rules, comments included.
+    - Each finding names the rule.
+    - Skip what the project's tooling already enforces.
+- No findings is a valid result.
+- Fix what is found.
+
+## 8. Hand on
+
 - Follow `../verify/SKILL.md`.
   - It proves the change, opens the pull request and tells the user the outcome.
 

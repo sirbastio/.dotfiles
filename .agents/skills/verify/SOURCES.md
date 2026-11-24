@@ -39,14 +39,19 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | Verify opens the pull request, not Build | Phillipe: "verifies it the best it can, notes where it comes short and makes a PR". poteto: guide 06 has the same order |
 | | Only once no check has failed. A check not run here doesn't stop it | Phillipe. Claude's wording |
 | | Say what changed and why | poteto: "Opening a PR" playbook. Matt: `pr` |
+| | Link the plan's issue | Cursor's team kit (`cursor-team-kit` in `cursor/plugins`): `make-pr-easy-to-review` ("Link issue trackers... when they explain intent"). Review's step 1 reads the plan from it |
+| | Open with the smallest picture that shows the change | Matt: `pr` (Summary), credited there to Dex Horthy's `show-me` skill |
 | | Per check: what was done, what was seen, the screenshot or output | Phillipe: reviews evidence, not code. poteto: guide 06. Matt: `pr` (Evidence) |
 | | The before beside the after where one was captured | Matt: `pr` (Evidence) |
+| | Name the commit the evidence was captured at | Claude, so Review can tell what changed since. poteto: "Shipping" playbook ("A verdict covers a patch") |
 | | Not run here: steps to follow and what must be seen, and the change is not verified | Phillipe: `pr-handover` (Author) |
+| | Risk: whether it can be undone, and what it could break | Matt: `pr` (Merge Danger). poteto: "Opening a PR" playbook (Blast Radius). Here because Review is optional, so the pull request must be enough to decide on |
+| | Open it ready, not as a draft | Phillipe: "always ready", also when a check was not run. poteto: "Opening a PR" playbook ("Open PRs ready") |
 | | Never merge | Phillipe |
 | | Tell the user the outcome, the decisions and what isn't done | Phillipe |
 | | With no pull request, the evidence goes in the reply | Claude |
 
-For Review, moved out of this skill because checking a pull request someone else built is Review's job:
+Moved to `../review/SKILL.md`, because checking a pull request someone else built is Review's job:
 
 | Idea | Source |
 |---|---|
@@ -57,8 +62,6 @@ For Review, moved out of this skill because checking a pull request someone else
 | Tick what held, and note what was seen where it didn't | Phillipe: `pr-handover` (Checker) |
 | For how a screen looks, the user's own look is final | Phillipe |
 | An agent that didn't write the code proves the pull request again before it merges | poteto: "Shipping" playbook |
-| What else the change could break | poteto: `blast-radius` |
-| Merge risk in the description | Matt: `pr` |
 
 Left out, and why:
 
@@ -78,4 +81,4 @@ Left out, and why:
 
 Not read: poteto's talk "All Code Is Slop (Except Mine)". Her written guide was used in its place.
 
-Step 6 is the exit: the pull request is open, or with none the evidence is in the reply. Review comes next.
+Step 6 is the exit: the pull request is open, or with none the evidence is in the reply. `../review/SKILL.md` comes next, started by the user.
