@@ -16,6 +16,7 @@ Tests and the project's checks belong to Build. This is proof on the real thing.
   - With no plan, write the checks from the diff before running anything.
 - Add a check for each state the change touches.
 - Each check is a scenario and what must be seen.
+  - It names the data it needs.
   - It must be able to fail on this change.
 
 ## 2. See what can run here
@@ -24,6 +25,7 @@ Tests and the project's checks belong to Build. This is proof on the real thing.
   - This machine can run it.
   - It needs a tool this machine lacks, such as a simulator or a browser.
 - Confirm it's running this change before driving it.
+- If the project has no verify skill, say so at the end and name `../verify-setup/SKILL.md`.
 
 ## 3. Pick the checker
 
@@ -41,6 +43,8 @@ Tests and the project's checks belong to Build. This is proof on the real thing.
 - Take the path a user takes, never an internal shortcut.
 - Capture the action and its result, not only the final screen.
   - Capture any side effect too.
+  - Where the change alters what was already there, capture the before as well.
+- Script the check when you can, so it can be run again.
 - For a bug, rerun the original reproduction.
 
 ## 5. Judge each one
@@ -48,13 +52,16 @@ Tests and the project's checks belong to Build. This is proof on the real thing.
 - Each check held, failed or was not run here.
 - When one fails, suspect how you looked before the code.
   - Then fix it the way Build builds, and run every check again.
+- Never weaken a check to make it pass.
 
 ## 6. Open the pull request
 
 - Stop only what you started, and keep the evidence.
+- When the change adds or alters a screen or command, update the project's feature map in the same change.
 - Once no check has failed, push and open the pull request, where the project uses them.
   - Say what changed and why.
   - For each check, say what was done and what was seen, with the screenshot or output.
+    - Show the before beside the after where one was captured.
   - For each check not run here, write the steps to follow and what must be seen, and say the change is not verified.
   - Never merge.
 - Tell the user the outcome, what you decided, and what isn't done.
