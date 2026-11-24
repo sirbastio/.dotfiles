@@ -34,6 +34,8 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | Failed: suspect how you looked before the code | poteto: `principle-prove-it-works` |
 | | If the project's verify skill was wrong, fix it in the same change | poteto: `maintain-verification-skill` ("a doctor failure caused by skill drift is drift: fix it"). Here it happens when a run trips over it, not on a daily pass |
 | | Then fix it and run every check again | Claude |
+| | After two failed fixes, write down what both assumed and test that | poteto: `principle-attack-the-premise` |
+| | Still failing: stop and report, without a pull request | Matt: `software-factory` ("cap every loop of runs at a few tries before a human"). poteto: "Autonomous run" playbook ("surface a genuine dead end rather than spinning") |
 | | Never weaken a check to make it pass | poteto: `create-verification-skill` ("Never weaken the journey to make it pass"), "Autonomous run" playbook ("never relax the predicate") |
 | 6. Open the pull request | Stop only what you started, and keep the evidence | poteto: `create-verification-skill` (Cleanup) |
 | | A change to a screen, a command or anything the verify skill names updates that skill and its feature map in the same change | poteto: `maintain-verification-skill`, as one line instead of a daily pass. Phillipe: prepr's feature-map test, and he asked what happens when a change alters something Verify uses |

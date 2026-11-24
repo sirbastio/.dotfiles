@@ -14,6 +14,8 @@ Every rule here is a default. The project's own rules win, and a step the projec
   - With no plan, follow `../agent-plan/SKILL.md` first.
   - If it stops at "small and obvious", build without one.
 - Its acceptance checks are the finish line.
+- If the branch already has commits for this plan, read them and carry on from there.
+  - Don't redo what landed.
 - List any access or secrets the work will need.
 
 ## 2. Get on a branch

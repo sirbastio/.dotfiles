@@ -53,6 +53,8 @@ Tests and the project's checks belong to Build. This is proof on the real thing.
 - When one fails, suspect how you looked before the code.
   - If the project's verify skill was wrong, fix it in the same change.
   - Then fix it the way Build builds, and run every check again.
+- When two fixes for the same check have failed, write down what both assumed and test that before a third.
+  - If it still fails, stop and report, without a pull request.
 - Never weaken a check to make it pass.
 
 ## 6. Open the pull request

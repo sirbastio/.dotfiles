@@ -14,6 +14,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | With no plan, go to Plan first | Phillipe |
 | | If Plan stops at "small and obvious", build without one | Claude, following Plan's own exit |
 | | Its acceptance checks are the finish line | Phillipe. poteto: "Multi-phase plan" playbook |
+| | A branch that already has commits for the plan: read them and carry on, don't redo what landed | poteto: "Session pickup" playbook. Loose: hers reads the earlier session's transcript too. Matt's `handoff` writes a note for the next session instead |
 | | List the access or secrets needed | Phillipe |
 | 2. Get on a branch | Stay on a branch the session was started on for this work | Phillipe asked for cloud sessions to be covered. Claude's wording |
 | | Follow the project's branch rule | Phillipe |
