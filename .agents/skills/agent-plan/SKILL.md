@@ -26,7 +26,8 @@ Put it in the reply, in the project's own terms. Describe behaviour and decision
 
 ## 3. Confirm and publish
 
-- End by asking the user to confirm the plan.
+- End by asking the user to confirm the plan with the question pop-up.
+  - Show the plan in the reply first. The question must stand on its own, because the dialog can hide the text above it.
 - Once they do, publish it as an issue in the project's issue tracker, so a new session can read it.
 - If the project has no issue tracker, save it as a file in the project and say where.
   - The file is deleted when the work lands.

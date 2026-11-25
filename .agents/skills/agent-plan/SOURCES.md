@@ -25,6 +25,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | To record: decisions and new terms | Matt: `grill-with-docs` |
 | | The build writes them, not the plan | Claude |
 | 3. Confirm and publish | Ask the user to confirm the plan | Matt: `grilling`. poteto: "Multi-phase plan" playbook |
+| | Confirm with the question pop-up, after the plan is in the reply, in a question that stands on its own | Phillipe (asked for after a session where text questions dropped the recommendations) |
 | | Publish it as an issue | Matt: `to-spec`. Phillipe chose issues |
 | | No tracker: a file, deleted when the work lands | poteto: "Multi-phase plan" playbook |
 | | Offer to split work too big for one session | Matt: `to-tickets`. Claude linked the two skills |

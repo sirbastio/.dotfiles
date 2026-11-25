@@ -46,7 +46,7 @@ A decision is what the product should do, a preference, or anything that can't b
   - A round holds every question that can be answered now.
   - A question that depends on an answer still open, or on a lookup still running, waits for a later round. Ask the rest now.
 - Ask for any access or secrets the build will need, so the build never stops for them.
-- Number each question and give your recommended answer, worded so "yes" accepts it.
+- Ask with the question pop-up where the harness has one: one question per screen, the recommended option first and marked "(Recommended)". Fall back to numbered questions with a recommended answer that "yes" accepts only when there is no pop-up.
 - Wait for the answers, then ask the next round.
 - Done when every decision the work rests on has the user's answer and none is assumed.
 
@@ -54,4 +54,4 @@ A decision is what the product should do, a preference, or anything that can't b
 
 - List what was decided and what the throwaways showed.
 - If Plan started these questions, go back to it.
-  - Otherwise ask the user whether to write the plan, and on yes follow `../agent-plan/SKILL.md`.
+  - Otherwise ask the user with the question pop-up whether to write the plan, and on yes follow `../agent-plan/SKILL.md`.

@@ -26,9 +26,11 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | "Anything that can't be undone" counts as a decision | Claude |
 | | Ask for access and secrets the build will need | poteto: guide page "Run work while you sleep". Matt: `wayfinder`, `wizard` |
 | | Ask in rounds, everything answerable now | Matt: `grilling` |
+| | Ask with the question pop-up, one question per screen, the recommended option first | Phillipe (asked for after a session where text questions dropped the recommendations) |
 | | A recommended answer that "yes" accepts | Matt: `grilling` |
 | | Done when nothing is assumed | Matt: `grilling` |
 | 7. Hand over | List what was decided and what the throwaways showed | Claude |
 | | Leads into Plan, and Plan can start here | Phillipe |
+| | Ask whether to write the plan with the question pop-up | Phillipe (asked for after a session where text questions dropped the recommendations) |
 
 Step 3 is an exit: nothing further runs. Step 7 is the other: on to the Plan skill.
