@@ -20,3 +20,6 @@
 /.gemini/*
 !/.gemini/AGENTS.md
 !/.gemini/settings.json
+!/.gemini/config/
+/.gemini/config/*
+!/.gemini/config/skills.json
