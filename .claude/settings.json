@@ -1,25 +1,10 @@
 {
-  "theme": "dark",
-  "editorMode": "vim",
-  "remoteControlAtStartup": true,
-  "agentPushNotifEnabled": true,
-  "autoMemoryEnabled": false,
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "medium"
-    }
-  },
   "attribution": {
     "commit": "",
     "pr": "",
     "sessionUrl": false
   },
-  "enabledPlugins": {
-    "clangd-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true
-  },
   "permissions": {
-    "defaultMode": "auto",
     "allow": [
       "Bash(git branch *)",
       "Bash(git push *)",
@@ -27,17 +12,18 @@
       "Bash(gh issue *)",
       "Bash(git switch *)"
     ],
-    "ask": [
-      "Bash(git checkout *)",
-      "Bash(gh pr merge *)"
-    ],
     "deny": [
       "Bash(git push *--force*)",
       "Bash(git push *-f)",
       "Bash(git push *-f *)",
       "Bash(git reset *--hard*)",
       "Bash(git clean *)"
-    ]
+    ],
+    "ask": [
+      "Bash(git checkout *)",
+      "Bash(gh pr merge *)"
+    ],
+    "defaultMode": "auto"
   },
   "hooks": {
     "SessionStart": [
@@ -51,5 +37,28 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "dotfiles@synced": false
+  },
+  "extraKnownMarketplaces": {
+    "sirbastio": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/sirbastio/.dotfiles.git"
+      }
+    }
+  },
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "autoMemoryEnabled": false,
+  "theme": "dark",
+  "editorMode": "vim",
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true
 }
