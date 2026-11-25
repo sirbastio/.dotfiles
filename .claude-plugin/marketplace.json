@@ -1,0 +1,14 @@
+{
+  "name": "sirbastio",
+  "owner": { "name": "sirbastio" },
+  "metadata": {
+    "description": "Personal agent skills from these dotfiles."
+  },
+  "plugins": [
+    {
+      "name": "dotfiles",
+      "source": "./.agents",
+      "description": "The agent workflow skills: scope, plan, split, build, verify, review, reflect and verify-setup."
+    }
+  ]
+}

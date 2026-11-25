@@ -17,6 +17,7 @@
 /.agents/*
 !/.agents/AGENTS.md
 !/.agents/skills/
+!/.agents/.claude-plugin/
 /.gemini/*
 !/.gemini/AGENTS.md
 !/.gemini/settings.json
