@@ -25,8 +25,9 @@ Tests and the project's checks belong to Build. This is proof on the real thing.
 - Sort each check: 
   - This machine can run it.
   - It needs a tool this machine lacks, such as a simulator or a browser.
+- If the project has a verify skill (`verify-<project>`), read it first, and launch, drive and capture its way.
+  - With none, say so at the end and name `../verify-setup/SKILL.md`.
 - Confirm it's running this change before driving it.
-- If the project has no verify skill, say so at the end and name `../verify-setup/SKILL.md`.
 
 ## 3. Pick the checker
 
@@ -53,7 +54,7 @@ Tests and the project's checks belong to Build. This is proof on the real thing.
 - Each check held, failed or was not run here.
 - When one fails, suspect how you looked before the code.
   - If the project's verify skill was wrong, fix it in the same change.
-  - Then fix it the way Build builds, and run every check again.
+  - Then fix it the way `../agent-build/SKILL.md` builds, and run every check again.
 - When two fixes for the same check have failed, write down what both assumed and test that before a third.
   - If it still fails, stop and report, without a pull request.
 - Never weaken a check to make it pass.

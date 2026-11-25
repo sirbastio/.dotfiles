@@ -19,6 +19,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | Each check names the data it needs | Phillipe: `pr-handover` ("Say what the data must be when it matters"). poteto: `create-verification-skill` feature-map example (Preconditions) |
 | | Each check must be able to fail on this change | Matt: `diagnosing-bugs` ("red-capable"). Loose: he says it of a bug's reproduction, Claude stretched it to every check |
 | 2. See what can run here | Sort each check by whether this machine can run it | Phillipe: the build may be in the cloud. Claude's wording |
+| | Where the project has a verify skill, read it first and launch, drive and capture its way | poteto: `create-verification-skill`. Phillipe cut an earlier form of this line, then agreed to it once it was clear nothing else told Verify to find or follow that skill |
 | | Confirm it's running this change first | poteto: `create-verification-skill` (Doctor). Loose: her check is wider (process, port, version, auth) |
 | | No project verify skill: say so at the end and name the set-up skill | Claude. It doesn't run set-up itself, so the build keeps moving |
 | 3. Pick the checker | A fresh sub-agent that didn't build it | poteto: "Shipping" playbook ("an author checks what it meant to build"). Loose: hers is one cloud agent per pull request at merge time |
@@ -73,7 +74,7 @@ Left out, and why:
 |---|---|---|
 | A per-project skill for launch, health check, drive, evidence and clean-up, with a feature map | poteto: `create-verification-skill`, `maintain-verification-skill` | Its own skill: `../verify-setup/SKILL.md` |
 | A small driver agents call | poteto: guide 06 | Built when agents keep improvising the same steps, not part of Verify |
-| Launch and drive it the project's own way, and reuse a running instance | Phillipe. poteto: `create-verification-skill` | Phillipe cut it. The opening line already puts the project's rules first |
+| Reuse a running instance | Phillipe. poteto: `create-verification-skill` | Phillipe cut it with "launch and drive it the project's own way". That half came back in step 2. This half is a project rule |
 | "Looks right" is not a result | Phillipe: `pr-handover` | Step 6 already asks what was seen |
 | A check run by a different path has not held | poteto: `create-verification-skill` feature-map example | "The path a user takes" already covers it |
 | Several agents checking at once | poteto: `swarm` | One simulator at a time on Phillipe's machine |

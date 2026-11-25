@@ -30,7 +30,7 @@ Run this in a session that didn't build the change.
 
 ## 4. Fix or send back
 
-- A small slip or a proven bug: fix it on the branch the way Build builds, and rerun the checks it touches.
+- A small slip or a proven bug: fix it on the branch the way `../agent-build/SKILL.md` builds, and rerun the checks it touches.
 - A wrong approach, or anything that changes behaviour: leave it unfixed and comment on the pull request.
 - A finding about security, data or sign-in: ask the user.
 

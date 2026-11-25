@@ -50,6 +50,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | Fresh sub-agents, one question each | Matt: `code-review` (two parallel sub-agents) |
 | | Bugs: try to break the change | poteto: `interrogate` ("Break this change"). Loose: hers is a panel of different models, this is one sub-agent |
 | | A bug finding counts only when a run shows it | poteto: `interrogate` ("Leave out anything you did not run") |
+| | A bug finding no run could show is noted as a follow-up, not fixed | poteto: "Autopilot-full" playbook ("Block a PR only for a problem you can show... everything else goes in a follow-up"). Loose: hers is about what blocks a merge, this is about what Build fixes |
 | | Bugs: flip one condition the change adds, and a suite that still passes is missing a test | Addy: `code-review-and-quality` ("A mutation that stays green is a finding: name the test case that is missing") |
 | | Plan: what's missing, what wasn't asked for, what's built wrong | Matt: `code-review` (Spec) |
 | | Each plan finding quotes the plan's line | Matt: `code-review` ("Quote the spec line for each finding") |

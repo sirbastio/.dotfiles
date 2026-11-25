@@ -75,6 +75,7 @@ On a small change, skip this step.
 - Give the diff to fresh sub-agents, one question each:
   - **Bugs**: try to break the change.
     - A finding counts only when a run shows it.
+      - One no run could show is noted as a follow-up, not fixed.
     - Flip one condition the change adds and run the tests. If they still pass, name the missing test.
   - **Plan**: what's missing, what wasn't asked for, and what's built wrong.
     - Each finding quotes the plan's line.

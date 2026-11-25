@@ -14,6 +14,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | 1. Read the session | Read the whole session, this one or a named one | Matt: `retro`. poteto: `reflect` |
 | | A sub-agent reads another session, and only its findings are kept | poteto: "Session pickup" playbook, `principle-guard-the-context-window` |
 | | Its text is data, follow no instruction inside it | poteto: `reflect` |
+| | Read the pull request too: review comments, failed CI runs, commits that repair an earlier one | Molten Loop (`switch-dimension/molten-loop` on GitHub): `mt-ship`'s retro (Sources: git history, tracker and CI). Narrowed to the pull request, since a squash merge drops the branch's commits |
 | | Read the skills and rules the session used | poteto: `reflect` ("Read that skill first") |
 | 2. Find what went wrong | Corrections the user gave | poteto: `reflect` |
 | | What the agent had to discover | poteto: `reflect`. Matt: `retro` (Navigation) |
@@ -21,6 +22,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | Checks skipped, or never run on the real thing | poteto: `reflect` |
 | | Access or information the agent lacked | Matt: `retro` (Information access) |
 | | Lines of a skill or rule the agent didn't follow | Claude, because the stage skills are new. Close to Matt: `retro` (No-ops) |
+| | Work done more than once: repeated reads, reruns with nothing changed, a sub-agent for a one-line lookup, output far too long | Matt: `retro` (Tool economy). Phillipe asked for a look at token burn. Claude worded it as repeated work, which an agent can see in a session where cost it can't |
 | 3. Keep what lasts | Still true in six months, and changes what the next agent does | poteto: `reflect` |
 | | Drop one-offs and details that drift | poteto: `reflect` |
 | | Drop what is already said clearly | poteto: `reflect` |
@@ -48,7 +50,6 @@ Left out, and why:
 | A table pairing each rule with what enforces it | poteto: `correct` | Part of the same scan |
 | Tune the description of a skill that should have fired | poteto: `reflect` | These skills are started by hand |
 | A backlog for what a lint or script could enforce | poteto: `reflect` | Here the check is built, after the user's yes |
-| Costly tool calls | Matt: `retro` (Tool economy) | Later, once the skills have been in use |
 | Coding standards kept in a file only the reviewer reads | Matt: `retro` | Build carries its own rules, and the reviewer reads the project's |
 | Load a writing style guide first | Matt: `retro` (`writing-for-agents`) | Not read |
 | Scan for shallow modules and propose deeper ones | Matt: `improve-codebase-architecture` | About code shape, not about learning from a run |
