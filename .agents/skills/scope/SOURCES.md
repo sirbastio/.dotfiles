@@ -1,4 +1,4 @@
-# Question: where each idea came from
+# Scope: where each idea came from
 
 The steps of `SKILL.md` in order, and the source of each idea.
 

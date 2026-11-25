@@ -5,18 +5,18 @@
   "agentPushNotifEnabled": true,
   "autoMemoryEnabled": false,
   "modelSettings": {
-      "claude-opus-5-5": {
-          "effortLevel": "medium"
-      }
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
   },
   "attribution": {
-      "commit": "",
-      "pr": "",
-      "sessionUrl": false
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
   },
   "enabledPlugins": {
-      "clangd-lsp@claude-plugins-official": true,
-      "typescript-lsp@claude-plugins-official": true
+    "clangd-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
   },
   "permissions": {
     "defaultMode": "auto",
@@ -37,6 +37,19 @@
       "Bash(git push *-f *)",
       "Bash(git reset *--hard*)",
       "Bash(git clean *)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh -c 'rex __internal session-start --agent claude 2>/dev/null || true'",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   }
 }

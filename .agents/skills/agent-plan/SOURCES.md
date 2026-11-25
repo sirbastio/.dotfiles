@@ -9,8 +9,8 @@ The steps of `SKILL.md` in order, and the source of each idea.
 
 | Step | Idea | Source |
 |---|---|---|
-| 1. Settle the decisions | Run Question first if they haven't been asked | Phillipe |
-| | Stop too if Question stops at "small and obvious" | poteto: "Multi-phase plan" playbook |
+| 1. Settle the decisions | Run Scope first if they haven't been asked | Phillipe |
+| | Stop too if Scope stops at "small and obvious" | poteto: "Multi-phase plan" playbook |
 | 2. Write the plan | The plan goes in the reply | Claude |
 | | In the project's own terms | Matt: `to-spec`, `grill-with-docs` |
 | | Behaviour and decisions, no file paths or code | Matt: `to-spec` |
@@ -29,4 +29,4 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | No tracker: a file, deleted when the work lands | poteto: "Multi-phase plan" playbook |
 | | Offer to split work too big for one session | Matt: `to-tickets`. Claude linked the two skills |
 
-Step 1 is an exit when Question stops at "small and obvious": no plan is written. Step 3 is the other: on to the Split skill, when the work is big.
+Step 1 is an exit when Scope stops at "small and obvious": no plan is written. Step 3 is the other: on to the Split skill, when the work is big.

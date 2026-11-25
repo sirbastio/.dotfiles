@@ -21,6 +21,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | What the user supplied that the agent could have found | poteto: `reflect` |
 | | Checks skipped, or never run on the real thing | poteto: `reflect` |
 | | Access or information the agent lacked | Matt: `retro` (Information access) |
+| | Times the agent stopped for the user: a permission prompt, a blocked command, a question it could have answered | Phillipe, to keep the human out of the loop. Neither Matt's `retro` nor poteto's `reflect` looks at prompts. The question it could have answered is close to poteto's "Autonomous run" playbook (surface only what can't be undone) |
 | | Lines of a skill or rule the agent didn't follow | Claude, because the stage skills are new. Close to Matt: `retro` (No-ops) |
 | | Work done more than once: repeated reads, reruns with nothing changed, a sub-agent for a one-line lookup, output far too long | Matt: `retro` (Tool economy). Phillipe asked for a look at token burn. Claude worded it as repeated work, which an agent can see in a session where cost it can't |
 | 3. Keep what lasts | Still true in six months, and changes what the next agent does | poteto: `reflect` |
@@ -29,6 +30,8 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | A written rule that was still broken needs a stronger home | poteto: `correct` ("If the rule was already there and nothing enforces it, that's a repeat") |
 | 4. Give each finding a home | A check before a written rule | poteto: `correct`, `principle-encode-lessons-in-structure`. Matt: `retro` ("Default to building the check over writing the rule") |
 | | Something the agent can reach next time | Matt: `retro` (Information access) |
+| | A permission rule, where the harness stopped the agent on something the written rules let it do | Phillipe. Claude's wording |
+| | The written rules decide when to ask, the harness blocks only what can't be undone | Phillipe: the harness allows pushes and PRs so a project can lift the ask, and `CLAUDE.md` carries the ask |
 | | A line in the project's rules or its verify skill | Matt: `retro`. poteto: `reflect`. The verify skill is Phillipe's `verify-setup` |
 | | A global skill only when it holds in any project | Phillipe: the facts go in the project, the method in the global skills |
 | | Change or remove a line before adding one | Matt: `retro` (No-ops, and `AGENTS.md` used sparingly). poteto: `correct` ("Drop a rule once its mistake can't happen") |

@@ -1,10 +1,10 @@
 ---
-name: question
+name: scope
 description: Ask the user about a task or idea until every decision is settled.
 disable-model-invocation: true
 ---
 
-# Question
+# Scope
 
 Facts are yours to find. Decisions are the user's.
 

@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 ## 1. Settle the decisions
 
-- If the questions haven't been asked in this conversation, follow `../question/SKILL.md` first.
+- If the questions haven't been asked in this conversation, follow `../scope/SKILL.md` first.
 - If it stops at "small and obvious", stop too.
 
 ## 2. Write the plan

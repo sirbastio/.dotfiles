@@ -23,6 +23,7 @@ Run it after a change lands, or after a run that went badly.
 - What the user supplied that the agent could have found.
 - Checks skipped, or never run on the real thing.
 - Access or information the agent lacked.
+- Times the agent stopped for the user: a permission prompt, a blocked command, a question it could have answered itself.
 - Lines of a skill or rule the agent didn't follow.
 - Work done more than once: the same file read again, a check rerun with nothing changed, a sub-agent started for a one-line lookup, output far longer than what was needed.
 
@@ -39,6 +40,8 @@ Use the first that fits:
 
 - A check in the project: a type, a lint rule or a test.
 - Something the agent can reach next time: access, logs, a script.
+- A permission rule, where the harness stopped the agent on something the written rules let it do.
+  - The written rules decide when to ask. The harness blocks only what can't be undone.
 - A line in the project's rules, or in its verify skill.
 - A line in a global skill, only when it would hold in any project.
 
