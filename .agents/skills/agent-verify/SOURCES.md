@@ -30,6 +30,7 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | The path a user takes, never an internal shortcut | poteto: `create-verification-skill` (Evidence) |
 | | Capture the action and its result, and any side effect | poteto: `create-verification-skill` (Evidence) |
 | | Where the change alters what was there, capture the before as well | Matt: `pr` (Evidence: before and after). poteto: guide 06 ("a before-and-after video"), "Shipping" playbook ("parent against head") |
+| | A video for movement or a flow of several steps, a screenshot for the rest | poteto: guide 06 ("a before-and-after video", "show me a video and screenshots as proof"). Claude: kept to what a screenshot can't show, since a video takes Phillipe longer to review. Matt's `pr` has screenshots only |
 | | Script the check when you can, so it can be run again | poteto: `principle-prove-it-works` |
 | | Bug: rerun the original reproduction | Matt: `diagnosing-bugs`. poteto: "Bug fix" playbook |
 | 5. Judge each one | Held, failed or not run here | poteto: guide 06 ("inconclusive"), `swarm` (PASS, ISSUES, BLOCKED) |

@@ -31,4 +31,5 @@ The steps of `SKILL.md` in order, and the source of each idea. These rules were 
 | 4. Open it | Ready, not as a draft | Phillipe: "always ready", also when a check was not run. poteto: "Opening a PR" playbook ("Open PRs ready"). The line had gone missing from Verify |
 | | Upload screenshots with `gh`'s `--attach` | GitHub CLI 2.99 (September 2026). Phillipe: no pull request had carried a screenshot of the running app |
 | | Set each screenshot's width with `pr-image-width.sh` (260 for a phone, about 600 for a desktop window), a before and after in one table row | Phillipe: the images in prepr's test pull request 254 were too big. Claude: a script, because `--attach` doesn't rewrite an `<img>` tag, so the width has to be set after the upload |
+| | A video goes up the same way, cut to the seconds that show the check | Phillipe: asked whether `gh` takes video. Tried on prepr's pull request 254, where five seconds of a phone screen came to 2 MB and showed as a player. poteto: guide 06 asks for video as proof |
 | | Never merge | Phillipe |

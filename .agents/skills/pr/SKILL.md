@@ -24,7 +24,7 @@ Every rule here is a default. The project's own rules win, and so do the heading
 
 ## 3. Show the evidence
 
-- For each check run on the real thing, one line: what was done and what was seen, with the screenshot or output.
+- For each check run on the real thing, one line: what was done and what was seen, with the screenshot, video or output.
   - Leave out the project's own checks, which CI shows.
   - Show the before beside the after where one was captured.
   - Name the commit the evidence was captured at.
@@ -34,7 +34,8 @@ Every rule here is a default. The project's own rules win, and so do the heading
 ## 4. Open it
 
 - Push and open the pull request, ready and not as a draft.
-- On GitHub, upload each screenshot with `gh pr create --attach <file>`, and reference it in the description as `![what it shows](./<file>)` beside its line.
-  - Then run `sh ./pr-image-width.sh <pr>` from this skill's folder, which sets how wide each one shows. It defaults to 260, which suits a phone screen; pass about 600 for a desktop window.
+- On GitHub, upload each screenshot or video with `gh pr create --attach <file>`, and reference it in the description as `![what it shows](./<file>)` beside its line.
+  - Then run `sh ./pr-image-width.sh <pr>` from this skill's folder, which sets how wide each image shows. It defaults to 260, which suits a phone screen; pass about 600 for a desktop window.
   - Put a before and an after in one table row.
+  - Cut a video to the seconds that show the check.
 - Never merge.

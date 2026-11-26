@@ -45,6 +45,7 @@ Tests and the project's checks belong to Build. This is proof on the real thing.
 - Take the path a user takes, never an internal shortcut.
 - Capture the action and its result, not only the final screen.
   - Capture any side effect too.
+  - Take a screenshot, or record a video where the check is about how something moves or a flow of several steps.
   - Where the change alters what was already there, capture the before as well.
 - Script the check when you can, so it can be run again.
 - For a bug, rerun the original reproduction.
