@@ -63,14 +63,6 @@ Tests and the project's checks belong to Build. This is proof on the real thing.
 
 - Stop only what you started, and keep the evidence.
 - When the change alters a screen, a command, or anything the project's verify skill names, update that skill and its feature map in the same change.
-- Once no check has failed, push and open the pull request, where the project uses them.
-  - Say what changed and why, and link the plan's issue.
-    - Open with the smallest picture that shows the change: pseudocode, a call tree, a component tree, a file tree or a diagram.
-  - For each check, say what was done and what was seen, with the screenshot or output.
-    - Show the before beside the after where one was captured.
-    - Name the commit the evidence was captured at.
-  - For each check not run here, write the steps to follow and what must be seen, and say the change is not verified.
-  - Say the risk: whether it can be undone, and what it could break.
-  - Never merge.
+- Once no check has failed, open the pull request the way `../pr/SKILL.md` does, where the project uses them.
 - Tell the user the outcome, what you decided, and what isn't done.
   - With no pull request, the evidence goes in the reply.

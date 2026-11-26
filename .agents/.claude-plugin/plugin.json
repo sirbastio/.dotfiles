@@ -1,5 +1,5 @@
 {
   "name": "dotfiles",
-  "description": "The agent workflow skills: scope, plan, split, build, verify, review, reflect and verify-setup.",
+  "description": "The agent workflow skills: scope, plan, split, build, verify, review, reflect, verify-setup and pr.",
   "author": { "name": "sirbastio" }
 }
