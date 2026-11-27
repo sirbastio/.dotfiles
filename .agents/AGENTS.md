@@ -14,6 +14,7 @@
 ## Terminal
 
 - Run dev servers in a Rex tab or split so I can see them.
+- Cap Jest `--maxWorkers=2` locally.
 
 ## Git
 
@@ -22,6 +23,7 @@
   - How: Only commit changes you made. Preserve existing uncommitted changes.
 
 - Pushing, PRs & Merging: Ask.
+  - Except a skill I started that says to push or open a PR: that's my go-ahead, so do it without asking.
 
 - Branches
   - Creating: Ask.

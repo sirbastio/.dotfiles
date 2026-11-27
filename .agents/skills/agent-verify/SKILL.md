@@ -65,5 +65,6 @@ Tests and the project's checks belong to Build. This is proof on the real thing.
 - Stop only what you started, and keep the evidence.
 - When the change alters a screen, a command, or anything the project's verify skill names, update that skill and its feature map in the same change.
 - Once no check has failed, open the pull request the way `../pr/SKILL.md` does, where the project uses them.
+  - Push and open it without asking: starting this skill is the go-ahead.
 - Tell the user the outcome, what you decided, and what isn't done.
   - With no pull request, the evidence goes in the reply.
