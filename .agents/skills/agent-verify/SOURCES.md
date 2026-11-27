@@ -46,6 +46,8 @@ The steps of `SKILL.md` in order, and the source of each idea.
 | | Only once no check has failed. A check not run here doesn't stop it | Phillipe. Claude's wording |
 | | The pull request itself is written the way `../pr/SKILL.md` says | Phillipe: asked for the split, so the rules reach a pull request opened outside Verify. Matt: `pr` is its own skill. poteto: "Opening a PR" is its own playbook |
 | | Tell the user the outcome, the decisions and what isn't done | Phillipe |
+| | Push and open it without asking | Phillipe: kept being asked to open the pull request after starting Verify |
+| | An open pull request is updated, not opened again | Phillipe: often runs Verify on a branch whose pull request is already up |
 | | With no pull request, the evidence goes in the reply | Claude |
 
 Moved to `../agent-review/SKILL.md`, because checking a pull request someone else built is Review's job:

@@ -34,7 +34,10 @@ Every rule here is a default. The project's own rules win, and so do the heading
 ## 4. Open it
 
 - Push and open the pull request, ready and not as a draft.
-- On GitHub, upload each screenshot or video with `gh pr create --attach <file>`, and reference it in the description as `![what it shows](./<file>)` beside its line.
+- If the branch already has an open pull request, push to it and rewrite its description with `gh pr edit`, never a new pull request or a comment.
+  - Keep what a reviewer added, and replace evidence from an older commit.
+  - If it's a draft, mark it ready.
+- On GitHub, upload each screenshot or video with `--attach <file>` on `gh pr create` or `gh pr edit`, and reference it in the description as `![what it shows](./<file>)` beside its line.
   - Then run `sh ./pr-image-width.sh <pr>` from this skill's folder, which sets how wide each image shows. It defaults to 260, which suits a phone screen; pass about 600 for a desktop window.
   - Put a before and an after in one table row.
   - Cut a video to the seconds that show the check.
