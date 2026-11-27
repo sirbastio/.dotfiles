@@ -8,7 +8,6 @@
 /.claude/*
 !/.claude/CLAUDE.md
 !/.claude/settings.json
-!/.claude/skills
 /.codex/*
 !/.codex/AGENTS.md
 !/.codex/rules/

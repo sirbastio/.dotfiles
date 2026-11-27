@@ -25,13 +25,14 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "opus[1m]",
   "hooks": {
     "SessionStart": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "/bin/sh -c 'rex __internal session-start --agent claude 2>/dev/null || true'",
+            "command": "/bin/sh -c 'rex __internal session-start --agent claude --feature-session-naming=false 2>/dev/null || true'",
             "timeout": 5
           }
         ]
@@ -41,7 +42,7 @@
   "enabledPlugins": {
     "clangd-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "dotfiles@synced": false
+    "dotfiles@synced": true
   },
   "extraKnownMarketplaces": {
     "sirbastio": {
@@ -58,7 +59,7 @@
   },
   "autoMemoryEnabled": false,
   "theme": "dark",
-  "editorMode": "vim",
+  "editorMode": "normal",
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true
 }

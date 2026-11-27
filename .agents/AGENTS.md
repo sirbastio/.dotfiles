@@ -11,6 +11,10 @@
   - Can be undone: Decide, and tell me what you chose in the hand-over.
   - Can't be undone: Ask.
 
+## Terminal
+
+- Run dev servers in a Rex tab or split so I can see them.
+
 ## Git
 
 - Commits
