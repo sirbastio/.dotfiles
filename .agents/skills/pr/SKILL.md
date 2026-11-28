@@ -66,8 +66,8 @@ description: Write a pull request's description and open it. Use whenever a pull
 ## 7. Attach the captures
 
 - On GitHub, upload each screenshot or video with `--attach <file>` on `gh pr create` or `gh pr edit`.
-  - Reference it in the description as `![what it shows](./<file>)` beside its line.
-- Then run `sh ./pr-image-width.sh <pr>` from this skill's folder, which sets how wide each image shows.
+  - Reference it in the description as `![what it shows](./<file>)` after its line's text.
+- Then run `sh ./pr-image-width.sh <pr>` from this skill's folder, which sets how wide each image shows and moves it under its text.
   - It defaults to 260, which suits a phone screen. Pass about 600 for a desktop window.
 - Put a before and an after in one table row.
 - Cut a video to the seconds that show the check.

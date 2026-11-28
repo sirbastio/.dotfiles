@@ -35,5 +35,6 @@ The steps of `SKILL.md` in order, and the source of each idea. These rules were 
 | | An open pull request is updated, not opened again | Phillipe: often runs Verify on a branch whose pull request is already up |
 | 7. Attach the captures | Upload screenshots with `gh`'s `--attach` | GitHub CLI 2.99 (September 2026). Phillipe: no pull request had carried a screenshot of the running app |
 | | Set each screenshot's width with `pr-image-width.sh` (260 for a phone, about 600 for a desktop window), a before and after in one table row | Phillipe: the images in prepr's test pull request 254 were too big. Claude: a script, because `--attach` doesn't rewrite an `<img>` tag, so the width has to be set after the upload |
+| | The script moves an image under its text, outside a table | Phillipe: in prepr's pull request 285 each check's sentence wrapped around its screenshot. Claude: in the script, since a written rule about line breaks is one an agent forgets |
 | | A video goes up the same way, cut to the seconds that show the check | Phillipe: asked whether `gh` takes video. Tried on prepr's pull request 254, where five seconds of a phone screen came to 2 MB and showed as a player. poteto: guide 06 asks for video as proof |
 | | Never merge | Phillipe |
