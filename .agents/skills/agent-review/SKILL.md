@@ -18,7 +18,7 @@ Run this in a session that didn't build the change.
 
 ## 2. Run what Verify couldn't
 
-- Work down the checks not run, the way `../agent-verify/SKILL.md` runs and judges a check.
+- Work down the tasks at the top of the description, the way `../agent-verify/SKILL.md` runs and judges a check.
 - Rerun any check whose code changed since its evidence.
 - A check this machine can't run either stays "not run here".
 
@@ -36,7 +36,7 @@ Run this in a session that didn't build the change.
 
 ## 5. Give the verdict
 
-- Update the description: tick what held, and note what was seen where it didn't.
+- Update the description: tick each task that held, note what was seen where it didn't, and correct its first line.
 - Give the verdict: pass, pass with notes, or fail.
 - List what only the user can judge: how a screen looks, and checks still not run.
 - Never merge.

@@ -62,7 +62,7 @@ flowchart TD
 | `agent-review` | An open pull request, in a session that didn't build it | Runs the checks Verify couldn't, looks past the list, and fixes a small slip or sends a wrong approach back | A verdict. You merge |
 | `verify-setup` | A project with no written way to verify it | Writes a `verify-<project>` skill and a feature map, then proves them once | Every later `agent-verify` in that project |
 | `reflect` | A finished session, after its change lands or after a bad run | Finds what went wrong, keeps what will last, and proposes a check, a project rule or a skill edit for each. Changes nothing until you say yes | The next run, in that project or in the skills |
-| `pr` | Any pull request being written, by `agent-verify` or outside the flow | Keeps the description to a minute's read: what changed and why, the evidence with screenshots, the checks not run, and the risk | You, to read and merge |
+| `pr` | Any pull request being written, by `agent-verify` or outside the flow | Opens with what is left for you to check, then a minute's read: what changed and why, and the risk, with the evidence folded away | You, to read and merge |
 
 You stay in the loop through `scope`, `agent-plan` and `split`. From `agent-build` to the pull request the agent works alone, and stops only when blocked or for a decision that can't be undone. `agent-review` is optional: use it when checks couldn't be run, or when you want a second look. `reflect` sits outside the flow: run it when a session has something to teach the next one.
 
